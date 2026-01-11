@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +60,11 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        hero: {
+          grey: "hsl(var(--hero-text-grey))",
+          red: "hsl(var(--hero-red))",
+          bg: "hsl(var(--hero-bg))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -80,10 +88,48 @@ export default {
             height: "0",
           },
         },
+        "text-rotate": {
+          "0%, 20%": { transform: "translateY(0)" },
+          "25%, 45%": { transform: "translateY(-100%)" },
+          "50%, 70%": { transform: "translateY(-200%)" },
+          "75%, 95%": { transform: "translateY(-300%)" },
+          "100%": { transform: "translateY(-300%)" },
+        },
+        "dot-slide": {
+          "0%, 20%": { transform: "translateX(0)", opacity: "1" },
+          "22%": { transform: "translateX(-100px)", opacity: "0" },
+          "24%": { transform: "translateX(50px)", opacity: "0" },
+          "27%, 45%": { transform: "translateX(0)", opacity: "1" },
+          "47%": { transform: "translateX(-100px)", opacity: "0" },
+          "49%": { transform: "translateX(50px)", opacity: "0" },
+          "52%, 70%": { transform: "translateX(0)", opacity: "1" },
+          "72%": { transform: "translateX(-100px)", opacity: "0" },
+          "74%": { transform: "translateX(50px)", opacity: "0" },
+          "77%, 100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        "swipe-reveal": {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(100%)" },
+        },
+        "bg-fade-1": {
+          "0%, 45%": { opacity: "1" },
+          "50%, 95%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "bg-fade-2": {
+          "0%, 45%": { opacity: "0" },
+          "50%, 95%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "text-rotate": "text-rotate 6s ease-in-out infinite",
+        "dot-slide": "dot-slide 6s ease-in-out infinite",
+        "swipe-reveal": "swipe-reveal 1.5s ease forwards",
+        "bg-fade-1": "bg-fade-1 10s ease-in-out infinite",
+        "bg-fade-2": "bg-fade-2 10s ease-in-out infinite",
       },
     },
   },
