@@ -1,96 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Hero Loop Theme - Dark Fitness */
+    --background: 0 0% 7%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Red accent */
+    --primary: 7 100% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 7 100% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 7 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Custom tokens */
+    --hero-bg: 0 0% 7%;
+    --hero-text-grey: 0 0% 60%;
+    --hero-red: 7 100% 50%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
+    --background: 0 0% 7%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 7 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 7 100% 50%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 7 100% 50%;
   }
 }
 
@@ -100,6 +73,345 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-montserrat antialiased;
+  }
+}
+
+@layer components {
+  /* Hero specific styles */
+  .hero-slider {
+    @apply relative min-h-screen overflow-hidden;
+  }
+
+  .hero-container {
+    @apply relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20;
+    height: 100vh;
+  }
+
+  .hero-text-col {
+    @apply flex flex-col justify-center h-full pt-20;
+  }
+
+  /* Static text */
+  .static-text {
+    @apply text-[4rem] md:text-[5.5rem] lg:text-[6.5rem] font-black leading-none tracking-tight;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* Rotating text wrapper */
+  .text-rotate-cell {
+    @apply flex items-center relative;
+  }
+
+  .text-rotate-wrap {
+    @apply overflow-hidden inline-block;
+    height: 110px;
+  }
+
+  @media (min-width: 768px) {
+    .text-rotate-wrap {
+      height: 130px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .text-rotate-wrap {
+      height: 150px;
+    }
+  }
+
+  .text-rotate-track {
+    animation: text-rotate 6s ease-in-out infinite;
+  }
+
+  .rotating-text {
+    @apply text-[4rem] md:text-[5.5rem] lg:text-[6.5rem] font-black leading-none tracking-tight;
+    color: hsl(var(--hero-red));
+    font-family: 'Montserrat', sans-serif;
+    height: 110px;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .rotating-text {
+      height: 130px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .rotating-text {
+      height: 150px;
+    }
+  }
+
+  /* Red dot icon */
+  .red-dot-icon {
+    @apply w-4 h-4;
+    animation: dot-slide 6s ease-in-out infinite;
+  }
+
+  /* Lead text */
+  .lead-text {
+    @apply text-lg md:text-xl lg:text-2xl font-light max-w-lg leading-relaxed;
+    color: hsl(var(--hero-text-grey));
+  }
+
+  /* Caption */
+  .caption-wrap {
+    @apply flex items-center gap-3 mt-2;
+  }
+
+  .hero-caption {
+    @apply text-sm uppercase tracking-wider;
+    color: hsl(var(--hero-text-grey));
+  }
+
+  /* Big text link */
+  .big-text-link {
+    @apply inline-flex items-center gap-3 mt-12 text-lg md:text-xl font-semibold relative cursor-pointer;
+    width: fit-content;
+    padding-bottom: 8px;
+  }
+
+  .big-text-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-[2px] bg-foreground;
+    width: 100%;
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+
+  .big-text-link:hover::after {
+    animation: underline-hover 0.4s ease forwards;
+  }
+
+  .big-link-icon {
+    @apply w-5 h-5 transition-transform duration-300;
+  }
+
+  .big-text-link:hover .big-link-icon {
+    transform: translateX(5px);
+  }
+
+  /* Play button */
+  .play-button-wrap {
+    @apply absolute right-12 lg:right-32 top-1/2 -translate-y-1/2 z-20;
+  }
+
+  .play-button {
+    @apply w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 cursor-pointer transition-all duration-300;
+    filter: brightness(1);
+  }
+
+  .play-button:hover {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+  }
+
+  /* Background images */
+  .hero-bg-image {
+    @apply absolute inset-0 bg-cover bg-center bg-no-repeat;
+    filter: brightness(0.4);
+  }
+
+  /* Info card */
+  .hero-info-card {
+    @apply fixed bottom-6 right-6 flex items-center gap-4 z-30 bg-transparent;
+  }
+
+  .info-card-icon {
+    @apply w-12 h-12 flex items-center justify-center;
+  }
+
+  .business-icon {
+    @apply w-full h-full;
+  }
+
+  .info-card-details-wrap {
+    @apply flex flex-col;
+  }
+
+  .info-short-description {
+    @apply text-sm font-medium text-foreground;
+  }
+
+  .info-contact-wrap {
+    @apply flex items-center gap-4 text-sm;
+  }
+
+  .info-number {
+    @apply text-muted-foreground;
+  }
+
+  .info-email {
+    @apply text-primary hover:underline transition-all;
+  }
+
+  /* Navigation */
+  .hero-nav {
+    @apply fixed top-0 left-0 right-0 z-50 py-4 px-6 md:px-12 lg:px-20;
+  }
+
+  .nav-container {
+    @apply max-w-[1400px] mx-auto flex items-center justify-between;
+  }
+
+  .nav-logo {
+    @apply flex items-center gap-2;
+  }
+
+  .nav-logo-icon {
+    @apply w-8 h-8 md:w-10 md:h-10;
+  }
+
+  .nav-logo-text {
+    @apply text-lg md:text-xl font-bold tracking-wider;
+  }
+
+  .nav-links {
+    @apply hidden md:flex items-center gap-8;
+  }
+
+  .nav-link {
+    @apply text-xs uppercase tracking-[0.2em] font-medium text-muted-foreground hover:text-foreground transition-colors duration-300;
+  }
+
+  .nav-cart {
+    @apply w-6 h-6 text-foreground;
+  }
+
+  /* Swipe panel overlay */
+  .swipe-panel {
+    @apply absolute inset-0 bg-background z-20;
+    animation: swipe-reveal 1.5s ease forwards;
+  }
+}
+
+@layer utilities {
+  .text-grey {
+    color: hsl(var(--hero-text-grey));
+  }
+
+  .text-red {
+    color: hsl(var(--hero-red));
+  }
+
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+/* Keyframes */
+@keyframes text-rotate {
+  0%, 20% {
+    transform: translateY(0);
+  }
+  25%, 45% {
+    transform: translateY(-100%);
+  }
+  50%, 70% {
+    transform: translateY(-200%);
+  }
+  75%, 95% {
+    transform: translateY(-300%);
+  }
+  100% {
+    transform: translateY(-300%);
+  }
+}
+
+@keyframes dot-slide {
+  0%, 20% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  22%, 23% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  24%, 25% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  27%, 45% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  47%, 48% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  49%, 50% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  52%, 70% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  72%, 73% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  74%, 75% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  77%, 100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes swipe-reveal {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes underline-hover {
+  0% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  50% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+  50.1% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@keyframes bg-crossfade {
+  0%, 33% {
+    opacity: 1;
+  }
+  50%, 83% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bg-crossfade-alt {
+  0%, 33% {
+    opacity: 0;
+  }
+  50%, 83% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
