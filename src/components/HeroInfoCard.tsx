@@ -1,8 +1,6 @@
-import { forwardRef } from "react";
-
-const HeroInfoCard = forwardRef<HTMLDivElement>((_, ref) => {
+const HeroInfoCard = () => {
   return (
-    <div ref={ref} className="hero-info-card">
+    <div className="hero-info-card">
       <div className="info-card-icon">
         <img
           src="/images/time-icon.svg"
@@ -21,8 +19,6 @@ const HeroInfoCard = forwardRef<HTMLDivElement>((_, ref) => {
       </div>
     </div>
   );
-});
-
-HeroInfoCard.displayName = "HeroInfoCard";
+};
 
 export default HeroInfoCard;
