@@ -3,9 +3,9 @@ const RotatingText = () => {
 
   return (
     <div className="text-rotate-cell">
-      {/* Red dot that animates - positioned to the left of "Build" */}
+      {/* Red dot that animates */}
       <svg
-        className="red-dot-icon flex-shrink-0 mr-1 self-center"
+        className="red-dot-icon flex-shrink-0"
         width="15"
         height="15"
         viewBox="0 0 15 15"
@@ -16,21 +16,19 @@ const RotatingText = () => {
       </svg>
 
       {/* Static text */}
-      <h1 className="static-text whitespace-nowrap">Build</h1>
+      <h1 className="static-text whitespace-nowrap ml-4">Build</h1>
 
       {/* Rotating words container */}
-      <div className="text-rotate-wrap ml-3">
+      <div className="text-rotate-wrap ml-4">
         <div className="text-rotate-track">
           {words.map((word, index) => (
-            <h1 key={index} className="rotating-text">
+            <span key={index} className="rotating-text">
               {word}
-            </h1>
+              <span className="text-primary">.</span>
+            </span>
           ))}
         </div>
       </div>
-
-      {/* Period */}
-      <span className="static-text text-primary -ml-1">.</span>
     </div>
   );
 };
