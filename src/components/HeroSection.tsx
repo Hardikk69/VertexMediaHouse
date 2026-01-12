@@ -6,7 +6,7 @@ import HeroInfoCard from "./HeroInfoCard";
 
 const HeroSection = () => {
   return (
-    <section className="hero-slider">
+    <section className="hero-slider rounded-xl">
       {/* Navigation */}
       <HeroNav />
 

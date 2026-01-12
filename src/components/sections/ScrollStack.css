@@ -1,0 +1,79 @@
+
+.scroll-stack-section{
+    /* background: linear-gradient(180deg, #081880 0%, #050E4D 70%,#02051A 100%); */
+    background-color: black;
+    border-radius: 50px;
+}
+/* ScrollStack Isolated Styles */
+.scroll-stack-container,
+.scroll-stack-inner,
+.scroll-stack-card {
+    color: #ffffff;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 1.5;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+}
+
+/* Scroll stack wrapper */
+.scroll-stack-container {
+    isolation: isolate;
+    position: relative;
+    width: 100%;
+}
+
+/* Inner scrolling area */
+.scroll-stack-inner {
+    position: relative;
+    width: 100%;
+}
+
+/* Stack cards */
+.scroll-stack-card {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    background: #0d1238;
+    border-radius: 10px;
+    padding: 48px;
+    border: 1px solid rgba(255,255,255,0.12);
+    transform-origin: top center;
+    will-change: transform, filter;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    /* IMPORTANT: no CSS transitions */
+    transition: none !important;
+}
+
+
+/* Ensure no global styles bleed into card content unexpectedly */
+.scroll-stack-card * {
+    box-sizing: border-box;
+}
+
+/* IMPORTANT: allow stacking instead of pushing */
+.scroll-stack-card:not(:last-child) {
+    margin-bottom: 0 !important;
+}
+
+/* Spacer at the end already exists in JSX */
+.scroll-stack-end {
+    height: 1px;
+}
+
+.scroll-stack-card h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #000;
+}
+
+.scroll-stack-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(0,0,0,0.8);
+}

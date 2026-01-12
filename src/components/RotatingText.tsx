@@ -46,7 +46,7 @@ const RotatingText = () => {
             transition={{ duration: 0.4, ease: "easeInOut" }}
           >
             {words[currentIndex]}
-            <span className="text-primary">.</span>
+            <span className="text-primary text-white">.</span>
           </motion.span>
         </AnimatePresence>
       </div>

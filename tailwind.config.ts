@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -13,9 +18,12 @@ export default {
       },
     },
     extend: {
+      /* ================= FONT ================= */
       fontFamily: {
-        montserrat: ['Montserrat', 'sans-serif'],
+        montserrat: ["Montserrat", "sans-serif"],
       },
+
+      /* ================= COLORS ================= */
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -66,27 +74,24 @@ export default {
           bg: "hsl(var(--hero-bg))",
         },
       },
+
+      /* ================= BORDER RADIUS ================= */
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+
+      /* ================= KEYFRAMES ================= */
       keyframes: {
+        /* existing animations */
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
         "text-rotate": {
           "0%, 20%": { transform: "translateY(0)" },
@@ -121,7 +126,29 @@ export default {
           "50%, 95%": { opacity: "1" },
           "100%": { opacity: "0" },
         },
+
+        /* 🔥 NEW: LOGOS (HORIZONTAL) */
+        moveLeft: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        moveRight: {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+
+        /* 🔥 NEW: REVIEWS (VERTICAL) */
+        moveUp: {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-50%)" },
+        },
+        moveDown: {
+          "0%": { transform: "translateY(-50%)" },
+          "100%": { transform: "translateY(0)" },
+        },
       },
+
+      /* ================= ANIMATIONS ================= */
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
@@ -130,6 +157,14 @@ export default {
         "swipe-reveal": "swipe-reveal 1.5s ease forwards",
         "bg-fade-1": "bg-fade-1 10s ease-in-out infinite",
         "bg-fade-2": "bg-fade-2 10s ease-in-out infinite",
+
+        /* 🔥 LOGOS */
+        "move-left": "moveLeft 30s linear infinite",
+        "move-right": "moveRight 30s linear infinite",
+
+        /* 🔥 REVIEWS */
+        "move-up": "moveUp 25s linear infinite",
+        "move-down": "moveDown 25s linear infinite",
       },
     },
   },

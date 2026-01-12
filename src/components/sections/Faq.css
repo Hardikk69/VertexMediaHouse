@@ -1,0 +1,10 @@
+.faq-item.active .toggle-icon {
+    transform: rotate(180deg);
+  }
+  
+  .faq-item.active .faq-answer {
+    padding-bottom: 32px;
+    max-height: 200px;
+    opacity: 1;
+  }
+  
