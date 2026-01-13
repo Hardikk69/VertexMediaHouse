@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection";
+import ServicesSection from "@/components/ourservices";
 import BentoGrid from "@/components/sections/BentoGrid";
 import FaqSection from "@/components/sections/FaqSection";
 import FooterSection from "@/components/sections/FooterSection";
@@ -21,8 +22,9 @@ const Index = () => {
       {/* <JourneyMapSection/> */}
       <PortfolioDrag />
       <ScrollStakeSection />
+      <ServicesSection/>
       {/* <OurServices /> */}
-      <BentoGrid/>
+      {/* <BentoGrid/> */}
       <FaqSection/>
       <FooterSection />
       {/* <ReviewSection/> */}

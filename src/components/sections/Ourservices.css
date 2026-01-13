@@ -1,0 +1,160 @@
+.services,
+.process,
+.work,
+.reviews,
+.faq {
+    padding: 80px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Services (Horizontal Accordion) */
+.services-container {
+    display: flex;
+    gap: 24px;
+    height: 500px;
+    /* Fixed height for consistency */
+    width: 100%;
+}
+
+.service-card {
+    background: #fff;
+    /* Default inactive bg */
+    border-radius: 20px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    flex: 1;
+    /* All items start with flex 1 */
+    color: #000;
+    /* Inactive text color, vertical label */
+}
+
+.service-card.active {
+    flex: 3;
+    /* Active item takes more space */
+    background: #0d1238;
+    /* Active Dark Blue */
+    color: #fff;
+    cursor: default;
+}
+
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    opacity: 0;
+    /* Hidden by default in inactive state */
+    transition: opacity 0.3s;
+    height: 0;
+    /* Collapse header space in inactive */
+}
+
+.service-card.active .service-header {
+    opacity: 1;
+    height: auto;
+    margin-bottom: 24px;
+}
+
+.service-header h3 {
+    font-size: 2rem;
+    line-height: 1.2;
+    max-width: 70%;
+}
+
+.toggle-dot {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.service-details {
+    opacity: 0;
+    transition: opacity 0.3s delay 0.2s;
+    display: none;
+}
+
+.service-card.active .service-details {
+    opacity: 1;
+    display: block;
+}
+
+.service-details ul {
+    list-style: none;
+    margin-top: 16px;
+}
+
+.service-details li {
+    padding: 8px 0;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    padding-left: 16px;
+}
+
+.service-details li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* Vertical Label for Inactive State */
+.vertical-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    white-space: nowrap;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0d1238;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.service-card.active .vertical-label {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Responsive Services */
+@media (max-width: 768px) {
+    .services-container {
+        flex-direction: column;
+        height: auto;
+        /* Allow auto height on mobile */
+    }
+
+    .service-card {
+        width: 100%;
+        min-height: 80px;
+        /* Small height for inactive items */
+        flex: 0 0 auto;
+        /* Don't grow/shrink based on remaining space like deskop */
+    }
+
+    .service-card.active {
+        flex: 0 0 auto;
+        min-height: 300px;
+        /* Enough space for content */
+    }
+
+    .vertical-label {
+        transform: translate(-50%, -50%) rotate(0deg);
+        /* Horizontal text on mobile */
+        left: 20px;
+        /* Align left */
+        top: 50%;
+        transform: translateY(-50%);
+        right: auto;
+        font-size: 1.2rem;
+        width: 100%;
+        padding-left: 10px;
+        text-align: left;
+    }
+}
