@@ -121,9 +121,10 @@ const LogoAndReviews = () => {
           What Clients Say
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-10 max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-7xl mx-auto px-6">
 
           {/* LEFT – Bottom → Top */}
+          {/* LEFT – visible on all screens */}
           <div className="h-[520px] overflow-hidden group">
             <div className="animate-move-up group-hover:[animation-play-state:paused]">
               {[...reviews, ...reviews].map((r, i) => (
@@ -132,8 +133,8 @@ const LogoAndReviews = () => {
             </div>
           </div>
 
-          {/* MIDDLE – Top → Bottom */}
-          <div className="h-[520px] overflow-hidden group">
+          {/* MIDDLE – desktop only */}
+          <div className="hidden md:block h-[520px] overflow-hidden group">
             <div className="animate-move-down group-hover:[animation-play-state:paused]">
               {[...reviews, ...reviews].map((r, i) => (
                 <ReviewCard key={i} item={r} />
@@ -141,8 +142,8 @@ const LogoAndReviews = () => {
             </div>
           </div>
 
-          {/* RIGHT – Bottom → Top */}
-          <div className="h-[520px] overflow-hidden group">
+          {/* RIGHT – desktop only */}
+          <div className="hidden md:block h-[520px] overflow-hidden group">
             <div className="animate-move-up group-hover:[animation-play-state:paused]">
               {[...reviews, ...reviews].map((r, i) => (
                 <ReviewCard key={i} item={r} />
