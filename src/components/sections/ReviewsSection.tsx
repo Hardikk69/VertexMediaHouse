@@ -85,10 +85,11 @@ export default function ReviewSection() {
                         logoHeight={180}
                         gap={24}
                         fadeOut
-                        className="opacity-60"
+                        className="opacity-60 invisible md:block"
                     />
 
                     <LogoLoop
+                    className='invisible md:bla'
                         logos={reviewLogos}
                         direction="up"
                         speed={18}

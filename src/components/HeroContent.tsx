@@ -9,7 +9,7 @@ type HeroContentProps = {
   setOpen: (value: boolean) => void;
 };
 
-const HeroContent = ({ isOpen, setOpen }: HeroContentProps) => {
+const HeroContent = ({ isOpen :boolean, setOpen }: HeroContentProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const screen = useScreenSize();
 

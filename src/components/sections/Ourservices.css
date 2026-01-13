@@ -19,7 +19,6 @@
 .service-card {
     background: #fff;
     /* Default inactive bg */
-    border-radius: 20px;
     padding: 32px;
     display: flex;
     flex-direction: column;
