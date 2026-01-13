@@ -3,10 +3,12 @@ import HeroBackground from "./HeroBackground";
 import HeroContent from "./HeroContent";
 import PlayButton from "./PlayButton";
 import { useState } from "react";
+import { useScreenSize } from "@/hooks/useScreenSize";
 // import HeroInfoCard from "./HeroInfoCard";
 
 const HeroSection = () => {
   const [isOpen,setIsOpen] = useState(false);
+  const screen = useScreenSize()
   return (
     <section className="hero-slider rounded-xl max-h-[70vh] md:max-h-[calc(100dvh-23px)] ">
       {/* Navigation */}
@@ -24,7 +26,7 @@ const HeroSection = () => {
       </div>
 
       {/* Play button */}
-      <PlayButton />
+    {screen !=="sm" &&  <PlayButton />}
 
       {/* Info card */}
       {/* <HeroInfoCard /> */}

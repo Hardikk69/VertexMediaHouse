@@ -34,20 +34,14 @@ const RotatingText = () => {
       </motion.svg>
 
       {/* Text */}
-      <h1 className="static-text whitespace-nowrap ml-4 text-7xl">
-        Creative {screen === "sm" && <br />} Solutions
+      <h1 className="static-text whitespace-nowrap ml-4 text-5xl md:text-6xl md:text-7xl">
+        Creative {screen === "sm" && <br />} Solutions      
+        <span className="static-text whitespace-nowrap ml-1 text-5xl sm:text-7xl text-[#ff1e00]">
+          .
+        </span>
       </h1>
 
-      {/* 👇 Line break ONLY on small screens */}
-      
 
-      <h1 className="static-text whitespace-nowrap ml-4 text-5xl sm:text-7xl break-words">
-       
-      </h1>
-
-      <h1 className="static-text whitespace-nowrap ml-1 text-5xl sm:text-7xl text-[#ff1e00]">
-        .
-      </h1>
       {/* Rotating words container */}
       {/* <div className="text-rotate-wrap ml-4">
         <AnimatePresence mode="wait">

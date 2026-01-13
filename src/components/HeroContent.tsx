@@ -9,7 +9,7 @@ type HeroContentProps = {
   setOpen: (value: boolean) => void;
 };
 
-const HeroContent = ({ isOpen :boolean, setOpen }: HeroContentProps) => {
+const HeroContent = ({ isOpen, setOpen }: HeroContentProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const screen = useScreenSize();
 
@@ -61,7 +61,7 @@ const HeroContent = ({ isOpen :boolean, setOpen }: HeroContentProps) => {
       )}
 
       {/* CTA Buttons */}
-      <div className="mt-10 flex flex-wrap items-center gap-4">
+      <div className="mt-10 flex flex-wrap items-center gap-3">
         <button
           className="
             inline-flex items-center gap-2
