@@ -2,35 +2,37 @@ import { ArrowRight } from "lucide-react";
 import RotatingText from "./RotatingText";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useScreenSize } from "@/hooks/useScreenSize";
 
-const HeroContent = () => {
+type HeroContentProps = {
+  isOpen: boolean;
+  setOpen: (value: boolean) => void;
+};
+
+const HeroContent = ({ isOpen, setOpen }: HeroContentProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const words = ["We offer Solution", "We easy you work", "do you need help"];
+  const screen = useScreenSize();
 
+  const words = ["We offer Solution", "We easy you work", "do you need help"];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % words.length);
     }, 2500);
-    return () => clearInterval(interval);
 
+    return () => clearInterval(interval);
   }, []);
+
   return (
     <div className="hero-text-col max-w-3xl">
       {/* Rotating headline */}
       <RotatingText />
 
-      {/* Quote */}
-      {/* <div className="mt-8 md:mt-12">
-        <p className="lead-text">
-          "Whatever the mind of man can conceive and believe, it can achieve."
-        </p>
-      </div> */}
-      <div className="text-rotate-wrap ml-4 -mt-12 static-text whitespace-nowrap ml-4 text-[#ff1e00] text-6xl">
+      {/* Rotating sub text */}
+      <div className="text-rotate-wrap sm:-mt-12 static-text whitespace-nowrap ml-4 text-[#ff1e00] text-3xl">
         <AnimatePresence mode="wait">
           <motion.span
             key={currentIndex}
-            className="rotating-text"
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -40, opacity: 0 }}
@@ -41,15 +43,25 @@ const HeroContent = () => {
         </AnimatePresence>
       </div>
 
-      {/* Caption */}
-      {/* <div className="caption-wrap">
-        <span className="text-grey">—</span>
-        <span className="hero-caption">Napoleon Hill</span>
-      </div> */}
+      {/* MOBILE VIDEO PREVIEW */}
+      {screen === "sm" && (
+        <div className="mt-8 aspect-video bg-black border border-white/10 rounded-md flex items-center justify-center">
+          <button
+            onClick={() => setOpen(true)}
+            className="block w-20"
+            aria-label="Play video"
+          >
+            <img
+              src="/images/play-button.svg"
+              alt="Play"
+              className="w-full h-full"
+            />
+          </button>
+        </div>
+      )}
 
       {/* CTA Buttons */}
       <div className="mt-10 flex flex-wrap items-center gap-4">
-        {/* Primary Button */}
         <button
           className="
             inline-flex items-center gap-2
@@ -61,14 +73,12 @@ const HeroContent = () => {
             transition-all duration-300
             hover:bg-white/90
             active:scale-95
-            focus:outline-none focus:ring-2 focus:ring-white/40
           "
         >
           Book a Call
           <ArrowRight className="w-4 h-4" />
         </button>
 
-        {/* Secondary Button */}
         <button
           className="
             inline-flex items-center gap-2
@@ -77,17 +87,14 @@ const HeroContent = () => {
             text-white
             border border-white/70
             rounded-[4px]
-            bg-transparent
             transition-all duration-300
             hover:bg-white hover:text-black
             active:scale-95
-            focus:outline-none focus:ring-2 focus:ring-white/30
           "
         >
           Explore Services
         </button>
       </div>
-
     </div>
   );
 };

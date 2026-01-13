@@ -1,25 +1,23 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-// import { useScreenSize } from "@/hooks/useScreenSize";
+import { useScreenSize } from "@/hooks/useScreenSize";
 
 const RotatingText = () => {
   const words = ["Strength", "Stamina", "Endurance"];
   const [currentIndex, setCurrentIndex] = useState(0);
+  const screen = useScreenSize();
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % words.length);
     }, 2500);
-    // const screen = useScreenSize()
-    // console.log(screen)
 
     return () => clearInterval(interval);
   }, []);
 
-
   return (
-    <div className="text-rotate-cell ">
-      {/* Red dot that animates */}
+    <div className="text-rotate-cell flex items-center flex-wrap">
+      {/* Red dot */}
       <motion.svg
         className="red-dot-icon flex-shrink-0"
         width="15"
@@ -35,11 +33,21 @@ const RotatingText = () => {
         <circle cx="7.5" cy="7.5" r="7.5" fill="hsl(var(--primary))" />
       </motion.svg>
 
-      {/* Static text */}
-      <h1 className="static-text whitespace-nowrap ml-4 sm: text-7xl">Creative Solutions</h1>
-      <h1 className="static-text whitespace-nowrap ml-4 sm: text-7xl">Solutions</h1>
-      <h1 className="static-text whitespace-nowrap ml-4 sm: text-[#ff1e00]">.</h1>
+      {/* Text */}
+      <h1 className="static-text whitespace-nowrap ml-4 text-7xl">
+        Creative {screen === "sm" && <br />} Solutions
+      </h1>
 
+      {/* 👇 Line break ONLY on small screens */}
+      
+
+      <h1 className="static-text whitespace-nowrap ml-4 text-5xl sm:text-7xl break-words">
+       
+      </h1>
+
+      <h1 className="static-text whitespace-nowrap ml-1 text-5xl sm:text-7xl text-[#ff1e00]">
+        .
+      </h1>
       {/* Rotating words container */}
       {/* <div className="text-rotate-wrap ml-4">
         <AnimatePresence mode="wait">

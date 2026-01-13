@@ -2,15 +2,25 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
-const PlayButton = () => {
+/* ================= TYPES ================= */
+type PlayButtonProps = {
+  setOpen?: (value: boolean) => void;
+};
+
+const PlayButton = ({ setOpen = () => {} }: PlayButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const toggleOpen = (val: boolean) => {
+    setOpen(val);
+    setIsOpen(val);
+  };
 
   return (
     <>
       {/* Play Button */}
       <div className="play-button-wrap">
         <button
-          onClick={() => setIsOpen(true)}
+          onClick={() => toggleOpen(true)}
           className="play-button block"
           aria-label="Play video"
         >
@@ -30,7 +40,7 @@ const PlayButton = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-sm"
-            onClick={() => setIsOpen(false)}
+            onClick={() => toggleOpen(false)}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
@@ -42,7 +52,7 @@ const PlayButton = () => {
             >
               {/* Close button */}
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={() => toggleOpen(false)}
                 className="absolute top-4 right-4 z-10 p-2 bg-background/50 rounded-full hover:bg-background/80 transition-colors"
               >
                 <X className="w-6 h-6" />
