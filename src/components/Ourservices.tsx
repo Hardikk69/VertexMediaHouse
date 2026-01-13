@@ -55,7 +55,12 @@ export default function ServicesSection() {
     <>
       <section className="services" id="services">
         <div className="container">
-          <h2>Our Services</h2>
+        <span className="block mb-4 text-sm uppercase tracking-wide text-white/60 text-center">
+          Text span
+        </span>
+        <h2 className="text-4xl font-bold text-center mb-10">
+          What Clients Say
+        </h2>
 
           <div className="services-container">
             <div className="service-card active" data-id="pitch-deck">
