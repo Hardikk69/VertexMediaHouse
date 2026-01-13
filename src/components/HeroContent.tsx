@@ -26,7 +26,7 @@ const HeroContent = () => {
           "Whatever the mind of man can conceive and believe, it can achieve."
         </p>
       </div> */}
-      <div className="text-rotate-wrap ml-4 -mt-12 text-white">
+      <div className="text-rotate-wrap ml-4 -mt-12 static-text whitespace-nowrap ml-4 text-[#ff1e00] text-6xl">
         <AnimatePresence mode="wait">
           <motion.span
             key={currentIndex}

@@ -32,8 +32,8 @@ const RotatingText = () => {
       </motion.svg>
 
       {/* Static text */}
-      <h1 className="static-text whitespace-nowrap ml-4 text-7xl">Creative</h1>
-      <h1 className="static-text whitespace-nowrap ml-4 text-[#ff1e00] text-6xl">Solution</h1>
+      <h1 className="static-text whitespace-nowrap ml-4 text-7xl">Creative Solutions</h1>
+      {/* <h1 className="static-text whitespace-nowrap ml-4 text-[#ff1e00] text-6xl">Solution</h1> */}
       <h1 className="static-text whitespace-nowrap ml-4 text-[#ff1e00]">.</h1>
 
       {/* Rotating words container */}

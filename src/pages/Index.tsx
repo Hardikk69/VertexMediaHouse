@@ -1,5 +1,5 @@
 import HeroSection from "@/components/HeroSection";
-import ServicesSection from "@/components/ourservices";
+import ServicesSection from "@/components/Ourservices";
 import BentoGrid from "@/components/sections/BentoGrid";
 import FaqSection from "@/components/sections/FaqSection";
 import FooterSection from "@/components/sections/FooterSection";
