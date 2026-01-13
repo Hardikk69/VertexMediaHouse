@@ -75,12 +75,11 @@ const ReviewCard = ({ item }: { item: typeof reviews[0] }) => (
 ===================================================== */
 const LogoAndReviews = () => {
   return (
-    <div className="bg-[#141414] text-white overflow-hidden">
-      
+    <div className="text-white overflow-hidden">
       {/* =================================================
          LOGO SECTION (HORIZONTAL ONLY)
       ================================================= */}
-      <section className="py-24 space-y-12">
+      <section className="pt-24 pb-10 space-y-12 bg-[#141414]">
         <span className="block text-sm uppercase tracking-wide text-white/60 text-center -mb-10">
           Text span
         </span>
@@ -114,7 +113,7 @@ const LogoAndReviews = () => {
       {/* =================================================
          REVIEWS SECTION (VERTICAL ONLY)
       ================================================= */}
-      <section className="pb-28">
+      <section className="pb-28 bg-black pt-20">
         <span className="block mb-4 text-sm uppercase tracking-wide text-white/60 text-center">
           Text span
         </span>
