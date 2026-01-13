@@ -52,17 +52,17 @@ const HeroContent = () => {
         {/* Primary Button */}
         <button
           className="
-      inline-flex items-center gap-2
-      px-6 py-3
-      text-sm font-medium
-      text-black
-      bg-white
-      rounded-md
-      transition-all duration-300
-      hover:bg-white/90
-      active:scale-95
-      focus:outline-none focus:ring-2 focus:ring-white/40
-    "
+            inline-flex items-center gap-2
+            px-6 py-3
+            text-sm font-medium
+            text-black
+            bg-white
+            rounded-[4px]
+            transition-all duration-300
+            hover:bg-white/90
+            active:scale-95
+            focus:outline-none focus:ring-2 focus:ring-white/40
+          "
         >
           Book a Call
           <ArrowRight className="w-4 h-4" />
@@ -76,7 +76,7 @@ const HeroContent = () => {
             text-sm font-medium
             text-white
             border border-white/70
-            rounded-md
+            rounded-[4px]
             bg-transparent
             transition-all duration-300
             hover:bg-white hover:text-black

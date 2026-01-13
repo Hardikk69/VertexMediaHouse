@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+// import { useScreenSize } from "@/hooks/useScreenSize";
 
 const RotatingText = () => {
   const words = ["Strength", "Stamina", "Endurance"];
@@ -9,9 +10,12 @@ const RotatingText = () => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % words.length);
     }, 2500);
+    // const screen = useScreenSize()
+    // console.log(screen)
 
     return () => clearInterval(interval);
   }, []);
+
 
   return (
     <div className="text-rotate-cell ">
@@ -32,9 +36,9 @@ const RotatingText = () => {
       </motion.svg>
 
       {/* Static text */}
-      <h1 className="static-text whitespace-nowrap ml-4 text-7xl">Creative Solutions</h1>
-      {/* <h1 className="static-text whitespace-nowrap ml-4 text-[#ff1e00] text-6xl">Solution</h1> */}
-      <h1 className="static-text whitespace-nowrap ml-4 text-[#ff1e00]">.</h1>
+      <h1 className="static-text whitespace-nowrap ml-4 sm: text-7xl">Creative Solutions</h1>
+      <h1 className="static-text whitespace-nowrap ml-4 sm: text-7xl">Solutions</h1>
+      <h1 className="static-text whitespace-nowrap ml-4 sm: text-[#ff1e00]">.</h1>
 
       {/* Rotating words container */}
       {/* <div className="text-rotate-wrap ml-4">

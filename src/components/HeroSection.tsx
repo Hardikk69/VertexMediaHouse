@@ -6,7 +6,7 @@ import PlayButton from "./PlayButton";
 
 const HeroSection = () => {
   return (
-    <section className="hero-slider rounded-xl max-h-[calc(100dvh-23px)]">
+    <section className="hero-slider rounded-xl max-h-[calc(100dvh-23px)] ">
       {/* Navigation */}
       <HeroNav />
 
