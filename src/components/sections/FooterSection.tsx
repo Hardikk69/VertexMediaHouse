@@ -4,6 +4,15 @@ export default function FooterSection(): JSX.Element {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const currentYear = new Date().getFullYear();
+
+  const social_media_links = [
+    { name: "Instagram", url: "https://www.instagram.com/faiz_rajput_15" },
+    { name: "X (Twitter)", url: "https://twitter.com/faiz_rajput_15" },
+    { name: "Email", url: "mailto:faizrajput@email.com" },
+    { name: "LinkedIn", url: "https://www.linkedin.com" },
+  ];
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!email) return;
@@ -74,15 +83,36 @@ export default function FooterSection(): JSX.Element {
       </div>
 
       {/* ================= BOTTOM ================= */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-10 mb-12">
 
-        {/* Social icons */}
-        <div className="flex gap-4 text-white/60">
-          <span>📞</span>
-          <span>✉️</span>
-          <span>𝕏</span>
-          <span>in</span>
-          <span>🐙</span>
+        {/* Social Links */}
+        <div className="flex flex-wrap gap-x-8 gap-y-4">
+          {social_media_links.map(link => (
+            <a
+              key={link.name}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                text-white/60 text-sm
+                transition-all duration-300
+                hover:text-white
+                hover:-translate-y-[2px]
+                relative
+                after:absolute
+                after:left-0
+                after:-bottom-1
+                after:h-[1px]
+                after:w-0
+                after:bg-white
+                after:transition-all
+                after:duration-300
+                hover:after:w-full
+              "
+            >
+              {link.name}
+            </a>
+          ))}
         </div>
 
         {/* Contact input */}
@@ -116,11 +146,17 @@ export default function FooterSection(): JSX.Element {
               bg-white/20
               flex items-center justify-center
               hover:bg-white/30
+              transition
             "
           >
             →
           </button>
         </form>
+      </div>
+
+      {/* ================= COPYRIGHT ================= */}
+      <div className="pt-6 border-t border-white/10 text-center text-white/40 text-sm">
+        © {currentYear} Vertex Media House. All rights reserved.
       </div>
     </footer>
   );

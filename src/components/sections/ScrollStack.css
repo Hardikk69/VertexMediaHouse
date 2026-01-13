@@ -77,3 +77,68 @@
     line-height: 1.6;
     color: rgba(0,0,0,0.8);
 }
+
+
+/* Container Layout */
+.scroll-stack-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start; /* Crucial for sticky to work */
+    position: relative;
+    padding: 100px 0;
+}
+
+/* LEFT COLUMN - Sticky Logic */
+.why-us-column {
+    flex: 1;
+    position: sticky;
+    top: 100px; /* Adjust this to where you want it to stop on screen */
+    height: fit-content;
+    padding-bottom: 50px;
+}
+
+.sticky-content h2 {
+    font-size: 4rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.why-us-label {
+    color: #d8f66f;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.why-us-box {
+    margin-bottom: 20px;
+    color: rgba(255,255,255,0.6);
+    max-width: 400px;
+}
+
+.why-us-box.active {
+    color: white;
+}
+
+/* RIGHT COLUMN */
+.scroll-stack-wrapper {
+    flex: 1.2; /* Slightly wider than the left side */
+    position: relative;
+}
+
+/* Resetting card margins to work with the stack logic */
+.scroll-stack-card {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .scroll-stack-layout {
+        flex-direction: column;
+    }
+    .why-us-column {
+        position: relative;
+        top: 0;
+    }
+}

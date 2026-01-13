@@ -1,81 +1,106 @@
 import { ScrollStackItem } from "./ScrollItem";
 import ScrollStack from "./ScrollItem";
+
 export default function ScrollStakeSection() {
-    return (
-        <section className="scroll-stack-section" >
-            <div className="container scroll-stack-layout">
+  return (
+    <section className="scroll-stack-section py-32">
+      <div className="container mx-auto">
 
-                {/* LEFT — Why Us */}
-                <div className="why-us-column">
-                    <span className="why-us-label">Our Work</span>
-                    <h2>Why Us?</h2>
+        {/* ===== TWO COLUMN LAYOUT ===== */}
+        <div
+          className="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-20 items-start"
+        >
 
-                    <div className="why-us-boxes">
-                        <div className="why-us-box active">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto,
-                            quaerat, fuga quod repudiandae vero voluptatibus explicabo dolor
-                            fugiat natus soluta quia quos dolorem enim? Ipsa molestias ab
-                            recusandae optio saepe?
-                        </div>
-                        <div className="why-us-box">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio
-                            deserunt possimus laudantium maxime dolorum soluta consequuntur
-                            veniam fugit impedit officia dolores exercitationem consequatur
-                            similique et, facere eveniet aspernatur esse magni!
-                        </div>
-                        <div className="why-us-box active">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto,
-                            quaerat, fuga quod repudiandae vero voluptatibus explicabo dolor
-                            fugiat natus soluta quia quos dolorem enim? Ipsa molestias ab
-                            recusandae optio saepe?
-                        </div>
-                        <div className="why-us-box">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio
-                            deserunt possimus laudantium maxime dolorum soluta consequuntur
-                            veniam fugit impedit officia dolores exercitationem consequatur
-                            similique et, facere eveniet aspernatur esse magni!
-                        </div>
-                    </div>
+          {/* =================================================
+              LEFT — STICKY WHY US
+          ================================================= */}
+          <div
+            className="
+              relative
+              h-fit
+              lg:sticky
+              lg:top-[120px]
+            "
+          >
+            <span className="why-us-label block mb-4 text-sm uppercase tracking-wide text-white/60">
+              Our Work
+            </span>
+
+            <h2 className="text-4xl font-bold mb-6 text-white">
+              Why Us?
+            </h2>
+
+            <p className="text-white/70 leading-relaxed max-w-sm">
+              We combine strategy, design, and engineering to build
+              meaningful digital experiences that scale with your
+              business. Our approach is focused, collaborative, and
+              driven by results.
+            </p>
+          </div>
+
+          {/* =================================================
+              RIGHT — SCROLL STACK (UNCHANGED)
+          ================================================= */}
+          <div className="scroll-stack-wrapper">
+            <ScrollStack
+              useWindowScroll={true}
+              itemDistance={10}
+              itemStackDistance={20}
+              baseScale={0.9}
+              stackPosition="30%"
+            >
+              <ScrollStackItem itemClassName="bg-[#d8f66f] text-black">
+                <div>
+                  <h2 className="text-3xl font-bold mb-4">
+                    Discovery Phase
+                  </h2>
+                  <p>
+                    We deeply analyze your brand and goals to create
+                    a strategic roadmap for success.
+                  </p>
                 </div>
+              </ScrollStackItem>
 
-                {/* RIGHT — Your existing ScrollStack (UNCHANGED) */}
-                <div className="scroll-stack-wrapper">
-                    <ScrollStack
-                        useWindowScroll={true}
-                        itemDistance={10}
-                        itemStackDistance={20}
-                        baseScale={0.9}
-                        stackPosition="30%">
-
-                        <ScrollStackItem itemClassName="bg-[#d8f66f] text-black">
-                            <div>
-                                <h2 className="text-3xl font-bold mb-4">Discovery Phase</h2>
-                                <p>We deeply analyze your brand and goals to create a strategic roadmap for success.</p>
-                            </div>
-                        </ScrollStackItem>
-
-                        <ScrollStackItem itemClassName="bg-[#8d96fd]">
-                            <div>
-                                <h2 className="text-3xl font-bold mb-4">Design Strategy</h2>
-                                <p>Creating visual identities that resonate with your target audience.</p>
-                            </div>
-                        </ScrollStackItem>
-
-                        <ScrollStackItem itemClassName="bg-[#ff7d84]">
-                            <div>
-                                <h2 className="text-3xl font-bold mb-4">Development & Launch</h2>
-                                <p>Building high-performance assets and launching them with precision.</p>
-                            </div>
-                        </ScrollStackItem>
-
-                        <ScrollStackItem itemClassName="bg-[#ffe176]">
-                            <div>
-                                <h2 className="text-3xl font-bold mb-4">Discovery Phase</h2>
-                                <p>We deeply analyze your brand and goals to create a strategic roadmap for success.</p>
-                            </div>
-                        </ScrollStackItem>
-                    </ScrollStack>
+              <ScrollStackItem itemClassName="bg-[#8d96fd]">
+                <div>
+                  <h2 className="text-3xl font-bold mb-4">
+                    Design Strategy
+                  </h2>
+                  <p>
+                    Creating visual identities that resonate with
+                    your target audience.
+                  </p>
                 </div>
-            </div>
-        </section >)
+              </ScrollStackItem>
+
+              <ScrollStackItem itemClassName="bg-[#ff7d84]">
+                <div>
+                  <h2 className="text-3xl font-bold mb-4">
+                    Development & Launch
+                  </h2>
+                  <p>
+                    Building high-performance assets and launching
+                    them with precision.
+                  </p>
+                </div>
+              </ScrollStackItem>
+
+              <ScrollStackItem itemClassName="bg-[#ffe176]">
+                <div>
+                  <h2 className="text-3xl font-bold mb-4">
+                    Growth & Scale
+                  </h2>
+                  <p>
+                    Optimizing, iterating, and scaling products for
+                    long-term success.
+                  </p>
+                </div>
+              </ScrollStackItem>
+            </ScrollStack>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
 }
