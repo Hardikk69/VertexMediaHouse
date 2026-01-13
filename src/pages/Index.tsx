@@ -20,9 +20,9 @@ const Index = () => {
       </div>
       <LogoList />
       {/* <JourneyMapSection/> */}
+      <ServicesSection/>
       <PortfolioDrag />
       <ScrollStakeSection />
-      <ServicesSection/>
       {/* <OurServices /> */}
       {/* <BentoGrid/> */}
       <FaqSection/>
