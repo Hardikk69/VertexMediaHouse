@@ -2,11 +2,11 @@ import HeroNav from "./HeroNav";
 import HeroBackground from "./HeroBackground";
 import HeroContent from "./HeroContent";
 import PlayButton from "./PlayButton";
-import HeroInfoCard from "./HeroInfoCard";
+// import HeroInfoCard from "./HeroInfoCard";
 
 const HeroSection = () => {
   return (
-    <section className="hero-slider rounded-xl">
+    <section className="hero-slider rounded-xl max-h-[calc(100dvh-23px)]">
       {/* Navigation */}
       <HeroNav />
 
@@ -25,7 +25,7 @@ const HeroSection = () => {
       <PlayButton />
 
       {/* Info card */}
-      <HeroInfoCard />
+      {/* <HeroInfoCard /> */}
     </section>
   );
 };

@@ -14,7 +14,7 @@ const RotatingText = () => {
   }, []);
 
   return (
-    <div className="text-rotate-cell">
+    <div className="text-rotate-cell ">
       {/* Red dot that animates */}
       <motion.svg
         className="red-dot-icon flex-shrink-0"
@@ -32,10 +32,12 @@ const RotatingText = () => {
       </motion.svg>
 
       {/* Static text */}
-      <h1 className="static-text whitespace-nowrap ml-4">Build</h1>
+      <h1 className="static-text whitespace-nowrap ml-4 text-7xl">Creative</h1>
+      <h1 className="static-text whitespace-nowrap ml-4 text-[#ff1e00] text-6xl">Solution</h1>
+      <h1 className="static-text whitespace-nowrap ml-4 text-[#ff1e00]">.</h1>
 
       {/* Rotating words container */}
-      <div className="text-rotate-wrap ml-4">
+      {/* <div className="text-rotate-wrap ml-4">
         <AnimatePresence mode="wait">
           <motion.span
             key={currentIndex}
@@ -49,7 +51,7 @@ const RotatingText = () => {
             <span className="text-primary text-white">.</span>
           </motion.span>
         </AnimatePresence>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -22,7 +22,7 @@ export default function ScrollStakeSection() {
               lg:top-[120px]
             "
           >
-            <span className="why-us-label block mb-4 text-sm uppercase tracking-wide text-white/60">
+            <span className="block mb-4 text-sm uppercase tracking-wide text-white/60">
               Our Work
             </span>
 

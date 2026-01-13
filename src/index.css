@@ -80,7 +80,7 @@
 @layer components {
   /* Hero specific styles */
   .hero-slider {
-    @apply relative min-h-screen overflow-hidden;
+    @apply relative overflow-hidden;
   }
 
   .hero-container {
@@ -95,7 +95,7 @@
 
   /* Static text */
   .static-text {
-    @apply text-[4rem] md:text-[5.5rem] lg:text-[6.5rem] font-black leading-none tracking-tight;
+    @apply text-[2rem] md:text-[2rem] lg:text-[3rem] font-black leading-none tracking-tight;
     font-family: 'Montserrat', sans-serif;
   }
 
@@ -140,8 +140,8 @@
   }
 
   .rotating-text {
-    @apply text-[4rem] md:text-[5.5rem] lg:text-[6.5rem] font-black tracking-tight;
-    color: hsl(var(--hero-red));
+    @apply text-[1rem] md:text-[1rem] lg:text-[2rem] font-black tracking-tight;
+    /* color: hsl(var(--hero-red)); */
     font-family: 'Montserrat', sans-serif;
     display: flex;
     align-items: center;
@@ -279,10 +279,6 @@
 
   .nav-link {
     @apply text-xs uppercase tracking-[0.2em] font-medium text-muted-foreground hover:text-foreground transition-colors duration-300;
-  }
-
-  .nav-cart {
-    @apply w-6 h-6 text-foreground;
   }
 
   /* Swipe panel overlay */

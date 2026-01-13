@@ -14,7 +14,7 @@ import OurServices from "@/components/sections/ServicesSection";
 const Index = () => {
   return (
     <main className="min-h-screen bg-background">
-      <div className="p-3 bg-white">
+      <div className="p-3 bg-white xl:h-dvh">
         <HeroSection />
       </div>
       <LogoList />
@@ -22,7 +22,7 @@ const Index = () => {
       <PortfolioDrag />
       <ScrollStakeSection />
       {/* <OurServices /> */}
-      <BentoGrid/>
+      {/* <BentoGrid/> */}
       <FaqSection/>
       <FooterSection />
       {/* <ReviewSection/> */}

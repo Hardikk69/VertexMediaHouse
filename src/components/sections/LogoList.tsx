@@ -75,12 +75,15 @@ const ReviewCard = ({ item }: { item: typeof reviews[0] }) => (
 ===================================================== */
 const LogoAndReviews = () => {
   return (
-    <div className="bg-black text-white overflow-hidden">
-
+    <div className="bg-[#141414] text-white overflow-hidden">
+      
       {/* =================================================
          LOGO SECTION (HORIZONTAL ONLY)
       ================================================= */}
       <section className="py-24 space-y-12">
+        <span className="block text-sm uppercase tracking-wide text-white/60 text-center -mb-10">
+          Text span
+        </span>
         <h2 className="text-4xl font-bold text-center">
           Our Trusted Partners
         </h2>
@@ -111,8 +114,11 @@ const LogoAndReviews = () => {
       {/* =================================================
          REVIEWS SECTION (VERTICAL ONLY)
       ================================================= */}
-      <section className="py-28">
-        <h2 className="text-4xl font-bold text-center mb-20">
+      <section className="pb-28">
+        <span className="block mb-4 text-sm uppercase tracking-wide text-white/60 text-center">
+          Text span
+        </span>
+        <h2 className="text-4xl font-bold text-center mb-10">
           What Clients Say
         </h2>
 

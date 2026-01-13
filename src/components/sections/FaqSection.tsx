@@ -75,7 +75,7 @@ export default function FAQSection(): JSX.Element {
               return (
                 <div
                   key={key}
-                  className="border border-white/15 rounded-md overflow-hidden bg-white/5"
+                  className="border border-white/15 rounded-[2px] overflow-hidden bg-white/5"
                 >
                   <button
                     onClick={() => toggle(key)}

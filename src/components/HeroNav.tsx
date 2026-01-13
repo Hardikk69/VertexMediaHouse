@@ -34,10 +34,26 @@ const HeroNav = () => {
               {link}
             </a>
           ))}
-          <div className="w-px h-6 bg-muted-foreground/30 mx-2" />
-          <button className="nav-cart hover:opacity-70 transition-opacity">
-            <ShoppingBag className="w-5 h-5" strokeWidth={1.5} />
+          <div className="bg-muted-foreground/30" />
+          <button
+            className="
+                relative inline-flex items-center justify-center
+                px-5 py-2
+                text-sm font-medium tracking-wide
+                text-white
+                border border-white/70
+                rounded-[6px]
+                bg-transparent
+                transition-all duration-300 ease-out
+                hover:bg-white hover:text-black
+                hover:border-white
+                active:scale-95
+                focus:outline-none focus:ring-2 focus:ring-white/30
+              "
+          >
+            Call Us
           </button>
+
         </div>
       </div>
     </nav>
