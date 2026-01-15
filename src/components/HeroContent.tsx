@@ -29,7 +29,7 @@ const HeroContent = ({ isOpen, setOpen }: HeroContentProps) => {
       <RotatingText />
 
       {/* Rotating sub text */}
-      <div className="text-rotate-wrap sm:-mt-12 static-text whitespace-nowrap ml-4 text-[#ff1e00] text-3xl">
+      <div className="text-rotate-wrap sm:-mt-12 static-text whitespace-nowrap ml-4 text-white text-3xl">
         <AnimatePresence mode="wait">
           <motion.span
             key={currentIndex}

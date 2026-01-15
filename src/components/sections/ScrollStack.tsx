@@ -3,7 +3,7 @@ import ScrollStack from "./ScrollItem";
 
 export default function ScrollStakeSection() {
   return (
-    <section className="scroll-stack-section py-32 rounded-b-lg">
+    <section className="scroll-stack-section py-32 rounded-b-lg bg-[#efefef]">
       <div className="container mx-auto ">
 
         {/* ===== TWO COLUMN LAYOUT ===== */}
@@ -22,15 +22,15 @@ export default function ScrollStakeSection() {
               lg:top-[120px]
             "
           >
-            <span className="block mb-4 text-sm uppercase tracking-wide text-white/60">
-              Our Work
+            <span className="block mb-4 text-sm uppercase tracking-wide text-[#18191c]">
+            Why Us?
             </span>
 
-            <h2 className="text-4xl font-bold mb-6 text-white">
+            <h2 className="text-6xl mb-6 text-[#18191c] font-medium">
               Why Us?
             </h2>
 
-            <p className="text-white/70 leading-relaxed max-w-sm">
+            <p className="text-[#18191c] leading-relaxed max-w-sm">
               We combine strategy, design, and engineering to build
               meaningful digital experiences that scale with your
               business. Our approach is focused, collaborative, and

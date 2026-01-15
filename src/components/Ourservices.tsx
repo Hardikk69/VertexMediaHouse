@@ -55,15 +55,15 @@ export default function ServicesSection() {
     <>
       <section className="services" id="services">
         <div className="container">
-        <span className="block mb-4 text-sm uppercase tracking-wide text-white/60 text-center">
+        <span className="block mb-4 text-sm uppercase tracking-wide text-[#18191c] text-center">
           Text span
         </span>
-        <h2 className="text-4xl font-bold text-center mb-10">
+        <h2 className="text-4xl text-center mb-10 text-[#18191c] font-medium">
           What Clients Say
         </h2>
 
           <div className="services-container">
-            <div className="service-card active" data-id="pitch-deck">
+            <div className="service-card active bg-[#ff4d31] text-white" data-id="pitch-deck">
               <div className="service-header">
                 <h3>Pitch Deck Designing</h3>
                 <div className="toggle-dot" />
@@ -81,7 +81,7 @@ export default function ServicesSection() {
               <div className="vertical-label">Pitch Deck Designing</div>
             </div>
 
-            <div className="service-card" data-id="video-editing">
+            <div className="service-card bg-[#ff4d31] text-white" data-id="video-editing">
               <div className="service-header">
                 <h3>Video Editing</h3>
                 <div className="toggle-dot" />
@@ -99,7 +99,7 @@ export default function ServicesSection() {
               <div className="vertical-label">Video Editing</div>
             </div>
 
-            <div className="service-card" data-id="website-design">
+            <div className="service-card bg-[#ff4d31] text-white" data-id="website-design">
               <div className="service-header">
                 <h3>Website Design</h3>
                 <div className="toggle-dot" />
@@ -117,7 +117,7 @@ export default function ServicesSection() {
               <div className="vertical-label">Website Design</div>
             </div>
 
-            <div className="service-card" data-id="ai-automation">
+            <div className="service-card bg-[#ff4d31] text-white" data-id="ai-automation">
               <div className="service-header">
                 <h3>AI & Automations</h3>
                 <div className="toggle-dot" />

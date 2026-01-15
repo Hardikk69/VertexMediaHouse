@@ -45,22 +45,22 @@ export default function FAQSection(): JSX.Element {
   const [activeKey, setActiveKey] = useState<string | null>(null);
 
   function toggle(key: string) {
-    setActiveKey(prev => (prev === key ? null : key));
+    setActiveKey((prev) => (prev === key ? null : key));
   }
 
   return (
-    <section className="bg-black py-28">
+    <section className="text-[#18191e] py-28">
       <div className="max-w-7xl mx-auto px-6">
-
-        {/* ===== GRID ===== */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_1.2fr] gap-16 items-start">
-
           {/* ================= LEFT TEXT ================= */}
           <div>
-            <h2 className="text-4xl font-semibold leading-tight mb-6 text-white">
+            <span className="block mb-4 text-sm uppercase tracking-wide text-[#25262b]">
+              FAQ
+            </span>
+            <h2 className="text-4xl font-semibold leading-tight mb-6">
               Frequently <br /> Asked Questions
             </h2>
-            <p className="text-white/70 leading-relaxed max-w-sm">
+            <p className="leading-relaxed max-w-sm">
               Clear answers to common questions about our process, services,
               and how we collaborate with clients.
             </p>
@@ -75,16 +75,24 @@ export default function FAQSection(): JSX.Element {
               return (
                 <div
                   key={key}
-                  className="border border-white/15 rounded-[2px] overflow-hidden bg-white/5"
+                  className="border border-black/15 rounded-[2px] overflow-hidden"
                 >
                   <button
                     onClick={() => toggle(key)}
-                    className="w-full flex items-center justify-between px-6 py-5 text-left text-white font-medium"
+                    className={`w-full flex transition-all duration-300 items-center justify-between px-6 py-5 text-left font-medium 
+                      ${
+                        isOpen
+                          ? "text-[#ff4d31] font-bold"
+                          : "text-[#18191e]"
+                      }
+                    `}
                   >
                     <span>{item.question}</span>
                     <span
-                      className={`transition-transform duration-300 text-white/70 ${
-                        isOpen ? "rotate-180" : ""
+                      className={`transition-all duration-300 ${
+                        isOpen
+                          ? "rotate-180 text-[#ff4d31]"
+                          : "text-[#18191e]"
                       }`}
                     >
                       ▼
@@ -98,7 +106,7 @@ export default function FAQSection(): JSX.Element {
                         : "grid-rows-[0fr] opacity-0"
                     }`}
                   >
-                    <div className="overflow-hidden px-6 pb-5 text-white/80 text-sm leading-relaxed">
+                    <div className="overflow-hidden px-6 pb-5 text-sm leading-relaxed">
                       {item.answer}
                     </div>
                   </div>
@@ -116,16 +124,24 @@ export default function FAQSection(): JSX.Element {
               return (
                 <div
                   key={key}
-                  className="border border-white/15 rounded-md overflow-hidden bg-white/5"
+                  className="border border-black/15 rounded-md overflow-hidden"
                 >
                   <button
                     onClick={() => toggle(key)}
-                    className="w-full flex items-center justify-between px-6 py-5 text-left text-white font-medium"
+                    className={`w-full flex transition-all duration-300 items-center justify-between px-6 py-5 text-left font-medium 
+                      ${
+                        isOpen
+                          ? "text-[#ff4d31] font-bold"
+                          : "text-[#18191e]"
+                      }
+                    `}
                   >
                     <span>{item.question}</span>
                     <span
-                      className={`transition-transform duration-300 text-white/70 ${
-                        isOpen ? "rotate-180" : ""
+                      className={`transition-all duration-300 ${
+                        isOpen
+                          ? "rotate-180 text-[#ff4d31]"
+                          : "text-[#18191e]"
                       }`}
                     >
                       ▼
@@ -139,7 +155,7 @@ export default function FAQSection(): JSX.Element {
                         : "grid-rows-[0fr] opacity-0"
                     }`}
                   >
-                    <div className="overflow-hidden px-6 pb-5 text-white/80 text-sm leading-relaxed">
+                    <div className="overflow-hidden px-6 pb-5 text-sm leading-relaxed">
                       {item.answer}
                     </div>
                   </div>
@@ -147,7 +163,6 @@ export default function FAQSection(): JSX.Element {
               );
             })}
           </div>
-
         </div>
       </div>
     </section>

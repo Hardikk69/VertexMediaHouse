@@ -17,7 +17,7 @@
 }
 
 .service-card {
-    background: #fff;
+    /* background: #fff; */
     /* Default inactive bg */
     padding: 32px;
     display: flex;
@@ -28,16 +28,17 @@
     position: relative;
     flex: 1;
     /* All items start with flex 1 */
-    color: #000;
+    color: #fff;
     /* Inactive text color, vertical label */
 }
 
 .service-card.active {
     flex: 3;
     /* Active item takes more space */
-    background: #0d1238;
+    background: #ff4d31;
     /* Active Dark Blue */
     color: #fff;
+    border-radius: 16px;
     cursor: default;
 }
 
@@ -111,7 +112,7 @@
     white-space: nowrap;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #0d1238;
+    color: white;
     opacity: 1;
     transition: opacity 0.3s;
 }

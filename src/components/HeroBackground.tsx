@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const HeroBackground = () => {
   return (
-    <>
+    <div>
       {/* Background image 1 */}
       <div
         className="hero-bg-image animate-bg-fade-1"
@@ -32,7 +32,7 @@ const HeroBackground = () => {
 
       {/* Dark gradient overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/40 to-transparent z-[1]" />
-    </>
+    </div>
   );
 };
 
