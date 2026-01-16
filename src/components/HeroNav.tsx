@@ -1,7 +1,7 @@
 import { ShoppingBag } from "lucide-react";
 
 const HeroNav = () => {
-  const navLinks = ["CLASSES", "TRAINING", "MEAL PLANS", "VISIT US", "SHOP"];
+  const navLinks = ["Our Services", "Our Portfolio", "Client Reviews", "Why Us", "Book a Call"];
 
   return (
     <nav className="hero-nav">

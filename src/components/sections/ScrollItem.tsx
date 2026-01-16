@@ -147,9 +147,11 @@ const ScrollStack = ({
         : 0;
 
       let translateY = 0;
-      if (scrollTop >= pinStart && scrollTop <= pinEnd) {
+      const clampedScroll = Math.min(Math.max(scrollTop, pinStart), pinEnd);
+
+      if (scrollTop >= pinStart) {
         translateY =
-          scrollTop -
+          clampedScroll -
           cardTop +
           stackPositionPx +
           itemStackDistance * i;
@@ -202,8 +204,8 @@ const ScrollStack = ({
       content: useWindowScroll
         ? undefined
         : scrollerRef.current!.querySelector(
-            ".scroll-stack-inner"
-          )!,
+          ".scroll-stack-inner"
+        )!,
     });
 
     lenis.on("scroll", updateCardTransforms);
@@ -232,15 +234,26 @@ const ScrollStack = ({
 
     cardsRef.current = cards;
 
+    // initialOffsetsRef.current = cards.map(card => {
+    //   const rect = card.getBoundingClientRect();
+    //   return rect.top + window.scrollY;
+    // });
+
     initialOffsetsRef.current = cards.map(card => {
       const rect = card.getBoundingClientRect();
-      return rect.top + window.scrollY;
+
+      if (useWindowScroll) {
+        return rect.top + window.scrollY;
+      }
+
+      const scrollerRect = scroller.getBoundingClientRect();
+      return rect.top - scrollerRect.top + scroller.scrollTop;
     });
 
     cards.forEach((card, i) => {
-      if (i < cards.length - 1) {
-        card.style.marginBottom = `${itemDistance}px`;
-      }
+      // if (i < cards.length - 1) {
+      //   card.style.marginBottom = `${itemDistance}px`;
+      // }
       card.style.willChange = "transform";
       card.style.transformOrigin = "top center";
       card.style.backfaceVisibility = "hidden";
@@ -252,9 +265,8 @@ const ScrollStack = ({
       ".scroll-stack-end"
     );
     if (endElement) {
-      endElement.style.height = `${
-        cards.length * itemStackDistance + 50
-      }px`;
+      endElement.style.height = `${cards.length * itemStackDistance + 50
+        }px`;
 
       const rect = endElement.getBoundingClientRect();
       initialEndOffsetRef.current = rect.top + window.scrollY;

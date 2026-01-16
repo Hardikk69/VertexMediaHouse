@@ -3,6 +3,7 @@ import RotatingText from "./RotatingText";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useScreenSize } from "@/hooks/useScreenSize";
+import RotatingPill from "./RotatingPill";
 
 type HeroContentProps = {
   isOpen: boolean;
@@ -29,7 +30,8 @@ const HeroContent = ({ isOpen, setOpen }: HeroContentProps) => {
       <RotatingText />
 
       {/* Rotating sub text */}
-      <div className="text-rotate-wrap sm:-mt-12 static-text whitespace-nowrap ml-4 text-white text-3xl">
+      <RotatingPill/>
+      {/* <div className="text-rotate-wrap sm:-mt-12 static-text whitespace-nowrap ml-4 text-white text-3xl">
         <AnimatePresence mode="wait">
           <motion.span
             key={currentIndex}
@@ -41,7 +43,7 @@ const HeroContent = ({ isOpen, setOpen }: HeroContentProps) => {
             {words[currentIndex]}
           </motion.span>
         </AnimatePresence>
-      </div>
+      </div> */}
 
       {/* MOBILE VIDEO PREVIEW */}
       {screen === "sm" && (
@@ -92,7 +94,7 @@ const HeroContent = ({ isOpen, setOpen }: HeroContentProps) => {
             active:scale-95
           "
         >
-          Explore Services
+          Explore Our Services
         </button>
       </div>
     </div>

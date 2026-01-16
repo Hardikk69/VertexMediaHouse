@@ -13,7 +13,7 @@
     text-transform: none;
     letter-spacing: normal;
     line-height: 1.5;
-    font-family: 'Inter', sans-serif;
+    font-family: "Bricolage Grotesque", sans-serif;
     box-sizing: border-box;
     margin-bottom: 24px;
 }
@@ -29,6 +29,7 @@
 .scroll-stack-inner {
     position: relative;
     width: 100%;
+    padding-top: 20px;
 }
 
 /* Stack cards */
@@ -36,7 +37,7 @@
     position: relative;
     width: 100%;
     max-width: 600px;
-    margin: 50px auto;
+    margin: 0 auto;
     background: #0d1238;
     border-radius: 10px;
     padding: 48px;

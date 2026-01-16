@@ -53,17 +53,17 @@ export default function ServicesSection() {
 
   return (
     <>
-      <section className="services" id="services">
+      <section className="services bg-[e9e9e9] font-bricolage" id="services">
         <div className="container">
-        <span className="block mb-4 text-sm uppercase tracking-wide text-[#18191c] text-center">
-          Text span
-        </span>
-        <h2 className="text-4xl text-center mb-10 text-[#18191c] font-medium">
-          What Clients Say
-        </h2>
+          <span className="block mb-4 text-sm uppercase tracking-wide text-[#18191c] text-center">
+          Our Core Services
+          </span>
+          <h2 className="text-4xl text-center mb-10 text-[#18191c] font-medium">
+          What We Specialize In
+          </h2>
 
           <div className="services-container">
-            <div className="service-card active bg-[#ff4d31] text-white" data-id="pitch-deck">
+            <div className="service-card active bg-[#e9e9e9] text-white" data-id="pitch-deck">
               <div className="service-header">
                 <h3>Pitch Deck Designing</h3>
                 <div className="toggle-dot" />
@@ -71,11 +71,11 @@ export default function ServicesSection() {
               <div className="service-details">
                 <p className="service-intro"><strong>What We Offer:</strong></p>
                 <ul>
-                  <li>Investor-ready pitch decks</li>
-                  <li>Business presentations</li>
-                  <li>Sales decks</li>
-                  <li>Corporate storytelling</li>
-                  <li>Visual data representation</li>
+                  <li>Investor-ready pitch decks </li>
+                  <li>Startup & business presentations </li>
+                  <li>High-converting sales decks </li>
+                  <li>Clear storytelling & flow </li>
+                  <li>Data-driven visual design </li>
                 </ul>
               </div>
               <div className="vertical-label">Pitch Deck Designing</div>
@@ -89,11 +89,12 @@ export default function ServicesSection() {
               <div className="service-details">
                 <p className="service-intro"><strong>What We Offer:</strong></p>
                 <ul>
-                  <li>YouTube vlogs & shorts</li>
-                  <li>Corporate promos</li>
-                  <li>Social media reels</li>
-                  <li>Motion graphics</li>
-                  <li>Color grading</li>
+                  <li>High-impact social media videos & reels </li>
+                  <li>Promotional & brand videos </li>
+                  <li>Short-form & long-form content editing </li>
+                  <li>Motion graphics & smooth transitions </li>
+                  <li>Platform-optimized videos (Instagram, YouTube, TikTok) </li>
+
                 </ul>
               </div>
               <div className="vertical-label">Video Editing</div>
@@ -107,11 +108,11 @@ export default function ServicesSection() {
               <div className="service-details">
                 <p className="service-intro"><strong>What We Offer:</strong></p>
                 <ul>
-                  <li>Landing Pages</li>
-                  <li>E-commerce stores</li>
-                  <li>Portfolio sites</li>
-                  <li>UI/UX Design</li>
-                  <li>Webflow development</li>
+                  <li>Custom website design & development </li>
+                  <li>Modern, responsive UI/UX design </li>
+                  <li>Landing pages & conversion-focused layouts </li>
+                  <li>Fast, secure, and scalable websites </li>
+                  <li>Mobile-first & SEO-ready structure </li>
                 </ul>
               </div>
               <div className="vertical-label">Website Design</div>
@@ -122,14 +123,14 @@ export default function ServicesSection() {
                 <h3>AI & Automations</h3>
                 <div className="toggle-dot" />
               </div>
-              <div className="service-details">
+              <div className="service-details text-lg">
                 <p className="service-intro"><strong>What We Offer:</strong></p>
                 <ul>
-                  <li>Workflow automation</li>
-                  <li>Chatbot integration</li>
-                  <li>Data scraping</li>
-                  <li>AI content generation</li>
-                  <li>Custom scripts</li>
+                  <li>Workflow automation to reduce manual work </li>
+                  <li>Email Automation Agent  </li>
+                  <li>Voice automation for calls & follow-ups</li>
+                  <li>Smart lead response & qualification </li>
+                  <li>Scalable automation systems for businesses</li>
                 </ul>
               </div>
               <div className="vertical-label">AI & Automations</div>

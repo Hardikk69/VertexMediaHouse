@@ -7,37 +7,37 @@ type FAQItem = {
 
 const middleFAQs: FAQItem[] = [
   {
-    question: "How long does a project usually take?",
+    question: "How fast do you actually deliver?",
     answer:
-      "Project timelines depend on scope and complexity. Most projects are completed within 2 to 6 weeks after final requirements are approved.",
+      "Fast means days, not weeks. Most projects start within 24 hours and move at sprint speed without sacrificing quality.",
   },
   {
-    question: "Do you work with early-stage startups?",
+    question: "What does “unlimited revisions” really mean? ",
     answer:
-      "Yes. We regularly collaborate with startups, founders, and small teams to help them build scalable digital products.",
+      "It means we revise until you’re happy - no counters, no awkward conversations, no extra invoices.",
   },
   {
-    question: "Can you redesign an existing product?",
+    question: "What industries do you work with?",
     answer:
-      "Absolutely. We can improve UI, UX, performance, and overall brand alignment of existing products.",
+      "We work with startups, founders, creators, agencies, and growing businesses across various industries worldwide.",
   },
 ];
 
 const rightFAQs: FAQItem[] = [
   {
-    question: "What industries do you specialize in?",
+    question: "What exactly can your AI automation do right now?",
     answer:
-      "We work across SaaS, AI, e-commerce, creative, and technology-driven industries.",
+      "Right now, we automate email and voice workflows - follow-ups, lead responses, reminders, and basic conversations that usually waste your time.",
   },
   {
-    question: "Do you provide ongoing support?",
+    question: "Can I edit everything later?",
     answer:
-      "Yes. We offer long-term support, optimization, and maintenance based on your needs.",
+      "Yes. You’ll receive fully editable files and full ownership - decks, videos, websites, and automations. Nothing is locked. ",
   },
   {
-    question: "How do we get started?",
+    question: "How do we get started? ",
     answer:
-      "Simply reach out through our contact form. We’ll schedule a discovery call to understand your goals.",
+      "Simply book a call or contact us. We’ll understand your needs, suggest the best solution, and get started right away. ",
   },
 ];
 
@@ -61,8 +61,8 @@ export default function FAQSection(): JSX.Element {
               Frequently <br /> Asked Questions
             </h2>
             <p className="leading-relaxed max-w-sm">
-              Clear answers to common questions about our process, services,
-              and how we collaborate with clients.
+            Clear answers to common questions about our process, services, and 
+            how we collaborate with clients.
             </p>
           </div>
 
@@ -75,36 +75,33 @@ export default function FAQSection(): JSX.Element {
               return (
                 <div
                   key={key}
-                  className="border border-black/15 rounded-[2px] overflow-hidden"
+                  className="border border-black/15 rounded-[8px] overflow-hidden"
                 >
                   <button
                     onClick={() => toggle(key)}
                     className={`w-full flex transition-all duration-300 items-center justify-between px-6 py-5 text-left font-medium 
-                      ${
-                        isOpen
-                          ? "text-[#ff4d31] font-bold"
-                          : "text-[#18191e]"
+                      ${isOpen
+                        ? "text-[#ff4d31] font-bold"
+                        : "text-[#18191e]"
                       }
                     `}
                   >
                     <span>{item.question}</span>
                     <span
-                      className={`transition-all duration-300 ${
-                        isOpen
+                      className={`transition-all duration-300 ${isOpen
                           ? "rotate-180 text-[#ff4d31]"
                           : "text-[#18191e]"
-                      }`}
+                        }`}
                     >
                       ▼
                     </span>
                   </button>
 
                   <div
-                    className={`grid transition-all duration-300 ease-in-out ${
-                      isOpen
+                    className={`grid transition-all duration-300 ease-in-out ${isOpen
                         ? "grid-rows-[1fr] opacity-100"
                         : "grid-rows-[0fr] opacity-0"
-                    }`}
+                      }`}
                   >
                     <div className="overflow-hidden px-6 pb-5 text-sm leading-relaxed">
                       {item.answer}
@@ -124,36 +121,33 @@ export default function FAQSection(): JSX.Element {
               return (
                 <div
                   key={key}
-                  className="border border-black/15 rounded-md overflow-hidden"
+                  className="border border-black/15 rounded-[8px] overflow-hidden"
                 >
                   <button
                     onClick={() => toggle(key)}
                     className={`w-full flex transition-all duration-300 items-center justify-between px-6 py-5 text-left font-medium 
-                      ${
-                        isOpen
-                          ? "text-[#ff4d31] font-bold"
-                          : "text-[#18191e]"
+                      ${isOpen
+                        ? "text-[#ff4d31] font-bold"
+                        : "text-[#18191e]"
                       }
                     `}
                   >
                     <span>{item.question}</span>
                     <span
-                      className={`transition-all duration-300 ${
-                        isOpen
+                      className={`transition-all duration-300 ${isOpen
                           ? "rotate-180 text-[#ff4d31]"
                           : "text-[#18191e]"
-                      }`}
+                        }`}
                     >
                       ▼
                     </span>
                   </button>
 
                   <div
-                    className={`grid transition-all duration-300 ease-in-out ${
-                      isOpen
+                    className={`grid transition-all duration-300 ease-in-out ${isOpen
                         ? "grid-rows-[1fr] opacity-100"
                         : "grid-rows-[0fr] opacity-0"
-                    }`}
+                      }`}
                   >
                     <div className="overflow-hidden px-6 pb-5 text-sm leading-relaxed">
                       {item.answer}

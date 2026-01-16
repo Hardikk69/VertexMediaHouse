@@ -39,7 +39,7 @@ export default function FooterSection(): JSX.Element {
             Vertex Media House
           </h3>
           <p className="text-white/60 text-sm">
-            Building digital products, stories, and systems that scale.
+          Creative solutions for brands and creators that move fast and scale smarter.
           </p>
         </div>
 
@@ -47,9 +47,10 @@ export default function FooterSection(): JSX.Element {
         <div>
           <h4 className="font-medium mb-3">Services</h4>
           <ul className="space-y-2 text-white/60 text-sm">
-            <li>Web Development</li>
-            <li>AI Agents</li>
-            <li>Pitch Decks</li>
+            <li>Pitch Deck Designing </li>
+            <li>Video Editing </li>
+            <li>Website Designing </li>
+            <li>AI & Automation </li>
           </ul>
         </div>
 
@@ -78,7 +79,7 @@ export default function FooterSection(): JSX.Element {
       {/* ================= QUOTE ================= */}
       <div className="mb-16">
         <p className="text-4xl md:text-5xl font-semibold leading-tight max-w-3xl">
-          Some big good quote for work
+        From idea to execution - fast, clean, and scalable.
         </p>
       </div>
 

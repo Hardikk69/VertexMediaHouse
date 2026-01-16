@@ -21,6 +21,8 @@ export default {
       /* ================= FONT ================= */
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
+        bricolage: ["Bricolage Grotesque", "sans-serif"],
+
       },
 
       /* ================= COLORS ================= */
@@ -146,10 +148,15 @@ export default {
           "0%": { transform: "translateY(-50%)" },
           "100%": { transform: "translateY(0)" },
         },
+        "scroll-up": {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-50%)" },
+        },
       },
 
       /* ================= ANIMATIONS ================= */
       animation: {
+        "scroll-up": "scroll-up 6s linear infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "text-rotate": "text-rotate 6s ease-in-out infinite",
@@ -159,8 +166,8 @@ export default {
         "bg-fade-2": "bg-fade-2 10s ease-in-out infinite",
 
         /* 🔥 LOGOS */
-        "move-left": "moveLeft 30s linear infinite",
-        "move-right": "moveRight 30s linear infinite",
+        "move-left": "moveLeft 15s linear infinite",
+        "move-right": "moveRight 15s linear infinite",
 
         /* 🔥 REVIEWS */
         "move-up": "moveUp 25s linear infinite",

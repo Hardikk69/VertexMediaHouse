@@ -66,11 +66,11 @@ export default function InfinitePortfolioDrag(): JSX.Element {
 
   return (
     <section className="bg-[#101010] text-white py-32 overflow-hidden">
-      <span className="block text-sm uppercase tracking-wide text-white/60 text-center">
-          Text span
+      <span className="block mb-4 text-sm tracking-wide text-white/60 text-center">
+      Portfolio
         </span>
-      <h2 className="text-4xl font-bold mb-16 px-10 text-center">
-        Portfolio
+      <h2 className="text-4xl font-bold mb-12 px-10 text-center">
+      Work That Speaks 
       </h2>
 
       <motion.div

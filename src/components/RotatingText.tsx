@@ -34,11 +34,16 @@ const RotatingText = () => {
       </motion.svg>
 
       {/* Text */}
-      <h1 className="static-text whitespace-nowrap ml-4 text-5xl md:text-6xl md:text-7xl">
+      {/* <h1 className="static-text whitespace-nowrap ml-4 text-5xl md:text-6xl md:text-7xl">
         Creative {screen === "sm" && <br />} <span className="text-[#ff4d31]">Solutions</span>      
         <span className="static-text whitespace-nowrap ml-1 text-5xl sm:text-7xl text-white">
           .
         </span>
+      </h1> */}
+      <h1 className="static-text whitespace-nowrap ml-4 text-5xl md:text-6xl xl:text-7xl">
+      Creative & <br />
+      <span className="text-[#ff4d31]"> Customised </span>     
+      <br />Solutions.
       </h1>
 
 

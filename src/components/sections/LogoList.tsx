@@ -1,36 +1,46 @@
 import React from "react";
-
+import Image1 from '../../assets/images/Picture1.jpg'
+import Image2 from '../../assets/images/Picture2.jpg'
+import Image3 from '../../assets/images/Picture3.png'
+import Image4 from '../../assets/images/Picture4.png'
+import Image5 from '../../assets/images/Picture5.png'
+import Image6 from '../../assets/images/Picture6.png'
+import Image7 from '../../assets/images/Picture7.png'
+import Image8 from '../../assets/images/Picture8.png'
 /* =====================================================
    DATA
 ===================================================== */
 const logos = [
-  "Google",
-  "Microsoft",
-  "Amazon",
-  "Meta",
-  "Netflix",
-  "Apple",
-  "Tesla",
-  "OpenAI",
+  Image1,
+  Image2,
+  Image3,
+  Image4,
+  Image5,
+  Image6,
+  Image7,
+  Image8,
 ];
 
 const reviews = [
   {
-    name: "Rahul Sharma",
+    name: "Rao Movva",
     location: "Gujarat, India",
     image: "https://i.pravatar.cc/150?img=11",
     rating: 5,
-    review: "Outstanding experience. Clean UI and smooth performance.",
+    review: `Dhrumil immediately grasped what we are trying to achieve as a company and delivered the 
+pitch decks for both end users and as well investors. Very professional and responsive ! 
+looking forward to collaborate on other projects. Keep up the great work!`,
   },
   {
-    name: "Emily Carter",
+    name: "Sharad Vij ",
     location: "California, USA",
     image: "https://i.pravatar.cc/150?img=32",
     rating: 4,
-    review: "Professional team and timely delivery.",
+    review: `Excellent working with Dhrumil, first time we collaborated and he went over and beyond. 
+Would like to continue our engagement for the foreseeable future.`,
   },
   {
-    name: "Daniel Müller",
+    name: "Raj Kumani",
     location: "Berlin, Germany",
     image: "https://i.pravatar.cc/150?img=45",
     rating: 5,
@@ -89,17 +99,19 @@ const LogoAndReviews = () => {
 
         {/* LEFT → RIGHT */}
         <div className="overflow-hidden group">
-          <div className="flex gap-6 w-max px-6
+          <div className="flex gap-12 w-max px-6
                           animate-move-right
                           group-hover:[animation-play-state:paused]">
             {[...logos, ...logos].map((l, i) => (
-              <LogoCard key={i} title={l} />
+              // <LogoCard key={i} title={l} />
+              <img className="max-h-20" src={l} />
+
             ))}
           </div>
         </div>
 
         {/* RIGHT → LEFT */}
-        <div className="overflow-hidden group">
+        {/* <div className="overflow-hidden group">
           <div className="flex gap-6 w-max px-6
                           animate-move-left
                           group-hover:[animation-play-state:paused]">
@@ -107,15 +119,15 @@ const LogoAndReviews = () => {
               <LogoCard key={i} title={l} />
             ))}
           </div>
-        </div>
+        </div> */}
       </section>
 
       {/* =================================================
          REVIEWS SECTION (VERTICAL ONLY)
       ================================================= */}
       <section className="pb- pt-20 bg-[#e9e9e9]">
-        <span className="block mb-4 text-sm uppercase tracking-wide text-[#18191c] text-center ">
-          Text span
+        <span className="block mb-4 text-sm tracking-wide text-[#18191c] text-center ">
+        Testimonials
         </span>
         <h2 className="text-4xl font-medium text-center mb-10 text-[#18191c]">
           What Clients Say
