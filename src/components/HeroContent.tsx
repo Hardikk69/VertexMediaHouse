@@ -25,7 +25,7 @@ const HeroContent = ({ isOpen, setOpen }: HeroContentProps) => {
   }, []);
 
   return (
-    <div className="hero-text-col max-w-3xl">
+    <div className="max-w-3xl ">
       {/* Rotating headline */}
       <RotatingText />
 
@@ -94,7 +94,7 @@ const HeroContent = ({ isOpen, setOpen }: HeroContentProps) => {
             active:scale-95
           "
         >
-          Explore Our Services
+          Explore Services
         </button>
       </div>
     </div>

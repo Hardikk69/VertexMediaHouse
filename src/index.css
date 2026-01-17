@@ -85,7 +85,7 @@
 
   .hero-container {
     @apply relative w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20;
-    height: 100vh;
+    /* height: 100vh; */
     z-index: 30;
   }
 
@@ -415,4 +415,55 @@
 
 *{
   font-family: "Bricolage Grotesque", sans-serif; 
+}
+
+
+@layer utilities {
+  .siri-gradient {
+    background:
+      /* Top-left warm yellow */
+      radial-gradient(
+        65% 55% at 18% 18%,
+        #ffb300 0%,
+        rgba(255,179,0,0.85) 25%,
+        rgba(255,179,0,0.35) 45%,
+        transparent 65%
+      ),
+
+      /* Top-right hot pink */
+      radial-gradient(
+        60% 60% at 82% 20%,
+        #ff2d55 0%,
+        rgba(255,45,85,0.85) 30%,
+        rgba(255,45,85,0.4) 50%,
+        transparent 70%
+      ),
+
+      /* Bottom-center cyan */
+      radial-gradient(
+        55% 45% at 50% 88%,
+        #0a84ff 0%,
+        rgba(10,132,255,0.9) 30%,
+        rgba(10,132,255,0.4) 55%,
+        transparent 75%
+      ),
+
+      /* Bottom-right purple */
+      radial-gradient(
+        60% 55% at 85% 85%,
+        #bf5af2 0%,
+        rgba(191,90,242,0.85) 35%,
+        rgba(191,90,242,0.35) 55%,
+        transparent 75%
+      ),
+
+      /* Base vertical blend */
+      linear-gradient(
+        180deg,
+        #ff9f0a 0%,
+        #ff375f 35%,
+        #5e5ce6 65%,
+        #64d2ff 100%
+      );
+  }
 }

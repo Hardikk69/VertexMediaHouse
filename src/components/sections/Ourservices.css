@@ -35,9 +35,9 @@
 .service-card.active {
     flex: 3;
     /* Active item takes more space */
-    background: #ff4d31;
+    background: #fff;
     /* Active Dark Blue */
-    color: #fff;
+    color: #18191c;
     border-radius: 16px;
     cursor: default;
 }
@@ -91,7 +91,6 @@
 .service-details li {
     padding: 8px 0;
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
     position: relative;
     padding-left: 16px;
 }
@@ -112,7 +111,7 @@
     white-space: nowrap;
     font-size: 1.5rem;
     font-weight: 700;
-    color: white;
+    color: #18191c;
     opacity: 1;
     transition: opacity 0.3s;
 }

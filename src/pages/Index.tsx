@@ -20,6 +20,9 @@ const Index = () => {
       </div>
       <LogoList />
       {/* <JourneyMapSection/> */}
+      {/* <div className="h-screen siri-gradient">
+
+      </div> */}
       <ServicesSection/>
       <PortfolioDrag />
       <ScrollStakeSection />
