@@ -18,7 +18,7 @@ const RotatingText = () => {
   return (
     <div className="text-rotate-cell flex items-center flex-wrap">
       {/* Red dot */}
-      <motion.svg
+      {/* <motion.svg
         className="red-dot-icon flex-shrink-0"
         width="15"
         height="15"
@@ -31,7 +31,7 @@ const RotatingText = () => {
         transition={{ duration: 0.3, delay: 0.1 }}
       >
         <circle cx="7.5" cy="7.5" r="7.5" fill="hsl(var(--primary))" />
-      </motion.svg>
+      </motion.svg> */}
 
       {/* Text */}
       {/* <h1 className="static-text whitespace-nowrap ml-4 text-5xl md:text-6xl md:text-7xl">
@@ -40,7 +40,7 @@ const RotatingText = () => {
           .
         </span>
       </h1> */}
-      <h1 className="static-text whitespace-nowrap ml-4 text-5xl md:text-6xl xl:text-7xl">
+      <h1 className="static-text whitespace-nowrap text-5xl md:text-6xl xl:text-7xl">
       Creative & <br />
       <span className="text-[#ff4d31]"> Customised </span>     
       <br />Solutions.

@@ -84,7 +84,7 @@ export default function ServicesSection() {
             <div className="vertical-label">Pitch Deck Designing</div>
           </div>
 
-          <div className="service-card active rounded-[16px] bg-white text-[#18191c]" data-id="video-editing">
+          <div className="service-card rounded-[16px] bg-white text-[#18191c]" data-id="video-editing">
             <div className="service-header">
               <h3>Video Editing</h3>
               <MagneticBubble />
@@ -105,7 +105,7 @@ export default function ServicesSection() {
           </div>
 
 
-          <div className="service-card active rounded-[16px] bg-white text-[#18191c]" data-id="website-design">
+          <div className="service-card rounded-[16px] bg-white text-[#18191c]" data-id="website-design">
             <div className="service-header">
               <h3>Website Design</h3>
               <MagneticBubble />
@@ -125,7 +125,7 @@ export default function ServicesSection() {
           </div>
 
 
-          <div className="service-card active rounded-[16px] bg-white text-[#18191c]" data-id="ai-automation">
+          <div className="service-card rounded-[16px] bg-white text-[#18191c]" data-id="ai-automation">
             <div className="service-header">
               <h3>AI & Automation</h3>
               <MagneticBubble />

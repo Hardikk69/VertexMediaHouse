@@ -24,14 +24,14 @@ const PlayButton = ({ setOpen = () => { } }: PlayButtonProps) => {
             onClick={() => toggleOpen(true)}
             aria-label="Play video"
             className="
-        absolute
-        right-6 lg:right-28 xl:right-28 2xl:right-0
-        top-1/2 -translate-y-1/2
-        w-16 h-16 lg:w-20 lg:h-20
-        transition-transform duration-300
-        hover:scale-110
-        active:scale-95
-      "
+              absolute
+              right-6 lg:right-28 xl:right-20 2xl:right-0
+              top-1/2 -translate-y-1/2
+              w-16 h-16 lg:w-20 lg:h-20
+              transition-transform duration-300
+              hover:scale-110
+              active:scale-95
+            "
           >
             <img
               src="/images/play-button.svg"

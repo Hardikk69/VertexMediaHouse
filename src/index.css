@@ -84,7 +84,7 @@
   }
 
   .hero-container {
-    @apply relative w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20;
+    @apply relative w-full max-w-[1400px] mx-auto 2xl:px-0 px-6 md:px-10 lg:px-16 mt-6 sm:mt-0;
     /* height: 100vh; */
     z-index: 30;
   }

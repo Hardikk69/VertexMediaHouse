@@ -92,7 +92,7 @@ const LogoAndReviews = () => {
 
         {/* LEFT → RIGHT */}
         <div className="overflow-hidden group">
-          <div className="flex gap-12 w-max px-6
+          <div className="flex gap-12 w-max 
                           animate-move-right
                           group-hover:[animation-play-state:paused]">
             {[...logos, ...logos].map((l, i) => (
@@ -118,7 +118,7 @@ const LogoAndReviews = () => {
       {/* =================================================
          REVIEWS SECTION (VERTICAL ONLY)
       ================================================= */}
-      <section className="pb- pt-20 bg-[#e9e9e9]" id="client-reviews">
+      <section className="pt-20 bg-[#e9e9e9] px-[32px]" id="client-reviews">
         <span className="block mb-4 text-sm tracking-wide text-[#18191c] text-center ">
         Testimonials
         </span>
@@ -126,7 +126,7 @@ const LogoAndReviews = () => {
           What Clients Say
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1350px] mx-auto">
 
           {/* LEFT – Bottom → Top */}
           {/* LEFT – visible on all screens */}
