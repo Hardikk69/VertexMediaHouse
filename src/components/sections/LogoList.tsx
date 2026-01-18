@@ -59,15 +59,8 @@ const Stars = ({ count }: { count: number }) => (
   </div>
 );
 
-const LogoCard = ({ title }: { title: string }) => (
-  <div className="min-w-[160px] h-20 rounded-3xl bg-[#18191c]
-                  flex items-center justify-center font-semibold">
-    {title}
-  </div>
-);
-
 const ReviewCard = ({ item }: { item: typeof reviews[0] }) => (
-  <div className="bg-white text-[#18191c] p-6 rounded-2xl mb-6">
+    <div className="bg-white text-[#18191c] p-6 rounded-2xl mb-6">
     <div className="flex gap-4 items-center mb-3">
       <img src={item.image} className="w-12 h-12 rounded-full" />
       <div>
@@ -125,7 +118,7 @@ const LogoAndReviews = () => {
       {/* =================================================
          REVIEWS SECTION (VERTICAL ONLY)
       ================================================= */}
-      <section className="pb- pt-20 bg-[#e9e9e9]">
+      <section className="pb- pt-20 bg-[#e9e9e9]" id="client-reviews">
         <span className="block mb-4 text-sm tracking-wide text-[#18191c] text-center ">
         Testimonials
         </span>

@@ -39,9 +39,9 @@ const HeroSection = () => {
 
       {/* Main container */}
       <div className="hero-container pb-8 md:h-max">
-        <div className="pt-[8dvh] md:pt-20 md:flex flex-none md:items-center h-min">
+        <div className="pt-[8dvh] md:h-max md:pt-36 md:pl-6 md:flex flex-none md:items-center h-min">
           {/* Left content */}
-          <HeroContent isOpen={isOpen} />
+          <HeroContent setOpen={()=>{}} isOpen={isOpen} />
         </div>
       </div>
 
