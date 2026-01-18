@@ -43,7 +43,7 @@ const RotatingText = () => {
       <h1 className="static-text whitespace-nowrap text-5xl md:text-6xl xl:text-7xl">
       Creative & <br />
       <span className="text-[#ff4d31]"> Customised </span>     
-      <br />Solutions.
+      Solutions.
       </h1>
 
 

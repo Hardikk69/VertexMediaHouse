@@ -1,9 +1,10 @@
+import { useScreenSize } from "@/hooks/useScreenSize";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useRef } from "react";
 
 export default function MagneticBubble() {
   const containerRef = useRef<HTMLDivElement>(null);
-
+  const screen = useScreenSize();
   // Raw motion values
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -42,21 +43,26 @@ export default function MagneticBubble() {
   };
 
   return (
-    <div
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={reset}
-      className="h-14 w-14 flex items-center justify-center translate-x-[20px] -translate-y-[20px]"
-    >
-      <motion.div
-        style={{ x: springX, y: springY }}
-        className="
-          toggle-dot
-          h-5 w-5
-          rounded-full
-          bg-[#ff4d31]
-        "
-      />
-    </div>
+    <>
+     {
+screen !== 'sm'&&
+<div
+ref={containerRef}
+onMouseMove={handleMouseMove}
+onMouseLeave={reset}
+className="h-14 w-14 flex float-end items-center justify-center translate-x-[20px] -translate-y-[20px]"
+>
+<motion.div
+  style={{ x: springX, y: springY }}
+  className="
+  toggle-dot
+  h-5 w-5
+  rounded-full
+  bg-[#ff4d31]
+"
+/>
+</div>
+     }
+    </>
   );
 }
