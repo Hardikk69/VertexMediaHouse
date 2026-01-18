@@ -26,8 +26,8 @@ const HeroSection = () => {
     max-h-none
 
     /* DESKTOP */
-    md:h-[calc(100dvh-24px)]
-    md:max-h-[calc(100dvh-24px)]
+    md:h-[calc(100dvh-32px)]
+    md:max-h-[calc(100dvh-32px)]
 
     /* LARGE SCREENS */
     2xl:max-h-[700px]

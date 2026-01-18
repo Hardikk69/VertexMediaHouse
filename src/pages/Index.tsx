@@ -15,7 +15,7 @@ import ScrollStakeSection from "@/components/sections/ScrollStack";
 const Index = () => {
   return (
     <main className="min-h-screen bg-white">
-      <div className="p-3 bg-[#efefef]">
+      <div className="p-4 bg-[#efefef]">
         <HeroSection />
       </div>
       <LogoList />

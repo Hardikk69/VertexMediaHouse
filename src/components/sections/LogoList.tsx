@@ -118,7 +118,7 @@ const LogoAndReviews = () => {
       {/* =================================================
          REVIEWS SECTION (VERTICAL ONLY)
       ================================================= */}
-      <section className="pt-20 bg-[#e9e9e9] px-[32px]" id="client-reviews">
+      <section className="pt-20 bg-[#e9e9e9] px-[16px]" id="client-reviews">
         <span className="block mb-4 text-sm tracking-wide text-[#18191c] text-center ">
         Testimonials
         </span>
