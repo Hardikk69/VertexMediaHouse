@@ -265,7 +265,7 @@
   }
 
   .nav-link {
-    @apply text-xs uppercase tracking-[0.2em] font-medium text-muted-foreground hover:text-foreground transition-colors duration-300;
+    @apply text-xs uppercase tracking-[0.2em] font-medium text-muted-foreground hover:text-[#ff4d31]/90 hover:font-bold transition-all duration-300;
   }
 
   /* Swipe panel overlay */

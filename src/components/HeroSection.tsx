@@ -13,6 +13,10 @@ const HeroSection = () => {
 <section
   className="
     hero-slider
+    flex
+    items-center
+    pb-0 md:pb-20
+    pl-3
     relative
     rounded-xl
 
@@ -22,8 +26,8 @@ const HeroSection = () => {
     max-h-none
 
     /* DESKTOP */
-    md:h-[calc(100dvh-23px)]
-    md:max-h-[calc(100dvh-23px)]
+    md:h-[calc(100dvh-24px)]
+    md:max-h-[calc(100dvh-24px)]
 
     /* LARGE SCREENS */
     2xl:max-h-[700px]
@@ -38,8 +42,8 @@ const HeroSection = () => {
       <HeroBackground />
 
       {/* Main container */}
-      <div className="hero-container pb-8 md:h-max">
-        <div className="pt-[8dvh] md:h-max md:pt-32 md:flex flex-none md:items-center h-min">
+      <div className="hero-container pb-8  md:h-max">
+        <div className="pt-auto md:h-max md:pt-32 md:flex flex-none md:items-center h-min">
           {/* Left content */}
           <HeroContent setOpen={()=>{}} isOpen={isOpen} />
         </div>

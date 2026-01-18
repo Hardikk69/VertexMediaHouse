@@ -9,11 +9,7 @@
 
 /* Services (Horizontal Accordion) */
 .services-container {
-    display: flex;
-    gap: 24px;
     height: 500px;
-    /* Fixed height for consistency */
-    width: 100%;
 }
 
 .service-card {
@@ -44,7 +40,7 @@
 
 .service-header {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: flex-start;
     opacity: 0;
     /* Hidden by default in inactive state */
@@ -62,7 +58,8 @@
 .service-header h3 {
     font-size: 2rem;
     line-height: 1.2;
-    max-width: 70%;
+    float: left;
+    /* max-width: 70%; */
 }
 
 .toggle-dot {

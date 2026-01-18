@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import "@/components/sections/Ourservices.css";
 import MagneticBubble from "./MagneticBubble";
+import bagIcon from '../assets/icons/bag.jpeg'
 export default function ServicesSection() {
   useEffect(() => {
     // Service Cards
@@ -62,12 +63,13 @@ export default function ServicesSection() {
           What We Specialize In
         </h2>
 
-        <div className="services-container">
+        <div className="services-container flex gap-6 ">
 
 
           <div className="service-card active rounded-[16px] bg-white text-[#18191c]" data-id="pitch-deck">
-            <div className="service-header">
-              <h3>Pitch Deck Designing</h3>
+            <div className="service-header max-h-min">
+              <img className="h-max max-h-[75px] mr-3" src={bagIcon} />
+              <h3 className="text-[2rem] w-full" >Pitch Deck <br /> Designing</h3>
               <MagneticBubble />
             </div>
             <div className="service-details">
@@ -84,9 +86,11 @@ export default function ServicesSection() {
             <div className="vertical-label">Pitch Deck Designing</div>
           </div>
 
-          <div className="service-card rounded-[16px] bg-white text-[#18191c]" data-id="video-editing">
-            <div className="service-header">
-              <h3>Video Editing</h3>
+
+          <div className="service-card rounded-[16px] bg-white text-[#18191c]" data-id="pitch-deck">
+            <div className="service-header max-h-min">
+              <img className="h-max max-h-[75px] mr-3" src={bagIcon} />
+              <h3 className="text-[2rem] w-full my-auto">Video Editing</h3>
               <MagneticBubble />
             </div>
             <div className="service-details">
@@ -105,9 +109,11 @@ export default function ServicesSection() {
           </div>
 
 
-          <div className="service-card rounded-[16px] bg-white text-[#18191c]" data-id="website-design">
-            <div className="service-header">
-              <h3>Website Design</h3>
+
+          <div className="service-card rounded-[16px] bg-white text-[#18191c]" data-id="pitch-deck">
+            <div className="service-header max-h-min">
+              <img className="h-max max-h-[75px] mr-3" src={bagIcon} />
+              <h3 className="text-[2rem] w-full my-auto">Website Design</h3>
               <MagneticBubble />
             </div>
             <div className="service-details">
@@ -125,9 +131,10 @@ export default function ServicesSection() {
           </div>
 
 
-          <div className="service-card rounded-[16px] bg-white text-[#18191c]" data-id="ai-automation">
-            <div className="service-header">
-              <h3>AI & Automation</h3>
+          <div className="service-card rounded-[16px] bg-white text-[#18191c]" data-id="pitch-deck">
+            <div className="service-header max-h-min">
+              <img className="h-max max-h-[75px] mr-3" src={bagIcon} />
+              <h3 className="text-[2rem] w-full my-auto">AI & Automation</h3>
               <MagneticBubble />
             </div>
             <div className="service-details">
@@ -143,6 +150,8 @@ export default function ServicesSection() {
             </div>
             <div className="vertical-label">AI & Automation</div>
           </div>
+
+
         </div>
       </div>
     </section>
