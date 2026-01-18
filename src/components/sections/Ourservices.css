@@ -8,9 +8,6 @@
 }
 
 /* Services (Horizontal Accordion) */
-.services-container {
-    height: 500px;
-}
 
 .service-card {
     /* background: #fff; */
@@ -136,7 +133,8 @@
 
     .service-card.active {
         flex: 0 0 auto;
-        min-height: 300px;
+        min-height: 475px;
+        height: fit-content;
         /* Enough space for content */
     }
 
