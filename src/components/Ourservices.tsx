@@ -117,7 +117,7 @@ export default function ServicesSection() {
               ${activeId === "video-editing" ? "active" : ""}
             `}
             style={{
-              maxHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
+              minHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
             }}
             onClick={() => setActiveId("video-editing")}
           >
@@ -153,7 +153,7 @@ export default function ServicesSection() {
               ${activeId === "website-design" ? "active" : ""}
             `}
             style={{
-              maxHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
+              minHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
             }}
             onClick={() => setActiveId("website-design")}
           >
@@ -189,7 +189,7 @@ export default function ServicesSection() {
               ${activeId === "ai-and-automation" ? "active" : ""}
             `}
             style={{
-              maxHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
+              minHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
             }}
             onClick={() => setActiveId("ai-and-automation")}
           >
