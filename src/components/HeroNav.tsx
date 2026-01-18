@@ -21,7 +21,7 @@ const HeroNav = () => {
     },
   ]
   return (
-    <nav className="hero-nav">
+    <nav className="hero-nav mt-2">
       <div className="max-w-[1400px] mx-auto flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="nav-logo">
