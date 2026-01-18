@@ -3,7 +3,7 @@ import ScrollStack from "./ScrollItem";
 
 export default function ScrollStakeSection() {
   return (
-    <section className="scroll-stack-section py-12 rounded-b-lg bg-[#efefef]">
+    <section className="scroll-stack-section py-12 rounded-b-lg bg-[#efefef]" id="why-us">
       <div className="container mx-auto ">
 
         {/* ===== TWO COLUMN LAYOUT ===== */}
@@ -44,10 +44,11 @@ export default function ScrollStakeSection() {
           <div className="scroll-stack-wrapper">
             <ScrollStack
               useWindowScroll={true}
-              itemDistance={10}
+              // itemDistance={10}
               itemStackDistance={20}
               baseScale={0.9}
               stackPosition="30%"
+              className="gap-y-20"
             >
               <ScrollStackItem itemClassName="bg-[#d8f66f] text-black">
                 <div>

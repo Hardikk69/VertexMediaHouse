@@ -25,7 +25,7 @@ const HeroContent = ({ isOpen, setOpen }: HeroContentProps) => {
   }, []);
 
   return (
-    <div className="max-w-3xl ">
+    <div className="max-w-3xl">
       {/* Rotating headline */}
       <RotatingText />
 

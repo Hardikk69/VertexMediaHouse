@@ -53,7 +53,7 @@ export default function ServicesSection() {
   }, []);
 
   return (
-    <section className="services bg-[#e9e9e9] font-bricolage select-none" id="services">
+    <section className="services bg-[#e9e9e9] font-bricolage select-none" id="our-services">
       <div className="container">
         <span className="block mb-4 text-sm uppercase tracking-wide text-[#18191c] text-center">
           Our Core Services
@@ -63,6 +63,8 @@ export default function ServicesSection() {
         </h2>
 
         <div className="services-container">
+
+
           <div className="service-card active rounded-[16px] bg-white text-[#18191c]" data-id="pitch-deck">
             <div className="service-header">
               <h3>Pitch Deck Designing</h3>
@@ -82,10 +84,10 @@ export default function ServicesSection() {
             <div className="vertical-label">Pitch Deck Designing</div>
           </div>
 
-          <div className="service-card bg-white text-[#18191c]" data-id="video-editing">
+          <div className="service-card active rounded-[16px] bg-white text-[#18191c]" data-id="video-editing">
             <div className="service-header">
               <h3>Video Editing</h3>
-              <div className="toggle-dot bg-red-500" />
+              <MagneticBubble />
             </div>
             <div className="service-details">
               <p className="service-intro"><strong>What We Offer:</strong></p>
@@ -97,14 +99,16 @@ export default function ServicesSection() {
                 <li>Platform-optimized videos (Instagram, YouTube, TikTok) </li>
 
               </ul>
+              <button className="bg-[#ff4d31] text-white px-8 py-2 rounded-[6px] mt-1 hover:bg-[#ff4d31]/90">Learn More.</button>
             </div>
             <div className="vertical-label">Video Editing</div>
           </div>
 
-          <div className="service-card bg-white text-[#18191c]" data-id="website-design">
+
+          <div className="service-card active rounded-[16px] bg-white text-[#18191c]" data-id="website-design">
             <div className="service-header">
               <h3>Website Design</h3>
-              <div className="toggle-dot" />
+              <MagneticBubble />
             </div>
             <div className="service-details">
               <p className="service-intro"><strong>What We Offer:</strong></p>
@@ -115,16 +119,18 @@ export default function ServicesSection() {
                 <li>Fast, secure, and scalable websites </li>
                 <li>Mobile-first & SEO-ready structure </li>
               </ul>
+              <button className="bg-[#ff4d31] text-white px-8 py-2 rounded-[6px] mt-1 hover:bg-[#ff4d31]/90">Learn More.</button>
             </div>
             <div className="vertical-label">Website Design</div>
           </div>
 
-          <div className="service-card bg-white text-[#18191c]" data-id="ai-automation">
+
+          <div className="service-card active rounded-[16px] bg-white text-[#18191c]" data-id="ai-automation">
             <div className="service-header">
-              <h3>AI & Automations</h3>
-              <div className="toggle-dot" />
+              <h3>AI & Automation</h3>
+              <MagneticBubble />
             </div>
-            <div className="service-details text-lg">
+            <div className="service-details">
               <p className="service-intro"><strong>What We Offer:</strong></p>
               <ul>
                 <li>Workflow automation to reduce manual work </li>
@@ -133,8 +139,9 @@ export default function ServicesSection() {
                 <li>Smart lead response & qualification </li>
                 <li>Scalable automation systems for businesses</li>
               </ul>
+              <button className="bg-[#ff4d31] text-white px-8 py-2 rounded-[6px] mt-1 hover:bg-[#ff4d31]/90">Learn More.</button>
             </div>
-            <div className="vertical-label text-[#ff4d31]">AI & Automations</div>
+            <div className="vertical-label">AI & Automation</div>
           </div>
         </div>
       </div>

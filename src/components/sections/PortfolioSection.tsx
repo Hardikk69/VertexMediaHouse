@@ -65,7 +65,7 @@ export default function InfinitePortfolioDrag(): JSX.Element {
   }, [contentWidth, x]);
 
   return (
-    <section className="bg-[#101010] text-white py-32 overflow-hidden">
+    <section className="bg-[#101010] text-white py-32 overflow-hidden" id="our-portfolio">
       <span className="block mb-4 text-sm tracking-wide text-white/60 text-center">
       Portfolio
         </span>
