@@ -134,7 +134,7 @@
     .service-card.active {
         flex: 0 0 auto;
         min-height: 475px;
-        height: fit-content;
+        height: max-content;
         /* Enough space for content */
     }
 

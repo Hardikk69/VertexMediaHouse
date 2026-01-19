@@ -61,7 +61,7 @@ export default function ServicesSection() {
 
   return (
     <section className="services bg-[#e9e9e9] font-bricolage select-none py-20" id="our-services">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4">
         <span className="block mb-4 text-sm uppercase tracking-widest text-[#18191c] text-center font-bold opacity-70">
           Our Core Services
         </span>
@@ -81,7 +81,7 @@ export default function ServicesSection() {
               ${activeId === "pitch-deck" ? "active" : ""}
             `}
             style={{
-              maxHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
+              minHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
             }}
             onClick={() => setActiveId("pitch-deck")}
           >
@@ -117,7 +117,7 @@ export default function ServicesSection() {
               ${activeId === "video-editing" ? "active" : ""}
             `}
             style={{
-              maxHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
+              minHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
             }}
             onClick={() => setActiveId("video-editing")}
           >
@@ -153,7 +153,7 @@ export default function ServicesSection() {
               ${activeId === "website-design" ? "active" : ""}
             `}
             style={{
-              maxHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
+              minHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
             }}
             onClick={() => setActiveId("website-design")}
           >
@@ -189,7 +189,7 @@ export default function ServicesSection() {
               ${activeId === "ai-and-automation" ? "active" : ""}
             `}
             style={{
-              maxHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
+              minHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
             }}
             onClick={() => setActiveId("ai-and-automation")}
           >
