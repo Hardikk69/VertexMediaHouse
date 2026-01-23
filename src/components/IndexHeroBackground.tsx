@@ -1,0 +1,39 @@
+import { motion } from "framer-motion";
+
+const IndexHeroBackground = () => {
+  return (
+    <div>
+      {/* Background image 1 */}
+      <div
+        className="hero-bg-image animate-bg-fade-1"
+        style={{
+          backgroundImage: `url('/images/hero-image-1.jpg')`,
+        }}
+      />
+
+      {/* Background image 2 */}
+      <div
+        className="hero-bg-image animate-bg-fade-2"
+        style={{
+          backgroundImage: `url('/images/hero-image-2.jpg')`,
+        }}
+      />
+
+      {/* Swipe panel overlay that reveals on load */}
+      <motion.div
+        initial={{ y: 0 }}
+        animate={{ y: "100%" }}
+        transition={{
+          duration: 1.5,
+          ease: [0.65, 0, 0.35, 1],
+        }}
+        className="absolute inset-0 bg-background z-20"
+      />
+
+      {/* Dark gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-black/5 z-[1]" />
+    </div>
+  );
+};
+
+export default IndexHeroBackground;

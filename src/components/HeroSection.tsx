@@ -1,10 +1,9 @@
 import HeroNav from "./HeroNav";
-import HeroBackground from "./HeroBackground";
+import HeroBackground from "./HeroBackground.tsx";
 import HeroContent from "./HeroContent";
 import PlayButton from "./PlayButton";
 import { useState } from "react";
 import { useScreenSize } from "@/hooks/useScreenSize";
-import PitchdeckHeroBackground from "./PitchdeckHeroBackground";
 // import HeroInfoCard from "./HeroInfoCard";
 
 const HeroSection = () => {
@@ -25,13 +24,13 @@ const HeroSection = () => {
       <HeroNav />
 
       {/* Animated background */}
-      <PitchdeckHeroBackground />
+      <HeroBackground />
 
       {/* Main container */}
       <div className="hero-container pb-8  md:h-max">
         <div className="pt-auto md:h-max md:pt-32 md:flex flex-none md:items-center h-min">
           {/* Left content */}
-          <HeroContent setOpen={() => { }} isOpen={isOpen} />
+          <HeroContent isOpen={isOpen} setOpen={setIsOpen} />
         </div>
       </div>
 

@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import "@/components/sections/Ourservices.css";
 import MagneticBubble from "./MagneticBubble";
+import { useNavigate } from "react-router-dom";
 
 // Your existing icons
 import pitchDeckIcon from '../assets/icons/pitchdeck.png'
@@ -15,32 +16,34 @@ import aiIcon from '../assets/icons/ai.png'
 const CHECK_ICON = "https://img.icons8.com/ios-filled/50/ff4d31/ok--v1.png";
 
 export default function ServicesSection() {
+  const navigate = useNavigate();
   // Using React state to manage active cards (Pitch Deck is active by default)
   const [activeId, setActiveId] = useState("pitch-deck");
   const cardRefs = useRef<HTMLDivElement[]>([]);
   const [maxCardHeight, setMaxCardHeight] = useState<number | null>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
 
-  useEffect(() => {
-    const measureHeights = () => {
+  useLayoutEffect(() => {
+    const updateLayout = () => {
+      const desktop = window.innerWidth >= 768;
+      setIsDesktop(desktop);
+
+      if (!desktop) {
+        setMaxCardHeight(null);
+        return;
+      }
+
       const heights = cardRefs.current.map(
         (card) => card?.offsetHeight || 0
       );
 
-      const maxHeight = Math.max(...heights);
-      setMaxCardHeight(maxHeight);
+      setMaxCardHeight(Math.max(...heights));
     };
 
-    // Wait for images & fonts
-    window.requestAnimationFrame(() => {
-      measureHeights();
-    });
+    requestAnimationFrame(updateLayout);
+    window.addEventListener("resize", updateLayout);
 
-    // Recalculate on resize
-    window.addEventListener("resize", measureHeights);
-
-    return () => {
-      window.removeEventListener("resize", measureHeights);
-    };
+    return () => window.removeEventListener("resize", updateLayout);
   }, []);
 
   // Helper component for styled list items
@@ -81,7 +84,9 @@ export default function ServicesSection() {
               ${activeId === "pitch-deck" ? "active" : ""}
             `}
             style={{
-              minHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
+              minHeight: isDesktop && maxCardHeight
+                ? `${maxCardHeight}px`
+                : undefined,
             }}
             onClick={() => setActiveId("pitch-deck")}
           >
@@ -100,7 +105,8 @@ export default function ServicesSection() {
                 "Clear storytelling & flow",
                 "Data-driven visual design"
               ]} />
-              <button className="bg-[#ff4d31] text-white px-8 py-3 rounded-[8px] mt-10 hover:bg-[#ff4d31]/90 font-semibold transition-all">
+              <button onClick={() => navigate("/pitch-deck")}
+                className="bg-[#ff4d31] text-white px-8 py-3 rounded-[8px] mt-10 hover:bg-[#ff4d31]/90 font-semibold transition-all">
                 Learn More
               </button>
             </div>
@@ -110,14 +116,16 @@ export default function ServicesSection() {
           {/* --- Video Editing --- */}
           <div
             ref={(el) => {
-              if (el) cardRefs.current[0] = el;
+              if (el) cardRefs.current[1] = el;
             }}
             className={`service-card rounded-[16px] bg-white text-[#18191c]
               transition-all duration-500 cursor-pointer
               ${activeId === "video-editing" ? "active" : ""}
             `}
             style={{
-              minHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
+              minHeight: isDesktop && maxCardHeight
+                ? `${maxCardHeight}px`
+                : undefined,
             }}
             onClick={() => setActiveId("video-editing")}
           >
@@ -136,7 +144,8 @@ export default function ServicesSection() {
                 "Motion graphics & transitions",
                 "Platform-optimized content"
               ]} />
-              <button className="bg-[#ff4d31] text-white px-8 py-3 rounded-[8px] mt-10 hover:bg-[#ff4d31]/90 font-semibold transition-all">
+              <button onClick={() => navigate("/video-editing")}
+                className="bg-[#ff4d31] text-white px-8 py-3 rounded-[8px] mt-10 hover:bg-[#ff4d31]/90 font-semibold transition-all">
                 Learn More
               </button>
             </div>
@@ -146,14 +155,16 @@ export default function ServicesSection() {
           {/* --- Website Design --- */}
           <div
             ref={(el) => {
-              if (el) cardRefs.current[0] = el;
+              if (el) cardRefs.current[2] = el;
             }}
             className={`service-card rounded-[16px] bg-white text-[#18191c]
               transition-all duration-500 cursor-pointer
               ${activeId === "website-design" ? "active" : ""}
             `}
             style={{
-              minHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
+              minHeight: isDesktop && maxCardHeight
+                ? `${maxCardHeight}px`
+                : undefined,
             }}
             onClick={() => setActiveId("website-design")}
           >
@@ -172,8 +183,8 @@ export default function ServicesSection() {
                 "Fast, secure, and scalable",
                 "Mobile-first SEO structure"
               ]} />
-              <button className="bg-[#ff4d31] text-white px-8 py-3 rounded-[8px] mt-10 hover:bg-[#ff4d31]/90 font-semibold transition-all">
-                Learn More
+              <button onClick={() => navigate("/web-design")}
+                className="bg-[#ff4d31] text-white px-8 py-3 rounded-[8px] mt-10 hover:bg-[#ff4d31]/90 font-semibold transition-all">                Learn More
               </button>
             </div>
             <div className="vertical-label">Website Design</div>
@@ -182,14 +193,16 @@ export default function ServicesSection() {
           {/* --- AI & Automation --- */}
           <div
             ref={(el) => {
-              if (el) cardRefs.current[0] = el;
+              if (el) cardRefs.current[3] = el;
             }}
             className={`service-card rounded-[16px] bg-white text-[#18191c]
               transition-all duration-500 cursor-pointer
               ${activeId === "ai-and-automation" ? "active" : ""}
             `}
             style={{
-              minHeight: maxCardHeight ? `${maxCardHeight}px` : "none",
+              minHeight: isDesktop && maxCardHeight
+                ? `${maxCardHeight}px`
+                : undefined,
             }}
             onClick={() => setActiveId("ai-and-automation")}
           >
@@ -208,8 +221,8 @@ export default function ServicesSection() {
                 "Smart lead response tools",
                 "Manual task reduction"
               ]} />
-              <button className="bg-[#ff4d31] text-white px-8 py-3 rounded-[8px] mt-10 hover:bg-[#ff4d31]/90 font-semibold transition-all">
-                Learn More
+              <button onClick={() => navigate("/ai-automation")}
+                className="bg-[#ff4d31] text-white px-8 py-3 rounded-[8px] mt-10 hover:bg-[#ff4d31]/90 font-semibold transition-all">                Learn More
               </button>
             </div>
             <div className="vertical-label">AI & Automation</div>

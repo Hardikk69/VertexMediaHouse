@@ -5,10 +5,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import Pitchdeck from "./pages/Pitchdeck";
+import Pitchdeck from "./pages/Pitch-deck";
 import Calender from "./pages/Calender";
 import Preloader from "./components/preloader";
 import { useState } from "react";
+import VideoEditing from "./pages/Video-editing";
+import WebDesign from "./pages/Web-design";
+import AIAutomation from "./pages/AI-automation";
 
 const queryClient = new QueryClient();
 
@@ -19,18 +22,21 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        {loading && <Preloader onFinish={() => setLoading(false)} />}
-        {!loading && (
+        {/* {loading && <Preloader onFinish={() => setLoading(false)} />}
+        {!loading && ( */}
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/pitchdeck" element={<Pitchdeck />} />
+              <Route path="/pitch-deck" element={<Pitchdeck />} />
+              <Route path="/video-editing" element={<VideoEditing />} />
+              <Route path="/web-design" element={<WebDesign />} />
+              <Route path="/ai-automation" element={<AIAutomation />} />
               <Route path="/calender" element={<Calender />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
-        )}
+        {/* )} */}
       </TooltipProvider>
     </QueryClientProvider>
   );

@@ -1,3 +1,4 @@
+/* Sections */
 .services,
 .process,
 .work,
@@ -8,10 +9,25 @@
 }
 
 /* Services (Horizontal Accordion) */
+.services-container {
+    display: flex;
+    gap: 24px;
+    height: 500px;
+    width: 100%;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+    .services-container {
+        height: auto;
+        min-height: unset;
+    }
+}
 
 .service-card {
     /* background: #fff; */
     /* Default inactive bg */
+    border-radius: 20px;
     padding: 32px;
     display: flex;
     flex-direction: column;
@@ -133,9 +149,8 @@
 
     .service-card.active {
         flex: 0 0 auto;
-        min-height: 475px;
-        height: max-content;
-        /* Enough space for content */
+        min-height: unset;
+        height: auto;
     }
 
     .vertical-label {

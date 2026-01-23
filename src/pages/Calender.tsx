@@ -1,3 +1,4 @@
+import VideoSection from "@/components/VideoSection";
 import { useEffect } from "react";
 
 export default function Calender() {
@@ -13,12 +14,15 @@ export default function Calender() {
     }, []);
 
     return (
-        <div style={{ background: "#fff" }}>
-            <div
-                className="calendly-inline-widget"
-                data-url="https://calendly.com/h-kansara106/new-meeting?hide_event_type_details=1&hide_gdpr_banner=1"
-                style={{ height: "100dvh" }}
-            />
-        </div>
+        // <div style={{ background: "#fff" }}>
+        //     <div
+        //         className="calendly-inline-widget"
+        //         data-url="https://calendly.com/h-kansara106/new-meeting?hide_event_type_details=1&hide_gdpr_banner=1"
+        //         style={{ height: "100dvh" }}
+        //     />
+        // </div>
+        <>
+        <VideoSection/>
+        </>
     )
 }

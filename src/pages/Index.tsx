@@ -1,4 +1,4 @@
-import HeroSection from "@/components/HeroSection";
+import IndexHeroSection from "@/components/IndexHeroSection";
 import ServicesSection from "@/components/Ourservices";
 // import BentoGrid from "@/components/sections/BentoGrid";
 import FaqSection from "@/components/sections/FaqSection";
@@ -16,7 +16,7 @@ const Index = () => {
   return (
     <main className="min-h-screen bg-white">
       <div className="p-4 bg-[#efefef]">
-        <HeroSection />
+        <IndexHeroSection />
       </div>
       <LogoList />
       {/* <JourneyMapSection/> */}

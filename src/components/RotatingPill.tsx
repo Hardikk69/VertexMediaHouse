@@ -9,7 +9,7 @@ const features = [
 
 export default function VerticalFeatureLoop() {
   return (
-    <div className="relative h-20 font-bricolage overflow-hidden mt-6">
+    <div className="relative h-32 font-bricolage overflow-hidden mt-6">
       <div className="animate-scroll-up">
         {[...features, ...features].map((text, i) => (
           <div
