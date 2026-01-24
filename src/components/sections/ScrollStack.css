@@ -1,9 +1,9 @@
-
-.scroll-stack-section{
+.scroll-stack-section {
     /* background: linear-gradient(180deg, #081880 0%, #050E4D 70%,#02051A 100%); */
     background-color: black;
     border-radius: 50px;
 }
+
 /* ScrollStack Isolated Styles */
 .scroll-stack-container,
 .scroll-stack-inner,
@@ -40,14 +40,21 @@
     margin: 0 auto;
     background: #0d1238;
     border-radius: 10px;
-    padding: 48px;
-    border: 1px solid rgba(255,255,255,0.12);
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     transform-origin: top center;
     will-change: transform, filter;
     backface-visibility: hidden;
     transform-style: preserve-3d;
     /* IMPORTANT: no CSS transitions */
     transition: none !important;
+}
+
+/* Desktop card padding */
+@media (min-width: 768px) {
+    .scroll-stack-card {
+        padding: 48px;
+    }
 }
 
 
@@ -67,16 +74,29 @@
 }
 
 .scroll-stack-card h2 {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 700;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     color: #000;
 }
 
+@media (min-width: 768px) {
+    .scroll-stack-card h2 {
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+}
+
 .scroll-stack-card p {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.6;
-    color: rgba(0,0,0,0.8);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+@media (min-width: 768px) {
+    .scroll-stack-card p {
+        font-size: 16px;
+    }
 }
 
 
@@ -84,7 +104,8 @@
 .scroll-stack-layout {
     display: flex;
     gap: 40px;
-    align-items: flex-start; /* Crucial for sticky to work */
+    align-items: flex-start;
+    /* Crucial for sticky to work */
     position: relative;
     padding: 100px 0;
 }
@@ -93,7 +114,8 @@
 .why-us-column {
     flex: 1;
     position: sticky;
-    top: 100px; /* Adjust this to where you want it to stop on screen */
+    top: 100px;
+    /* Adjust this to where you want it to stop on screen */
     height: fit-content;
     padding-bottom: 50px;
 }
@@ -106,7 +128,7 @@
 
 .why-us-box {
     margin-bottom: 20px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     max-width: 400px;
 }
 
@@ -116,7 +138,8 @@
 
 /* RIGHT COLUMN */
 .scroll-stack-wrapper {
-    flex: 1.2; /* Slightly wider than the left side */
+    flex: 1.2;
+    /* Slightly wider than the left side */
     position: relative;
 }
 
@@ -131,8 +154,16 @@
     .scroll-stack-layout {
         flex-direction: column;
     }
+
     .why-us-column {
         position: relative;
         top: 0;
+    }
+}
+
+/* Mobile optimizations for stack animation */
+@media (max-width: 767px) {
+    .scroll-stack-card {
+        max-width: 100%;
     }
 }

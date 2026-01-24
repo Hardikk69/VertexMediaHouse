@@ -1,7 +1,7 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "@/components/sections/Ourservices.css";
 import MagneticBubble from "./MagneticBubble";
-import { useNavigate } from "react-router-dom";
 
 // Your existing icons
 import pitchDeckIcon from '../assets/icons/pitchdeck.png'
@@ -17,11 +17,27 @@ const CHECK_ICON = "https://img.icons8.com/ios-filled/50/ff4d31/ok--v1.png";
 
 export default function ServicesSection() {
   const navigate = useNavigate();
+  const location = useLocation();
   // Using React state to manage active cards (Pitch Deck is active by default)
   const [activeId, setActiveId] = useState("pitch-deck");
   const cardRefs = useRef<HTMLDivElement[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
   const [maxCardHeight, setMaxCardHeight] = useState<number | null>(null);
   const [isDesktop, setIsDesktop] = useState(false);
+
+  // Listen for hash changes to activate specific service card
+  useEffect(() => {
+    const hash = location.hash.replace('#', '');
+    const serviceIds = ['pitch-deck', 'video-editing', 'web-designing', 'ai-automation'];
+
+    if (serviceIds.includes(hash)) {
+      setActiveId(hash);
+      // Scroll to services section after a brief delay to allow rendering
+      setTimeout(() => {
+        sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }, [location.hash]);
 
   useLayoutEffect(() => {
     const updateLayout = () => {
@@ -63,7 +79,7 @@ export default function ServicesSection() {
   );
 
   return (
-    <section className="services bg-[#e9e9e9] font-bricolage select-none py-20" id="our-services">
+    <section ref={sectionRef} className="services bg-[#e9e9e9] font-bricolage select-none py-20" id="our-services">
       <div className="container mx-auto px-4">
         <span className="block mb-4 text-sm uppercase tracking-widest text-[#18191c] text-center font-bold opacity-70">
           Our Core Services
@@ -159,14 +175,14 @@ export default function ServicesSection() {
             }}
             className={`service-card rounded-[16px] bg-white text-[#18191c]
               transition-all duration-500 cursor-pointer
-              ${activeId === "website-design" ? "active" : ""}
+              ${activeId === "web-designing" ? "active" : ""}
             `}
             style={{
               minHeight: isDesktop && maxCardHeight
                 ? `${maxCardHeight}px`
                 : undefined,
             }}
-            onClick={() => setActiveId("website-design")}
+            onClick={() => setActiveId("web-designing")}
           >
 
             <div className="service-header">
@@ -197,14 +213,14 @@ export default function ServicesSection() {
             }}
             className={`service-card rounded-[16px] bg-white text-[#18191c]
               transition-all duration-500 cursor-pointer
-              ${activeId === "ai-and-automation" ? "active" : ""}
+              ${activeId === "ai-automation" ? "active" : ""}
             `}
             style={{
               minHeight: isDesktop && maxCardHeight
                 ? `${maxCardHeight}px`
                 : undefined,
             }}
-            onClick={() => setActiveId("ai-and-automation")}
+            onClick={() => setActiveId("ai-automation")}
           >
 
             <div className="service-header">

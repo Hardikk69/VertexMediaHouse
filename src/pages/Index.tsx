@@ -11,6 +11,7 @@ import PortfolioDrag from "@/components/sections/PortfolioSection";
 import ScrollStakeSection from "@/components/sections/ScrollStack";
 // import OurServices from "@/components/sections/ServicesSection";
 // import LogoLoop from "@/components/sections/LogoLoop";
+import CalenderCard from "@/components/Calender-card";
 
 const Index = () => {
   return (
@@ -23,12 +24,13 @@ const Index = () => {
       {/* <div className="h-screen siri-gradient">
 
       </div> */}
-      <ServicesSection/>
+      <ServicesSection />
       <PortfolioDrag />
       <ScrollStakeSection />
+      <CalenderCard />
       {/* <OurServices /> */}
       {/* <BentoGrid/> */}
-      <FaqSection/>
+      <FaqSection />
       <FooterSection />
       {/* <ReviewSection/> */}
     </main>
@@ -36,3 +38,4 @@ const Index = () => {
 };
 
 export default Index;
+

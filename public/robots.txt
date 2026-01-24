@@ -1,14 +1,12 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+
+# Sitemaps
+Sitemap: https://vertexmedia.house/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin or private paths (none for this site)
+# Disallow: /admin/

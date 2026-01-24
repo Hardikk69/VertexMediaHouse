@@ -172,6 +172,17 @@ export default {
         /* 🔥 REVIEWS */
         "move-up": "moveUp 25s linear infinite",
         "move-down": "moveDown 25s linear infinite",
+
+        /* 🚀 ENHANCED ANIMATIONS */
+        "fade-in-up": "fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "fade-in-up-delay-1": "fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards",
+        "fade-in-up-delay-2": "fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards",
+        "fade-in-up-delay-3": "fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards",
+        "fade-in-up-delay-4": "fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards",
+        "scale-in": "scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "float": "float 3s ease-in-out infinite",
+        "glow-pulse": "glowPulse 2s ease-in-out infinite",
+        "nav-slide-down": "navSlideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards",
       },
     },
   },

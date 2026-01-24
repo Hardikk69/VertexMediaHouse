@@ -12,6 +12,13 @@ import { useState } from "react";
 import VideoEditing from "./pages/Video-editing";
 import WebDesign from "./pages/Web-design";
 import AIAutomation from "./pages/AI-automation";
+import Contact from "./pages/Contact";
+import About from "./pages/About";
+import Careers from "./pages/Careers";
+import Blog from "./pages/Blog";
+import CaseStudies from "./pages/CaseStudies";
+import Docs from "./pages/Docs";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -24,21 +31,29 @@ const App = () => {
         <Sonner />
         {/* {loading && <Preloader onFinish={() => setLoading(false)} />}
         {!loading && ( */}
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/pitch-deck" element={<Pitchdeck />} />
-              <Route path="/video-editing" element={<VideoEditing />} />
-              <Route path="/web-design" element={<WebDesign />} />
-              <Route path="/ai-automation" element={<AIAutomation />} />
-              <Route path="/calender" element={<Calender />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/pitch-deck" element={<Pitchdeck />} />
+            <Route path="/video-editing" element={<VideoEditing />} />
+            <Route path="/web-design" element={<WebDesign />} />
+            <Route path="/ai-automation" element={<AIAutomation />} />
+            <Route path="/calender" element={<Calender />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/docs" element={<Docs />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
         {/* )} */}
       </TooltipProvider>
     </QueryClientProvider>
   );
 };
 export default App;
+

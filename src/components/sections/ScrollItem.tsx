@@ -275,6 +275,17 @@ const ScrollStack = ({
     setupLenis();
     updateCardTransforms();
 
+    // Add native scroll listener for mobile touch support
+    const handleNativeScroll = () => {
+      updateCardTransforms();
+    };
+
+    if (useWindowScroll) {
+      window.addEventListener("scroll", handleNativeScroll, { passive: true });
+      // Also handle touch events for iOS
+      window.addEventListener("touchmove", handleNativeScroll, { passive: true });
+    }
+
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
@@ -284,6 +295,12 @@ const ScrollStack = ({
       initialOffsetsRef.current = [];
       lastTransformsRef.current.clear();
       stackCompletedRef.current = false;
+
+      // Remove native scroll listeners
+      if (useWindowScroll) {
+        window.removeEventListener("scroll", handleNativeScroll);
+        window.removeEventListener("touchmove", handleNativeScroll);
+      }
     };
   }, [
     itemDistance,
