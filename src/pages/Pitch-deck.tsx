@@ -8,6 +8,7 @@ import FooterSection from "@/components/sections/FooterSection";
 import LogoList from "@/components/sections/LogoList";
 import PortfolioDrag from "@/components/sections/PortfolioSection";
 import ServicesPlans from "@/components/sections/ServicesPlans";
+import ScrollStakeSection from "@/components/sections/ScrollStack";
 
 // Icons
 import { Presentation, Target, TrendingUp, Layers, Zap, CheckCircle, ArrowRight } from "lucide-react";
@@ -230,6 +231,7 @@ export default function Pitchdeck() {
 
 
 
+        <ScrollStakeSection />
         <CalenderCard />
         <div className="bg-orange-50">
           <FaqSection />

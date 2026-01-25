@@ -8,6 +8,7 @@ import FooterSection from "@/components/sections/FooterSection";
 import LogoList from "@/components/sections/LogoList";
 import PortfolioDrag from "@/components/sections/PortfolioSection";
 import ServicesPlans from "@/components/sections/ServicesPlans";
+import ScrollStakeSection from "@/components/sections/ScrollStack";
 
 // Icons
 import { Bot, Mail, Phone, MessageSquare, Workflow, Clock, Zap, Brain, Settings, ArrowRight } from "lucide-react";
@@ -290,6 +291,7 @@ export default function AIAutomation() {
           </div>
         </section> */}
 
+        <ScrollStakeSection />
         <CalenderCard />
         <div className="bg-emerald-50">
           <FaqSection />

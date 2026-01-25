@@ -8,6 +8,7 @@ import FooterSection from "@/components/sections/FooterSection";
 import LogoList from "@/components/sections/LogoList";
 import PortfolioDrag from "@/components/sections/PortfolioSection";
 import ServicesPlans from "@/components/sections/ServicesPlans";
+import ScrollStakeSection from "@/components/sections/ScrollStack";
 
 // Icons
 import { Globe, Smartphone, Zap, Shield, Search, PenTool, Code, Rocket, ArrowRight } from "lucide-react";
@@ -250,6 +251,7 @@ export default function WebDesign() {
           </div>
         </section>
 
+        <ScrollStakeSection />
         <CalenderCard />
         <div className="bg-cyan-50">
           <FaqSection />

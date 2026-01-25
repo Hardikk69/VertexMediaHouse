@@ -43,6 +43,19 @@ const HeroNav = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Handle hash scrolling after navigation (e.g., from service page to home page sections)
+  useEffect(() => {
+    if (location.hash) {
+      // Wait for page to render before scrolling
+      setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 150);
+    }
+  }, [location.pathname, location.hash]);
+
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -427,17 +440,28 @@ const HeroNav = () => {
               ))}
 
               {/* CTA Button */}
-              <motion.a
+             <motion.a
                 href="tel:+919909210605"
-                className="mt-auto w-full py-4 bg-gradient-to-r from-[#ff4d31] to-[#ff5c42] text-white text-center rounded-full font-semibold text-lg shadow-xl shadow-[#ff4d31]/25"
                 onClick={closeMobileMenu}
+                className="mt-auto w-full rounded-full p-[2px]
+                bg-gradient-to-r from-[#ff4d31] via-[#ff7a66] to-[#ffb199]
+                shadow-[0_0_25px_rgba(255,77,49,0.45)]
+                hover:shadow-[0_0_40px_rgba(255,77,49,0.75)]
+                transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.96 }}
               >
-                Book a Call
+                <span className="block w-full py-4 rounded-full text-center font-semibold text-lg
+                text-[#ff4d31] bg-white
+                hover:bg-[#fff5f2]
+                transition-all duration-300">
+                  📞 Book a Call
+                </span>
               </motion.a>
+
             </div>
           </motion.div>
         )}

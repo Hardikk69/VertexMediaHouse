@@ -8,6 +8,7 @@ import FooterSection from "@/components/sections/FooterSection";
 import LogoList from "@/components/sections/LogoList";
 import PortfolioDrag from "@/components/sections/PortfolioSection";
 import ServicesPlans from "@/components/sections/ServicesPlans";
+import ScrollStakeSection from "@/components/sections/ScrollStack";
 
 // Icons
 import { Video, Sparkles, Scissors, Volume2, Palette, Clock, ArrowRight } from "lucide-react";
@@ -238,6 +239,7 @@ export default function VideoEditing() {
         </section>
 
 
+        <ScrollStakeSection />
         <CalenderCard />
         <div className="bg-purple-50">
           <FaqSection />
