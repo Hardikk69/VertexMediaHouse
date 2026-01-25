@@ -5,25 +5,25 @@ const cards = [
   {
     title: "Project Alpha",
     desc: "Branding & Design",
-    image: "https://picsum.photos/600/800?1",
+    image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=600&h=800&fit=crop&q=80",
     cta: "View Project",
   },
   {
     title: "Project Beta",
     desc: "Web Experience",
-    image: "https://picsum.photos/600/800?2",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=800&fit=crop&q=80",
     cta: null,
   },
   {
     title: "Project Gamma",
     desc: "Product UI",
-    image: "https://picsum.photos/600/800?3",
+    image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=800&fit=crop&q=80",
     cta: "Explore",
   },
   {
     title: "Project Delta",
     desc: "Motion Design",
-    image: "https://picsum.photos/600/800?4",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=800&fit=crop&q=80",
     cta: "See Case Study",
   },
 ];

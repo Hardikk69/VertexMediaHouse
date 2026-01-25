@@ -10,10 +10,10 @@ const HeroNav = () => {
       title: "Our Services",
       target: "/#our-services",
       dropdown: [
-        { title: "Pitch Deck", href: "/#pitch-deck" },
-        { title: "Video Editing", href: "/#video-editing" },
-        { title: "Web Designing", href: "/#web-designing" },
-        { title: "AI Automation", href: "/#ai-automation" },
+        { title: "Pitch Deck", href: "/pitch-deck" },
+        { title: "Video Editing", href: "/video-editing" },
+        { title: "Web Designing", href: "/web-design" },
+        { title: "AI Automation", href: "/ai-automation" },
       ],
     },
     { title: "Our Portfolio", target: "/#our-portfolio" },
@@ -137,7 +137,7 @@ const HeroNav = () => {
       <div className="max-w-[1400px] mx-auto flex items-center justify-between relative">
         {/* Logo */}
         <motion.a
-          href="#"
+          href="/"
           className="nav-logo z-10"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
