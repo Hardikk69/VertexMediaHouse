@@ -20,19 +20,12 @@ const Index = () => {
         <IndexHeroSection />
       </div>
       <LogoList />
-      {/* <JourneyMapSection/> */}
-      {/* <div className="h-screen siri-gradient">
-
-      </div> */}
       <ServicesSection />
       <PortfolioDrag />
       <ScrollStakeSection />
       <CalenderCard />
-      {/* <OurServices /> */}
-      {/* <BentoGrid/> */}
       <FaqSection />
       <FooterSection />
-      {/* <ReviewSection/> */}
     </main>
   );
 };

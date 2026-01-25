@@ -9,11 +9,37 @@ import videoIcon from '../assets/icons/video-editor.png'
 import webIcon from '../assets/icons/web-development.png'
 import aiIcon from '../assets/icons/ai.png'
 
-/**
- * ICON URL
- * Using a clean, minimal checkmark that matches your brand color (#ff4d31)
- */
-const CHECK_ICON = "https://img.icons8.com/ios-filled/50/ff4d31/ok--v1.png";
+// Service theme configuration
+const serviceThemes = {
+  "pitch-deck": {
+    color: "#f97316", // Orange
+    bgClass: "bg-orange-500",
+    textClass: "text-orange-500",
+    hoverBg: "hover:bg-orange-500",
+    checkIcon: "https://img.icons8.com/ios-filled/50/f97316/ok--v1.png",
+  },
+  "video-editing": {
+    color: "#a855f7", // Purple
+    bgClass: "bg-purple-500",
+    textClass: "text-purple-500",
+    hoverBg: "hover:bg-purple-500",
+    checkIcon: "https://img.icons8.com/ios-filled/50/a855f7/ok--v1.png",
+  },
+  "web-designing": {
+    color: "#3b82f6", // Blue
+    bgClass: "bg-blue-500",
+    textClass: "text-blue-500",
+    hoverBg: "hover:bg-blue-500",
+    checkIcon: "https://img.icons8.com/ios-filled/50/3b82f6/ok--v1.png",
+  },
+  "ai-automation": {
+    color: "#10b981", // Emerald
+    bgClass: "bg-emerald-500",
+    textClass: "text-emerald-500",
+    hoverBg: "hover:bg-emerald-500",
+    checkIcon: "https://img.icons8.com/ios-filled/50/10b981/ok--v1.png",
+  },
+};
 
 export default function ServicesSection() {
   const navigate = useNavigate();
@@ -62,31 +88,37 @@ export default function ServicesSection() {
     return () => window.removeEventListener("resize", updateLayout);
   }, []);
 
-  // Helper component for styled list items
-  const ServiceList = ({ items }: { items: string[] }) => (
-    <ul className="list-none space-y-3 mt-4 ">
-      {items.map((text, idx) => (
-        <div key={idx} className="flex items-start gap-3 text-lg text-[#18191c]/80 leading-tight">
-          <img
-            src={CHECK_ICON}
-            alt="check"
-            className="w-4 h-4 mt-1 flex-shrink-0"
-          />
-          <span className="font-medium">{text}</span>
-        </div>
-      ))}
-    </ul>
-  );
+  // Helper component for styled list items with themed checkmarks
+  const ServiceList = ({ items, themeId }: { items: string[]; themeId: keyof typeof serviceThemes }) => {
+    const theme = serviceThemes[themeId];
+    return (
+      <ul className="list-none space-y-3 mt-4 ">
+        {items.map((text, idx) => (
+          <div key={idx} className="flex items-start gap-3 text-lg text-[#18191c]/80 leading-tight">
+            <img
+              src={theme.checkIcon}
+              alt="check"
+              className="w-4 h-4 mt-1 flex-shrink-0"
+            />
+            <span className="font-medium">{text}</span>
+          </div>
+        ))}
+      </ul>
+    );
+  };
 
   return (
-    <section ref={sectionRef} className="services bg-[#e9e9e9] font-bricolage select-none py-20" id="our-services">
+    <section ref={sectionRef} className="services font-bricolage select-none py-24" id="our-services" style={{ background: "linear-gradient(to bottom, #f8f8f8, #efefef, #e9e9e9)" }}>
       <div className="container mx-auto px-4">
-        <span className="block mb-4 text-sm uppercase tracking-widest text-[#18191c] text-center font-bold opacity-70">
+        <span className="block mb-4 text-sm uppercase tracking-widest text-[#ff4d31] text-center font-bold">
           Our Core Services
         </span>
-        <h2 className="text-4xl md:text-5xl text-center mb-16 text-[#18191c] font-medium">
+        <h2 className="text-4xl md:text-5xl text-center mb-6 text-[#18191c] font-bold">
           What We Specialize In
         </h2>
+        <p className="text-center text-gray-500 max-w-2xl mx-auto mb-16">
+          Premium creative solutions tailored for ambitious brands and creators
+        </p>
 
         <div className="services-container flex flex-col md:flex-row gap-6">
 
@@ -108,21 +140,30 @@ export default function ServicesSection() {
           >
 
             <div className="service-header">
-              <img className="h-max max-h-[75px] mr-3 rounded-[12px] bg-[#ff4d31] p-3" src={pitchDeckIcon} alt="Pitch Deck" />
+              <img
+                className="h-max max-h-[75px] mr-3 rounded-[12px] p-3"
+                style={{ backgroundColor: serviceThemes["pitch-deck"].color }}
+                src={pitchDeckIcon}
+                alt="Pitch Deck"
+              />
               <h3 className="text-[1.8rem] md:text-[2.2rem] leading-tight w-full font-bold">Pitch Deck <br /> Designing</h3>
               <MagneticBubble />
             </div>
             <div className="service-details mt-4">
-              <p className="text-xl font-bold uppercase tracking-wider text-[#ff4d31]">What We Offer:</p>
-              <ServiceList items={[
-                "Investor-ready pitch decks",
-                "Startup & business presentations",
-                "High-converting sales decks",
-                "Clear storytelling & flow",
-                "Data-driven visual design"
-              ]} />
+              <p className="text-xl font-bold uppercase tracking-wider" style={{ color: serviceThemes["pitch-deck"].color }}>What We Offer:</p>
+              <ServiceList
+                themeId="pitch-deck"
+                items={[
+                  "Investor-ready pitch decks",
+                  "Startup & business presentations",
+                  "High-converting sales decks",
+                  "Clear storytelling & flow",
+                  "Data-driven visual design"
+                ]}
+              />
               <button onClick={() => navigate("/pitch-deck")}
-                className="bg-[#ff4d31] text-white px-8 py-3 rounded-[8px] mt-10 hover:bg-[#ff4d31]/90 font-semibold transition-all">
+                className="text-white px-8 py-3 rounded-[8px] mt-10 font-semibold transition-all hover:opacity-90 hover:scale-105"
+                style={{ backgroundColor: serviceThemes["pitch-deck"].color }}>
                 Learn More
               </button>
             </div>
@@ -147,21 +188,30 @@ export default function ServicesSection() {
           >
 
             <div className="service-header">
-              <img className="h-max max-h-[75px] mr-3 rounded-[12px] bg-[#ff4d31] p-3" src={videoIcon} alt="Video Editing" />
+              <img
+                className="h-max max-h-[75px] mr-3 rounded-[12px] p-3"
+                style={{ backgroundColor: serviceThemes["video-editing"].color }}
+                src={videoIcon}
+                alt="Video Editing"
+              />
               <h3 className="text-[1.8rem] md:text-[2.2rem] leading-tight w-full font-bold">Video <br /> Editing</h3>
               <MagneticBubble />
             </div>
             <div className="service-details mt-4">
-              <p className="text-xl font-bold uppercase tracking-wider text-[#ff4d31]">What We Offer:</p>
-              <ServiceList items={[
-                "High-impact social media reels",
-                "Promotional & brand videos",
-                "Short-form content editing",
-                "Motion graphics & transitions",
-                "Platform-optimized content"
-              ]} />
+              <p className="text-xl font-bold uppercase tracking-wider" style={{ color: serviceThemes["video-editing"].color }}>What We Offer:</p>
+              <ServiceList
+                themeId="video-editing"
+                items={[
+                  "High-impact social media reels",
+                  "Promotional & brand videos",
+                  "Short-form content editing",
+                  "Motion graphics & transitions",
+                  "Platform-optimized content"
+                ]}
+              />
               <button onClick={() => navigate("/video-editing")}
-                className="bg-[#ff4d31] text-white px-8 py-3 rounded-[8px] mt-10 hover:bg-[#ff4d31]/90 font-semibold transition-all">
+                className="text-white px-8 py-3 rounded-[8px] mt-10 font-semibold transition-all hover:opacity-90 hover:scale-105"
+                style={{ backgroundColor: serviceThemes["video-editing"].color }}>
                 Learn More
               </button>
             </div>
@@ -186,21 +236,31 @@ export default function ServicesSection() {
           >
 
             <div className="service-header">
-              <img className="h-max max-h-[75px] mr-3 rounded-[12px] bg-[#ff4d31] p-3" src={webIcon} alt="Web Design" />
+              <img
+                className="h-max max-h-[75px] mr-3 rounded-[12px] p-3"
+                style={{ backgroundColor: serviceThemes["web-designing"].color }}
+                src={webIcon}
+                alt="Web Design"
+              />
               <h3 className="text-[1.8rem] md:text-[2.2rem] leading-tight w-full font-bold">Website <br /> Design</h3>
               <MagneticBubble />
             </div>
             <div className="service-details mt-4">
-              <p className="text-xl font-bold uppercase tracking-wider text-[#ff4d31]">What We Offer:</p>
-              <ServiceList items={[
-                "Custom website development",
-                "Modern, responsive UI/UX",
-                "Landing pages for conversion",
-                "Fast, secure, and scalable",
-                "Mobile-first SEO structure"
-              ]} />
+              <p className="text-xl font-bold uppercase tracking-wider" style={{ color: serviceThemes["web-designing"].color }}>What We Offer:</p>
+              <ServiceList
+                themeId="web-designing"
+                items={[
+                  "Custom website development",
+                  "Modern, responsive UI/UX",
+                  "Landing pages for conversion",
+                  "Fast, secure, and scalable",
+                  "Mobile-first SEO structure"
+                ]}
+              />
               <button onClick={() => navigate("/web-design")}
-                className="bg-[#ff4d31] text-white px-8 py-3 rounded-[8px] mt-10 hover:bg-[#ff4d31]/90 font-semibold transition-all">                Learn More
+                className="text-white px-8 py-3 rounded-[8px] mt-10 font-semibold transition-all hover:opacity-90 hover:scale-105"
+                style={{ backgroundColor: serviceThemes["web-designing"].color }}>
+                Learn More
               </button>
             </div>
             <div className="vertical-label">Website Design</div>
@@ -224,21 +284,31 @@ export default function ServicesSection() {
           >
 
             <div className="service-header">
-              <img className="h-max max-h-[75px] mr-3 rounded-[12px] bg-[#ff4d31] p-3" src={aiIcon} alt="AI" />
+              <img
+                className="h-max max-h-[75px] mr-3 rounded-[12px] p-3"
+                style={{ backgroundColor: serviceThemes["ai-automation"].color }}
+                src={aiIcon}
+                alt="AI"
+              />
               <h3 className="text-[1.8rem] md:text-[2.2rem] leading-tight w-full font-bold">AI & <br /> Automation</h3>
               <MagneticBubble />
             </div>
             <div className="service-details mt-4">
-              <p className="text-xl font-bold uppercase tracking-wider text-[#ff4d31]">What We Offer:</p>
-              <ServiceList items={[
-                "Workflow automation systems",
-                "Email Automation Agents",
-                "Voice AI for calls & follow-ups",
-                "Smart lead response tools",
-                "Manual task reduction"
-              ]} />
+              <p className="text-xl font-bold uppercase tracking-wider" style={{ color: serviceThemes["ai-automation"].color }}>What We Offer:</p>
+              <ServiceList
+                themeId="ai-automation"
+                items={[
+                  "Workflow automation systems",
+                  "Email Automation Agents",
+                  "Voice AI for calls & follow-ups",
+                  "Smart lead response tools",
+                  "Manual task reduction"
+                ]}
+              />
               <button onClick={() => navigate("/ai-automation")}
-                className="bg-[#ff4d31] text-white px-8 py-3 rounded-[8px] mt-10 hover:bg-[#ff4d31]/90 font-semibold transition-all">                Learn More
+                className="text-white px-8 py-3 rounded-[8px] mt-10 font-semibold transition-all hover:opacity-90 hover:scale-105"
+                style={{ backgroundColor: serviceThemes["ai-automation"].color }}>
+                Learn More
               </button>
             </div>
             <div className="vertical-label">AI & Automation</div>
