@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, Mail, MapPin, Check } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Calendar, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const sectionVariants = {
@@ -23,346 +23,205 @@ const itemVariants = {
     },
 };
 
+const features = [
+    { icon: Clock, text: "30-Minute Strategy Call" },
+    { icon: Sparkles, text: "Custom Solutions Discussion" },
+    { icon: Calendar, text: "Flexible Scheduling" },
+];
+
 export default function Contact() {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        service: "",
-        budget: "",
-        message: "",
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [error, setError] = useState("");
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "https://assets.calendly.com/assets/external/widget.js";
+        script.async = true;
+        document.body.appendChild(script);
 
-    const services = [
-        "Pitch Deck Designing",
-        "Video Editing",
-        "Website Designing",
-        "AI & Automation",
-        "Other",
-    ];
-
-    const budgetRanges = [
-        "Under $500",
-        "$500 - $1,000",
-        "$1,000 - $5,000",
-        "$5,000 - $10,000",
-        "$10,000+",
-    ];
-
-    const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-    ) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        setError("");
-
-        try {
-            const response = await fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    access_key: "610ab766-0a22-4922-9b13-d3d028b77ad6",
-                    ...formData,
-                    subject: `New Consultation Request - ${formData.service}`,
-                }),
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-                setIsSubmitted(true);
-                setFormData({
-                    name: "",
-                    email: "",
-                    phone: "",
-                    service: "",
-                    budget: "",
-                    message: "",
-                });
-            } else {
-                setError("Something went wrong. Please try again.");
+        return () => {
+            if (document.body.contains(script)) {
+                document.body.removeChild(script);
             }
-        } catch (err) {
-            setError("Failed to submit. Please try again later.");
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
+        };
+    }, []);
 
     return (
-        <div className="min-h-screen bg-black text-white font-bricolage">
+        <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#111111] to-[#0a0a0a] text-white font-bricolage overflow-hidden">
+            {/* Background Elements */}
+            <div className="fixed inset-0 pointer-events-none">
+                <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#ff4d31]/10 rounded-full blur-[200px]" />
+                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[180px]" />
+            </div>
+
             {/* Navigation */}
-            <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
-                <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-                    <Link to="/" className="text-xl font-bold">
-                        Vertex Media House
+            <nav className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-xl border-b border-white/5">
+                <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+                    <Link to="/" className="group flex items-center gap-2.5">
+                        <motion.div
+                            className="relative"
+                            whileHover={{ scale: 1.05, rotate: 5 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            <svg
+                                className="w-9 h-9 transition-transform duration-300"
+                                viewBox="0 0 40 40"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M8 32L20 8L32 32H26L20 18L14 32H8Z"
+                                    className="fill-[#ff4d31] group-hover:fill-[#ff6347] transition-colors duration-300"
+                                />
+                                <path
+                                    d="M20 18L26 32H14L20 18Z"
+                                    className="fill-[#ff4d31] group-hover:fill-[#ff6347] transition-colors duration-300"
+                                    opacity="0.6"
+                                />
+                            </svg>
+                        </motion.div>
+                        <span className="text-xl font-black tracking-tight text-white group-hover:text-gray-200 transition-colors duration-300">
+                            ALPHA
+                        </span>
                     </Link>
                     <Link
                         to="/"
-                        className="text-sm text-white/70 hover:text-white transition-colors"
+                        className="text-sm text-white/60 hover:text-white transition-colors flex items-center gap-2 px-4 py-2 rounded-full hover:bg-white/5"
                     >
-                        ← Back to Home
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        </svg>
+                        Back to Home
                     </Link>
                 </div>
             </nav>
 
             <motion.main
-                className="container mx-auto px-6 pt-32 pb-20"
+                className="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-20"
                 variants={sectionVariants}
                 initial="hidden"
                 animate="visible"
             >
-                <div className="grid lg:grid-cols-2 gap-16 items-start">
-                    {/* Left Column - Info */}
-                    <motion.div variants={itemVariants}>
-                        <span className="inline-block px-4 py-1.5 rounded-full bg-[#ff4d31]/10 text-[#ff4d31] text-sm font-medium mb-6">
-                            Let's Connect
-                        </span>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6">
-                            Schedule a Free
-                            <span className="text-[#ff4d31]"> Consultation</span>
-                        </h1>
-                        <p className="text-lg text-white/60 mb-10 max-w-md">
-                            Tell us about your project and we'll get back to you within 24 hours
-                            with a custom strategy tailored to your needs.
-                        </p>
+                {/* Header Section */}
+                <motion.div variants={itemVariants} className="text-center mb-12">
+                    <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#ff4d31]/10 text-[#ff4d31] text-sm font-medium mb-6 border border-[#ff4d31]/20">
+                        <Calendar className="w-4 h-4" />
+                        Book Your Free Consultation
+                    </span>
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+                        Let's Build Something
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4d31] to-[#ff6b4d]"> Amazing</span>
+                    </h1>
+                    <p className="text-lg text-white/50 max-w-2xl mx-auto">
+                        Pick a time that works for you and let's discuss how we can transform your vision into reality.
+                    </p>
+                </motion.div>
 
-                        {/* Contact Info */}
-                        <div className="space-y-6">
+                {/* Features Row */}
+                <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-12">
+                    {features.map((feature, idx) => (
+                        <div
+                            key={idx}
+                            className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 text-sm text-white/70"
+                        >
+                            <feature.icon className="w-4 h-4 text-[#ff4d31]" />
+                            {feature.text}
+                        </div>
+                    ))}
+                </motion.div>
+
+                <div className="grid lg:grid-cols-5 gap-10 items-start">
+                    {/* Left Column - Info (2 cols) */}
+                    <motion.div variants={itemVariants} className="lg:col-span-2 space-y-8">
+                        {/* Contact Cards */}
+                        <div className="space-y-4">
+                            <h3 className="text-sm uppercase tracking-wider text-white/40 font-medium mb-4">
+                                Other Ways to Reach Us
+                            </h3>
+
                             <motion.a
                                 href="tel:+919909210605"
-                                className="flex items-center gap-4 group"
+                                className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-[#ff4d31]/20 transition-all group"
                                 whileHover={{ x: 5 }}
                             >
-                                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#ff4d31]/20 group-hover:border-[#ff4d31]/30 transition-all">
+                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#ff4d31]/20 to-[#ff4d31]/5 flex items-center justify-center group-hover:from-[#ff4d31]/30 group-hover:to-[#ff4d31]/10 transition-all">
                                     <Phone className="w-5 h-5 text-[#ff4d31]" />
                                 </div>
                                 <div>
-                                    <p className="text-sm text-white/40">Call Us</p>
-                                    <p className="text-white font-medium">+91 9909210605</p>
+                                    <p className="text-xs text-white/40 uppercase tracking-wider mb-0.5">Call Us Directly</p>
+                                    <p className="text-white font-semibold">+91 9909210605</p>
                                 </div>
                             </motion.a>
 
                             <motion.a
                                 href="mailto:hello@vertexmedia.house"
-                                className="flex items-center gap-4 group"
+                                className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-[#ff4d31]/20 transition-all group"
                                 whileHover={{ x: 5 }}
                             >
-                                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#ff4d31]/20 group-hover:border-[#ff4d31]/30 transition-all">
-                                    <Mail className="w-5 h-5 text-[#ff4d31]" />
+                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center group-hover:from-purple-500/30 group-hover:to-purple-500/10 transition-all">
+                                    <Mail className="w-5 h-5 text-purple-400" />
                                 </div>
                                 <div>
-                                    <p className="text-sm text-white/40">Email Us</p>
-                                    <p className="text-white font-medium">hello@vertexmedia.house</p>
+                                    <p className="text-xs text-white/40 uppercase tracking-wider mb-0.5">Email Us</p>
+                                    <p className="text-white font-semibold">hello@vertexmedia.house</p>
                                 </div>
                             </motion.a>
 
                             <motion.div
-                                className="flex items-center gap-4"
-                                whileHover={{ x: 5 }}
+                                className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/5"
                             >
-                                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                                    <MapPin className="w-5 h-5 text-[#ff4d31]" />
+                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center">
+                                    <MapPin className="w-5 h-5 text-emerald-400" />
                                 </div>
                                 <div>
-                                    <p className="text-sm text-white/40">Location</p>
-                                    <p className="text-white font-medium">Remote - Worldwide</p>
+                                    <p className="text-xs text-white/40 uppercase tracking-wider mb-0.5">Location</p>
+                                    <p className="text-white font-semibold">Remote - Worldwide</p>
                                 </div>
                             </motion.div>
                         </div>
+
+                        {/* Response Time Badge */}
+                        <div className="p-5 rounded-2xl bg-gradient-to-br from-[#ff4d31]/10 to-transparent border border-[#ff4d31]/10">
+                            <div className="flex items-center gap-3 mb-2">
+                                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                                <span className="text-sm font-medium text-white/80">Quick Response Time</span>
+                            </div>
+                            <p className="text-sm text-white/50">
+                                We typically respond within 2-4 hours during business days.
+                            </p>
+                        </div>
                     </motion.div>
 
-                    {/* Right Column - Form */}
-                    <motion.div variants={itemVariants}>
-                        {isSubmitted ? (
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-3xl p-10 text-center"
-                            >
-                                <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-6">
-                                    <Check className="w-10 h-10 text-green-500" />
-                                </div>
-                                <h3 className="text-2xl font-semibold mb-3">Thank You!</h3>
-                                <p className="text-white/60 mb-6">
-                                    Your consultation request has been received. We'll get back to you
-                                    within 24 hours.
-                                </p>
-                                <button
-                                    onClick={() => setIsSubmitted(false)}
-                                    className="text-[#ff4d31] hover:underline"
-                                >
-                                    Submit another request
-                                </button>
-                            </motion.div>
-                        ) : (
-                            <form
-                                onSubmit={handleSubmit}
-                                className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-10 space-y-6"
-                            >
-                                <div className="grid md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label className="block text-sm text-white/60 mb-2">
-                                            Full Name *
-                                        </label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            required
-                                            value={formData.name}
-                                            onChange={handleChange}
-                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-[#ff4d31]/50 transition-colors"
-                                            placeholder="Enter your name"
-                                        />
+                    {/* Right Column - Calendly Widget (3 cols) */}
+                    <motion.div variants={itemVariants} className="lg:col-span-3">
+                        <div className="relative">
+                            {/* Glow Effect */}
+                            <div className="absolute -inset-1 bg-gradient-to-r from-[#ff4d31]/20 via-purple-500/20 to-[#ff4d31]/20 rounded-3xl blur-xl opacity-50" />
+
+                            <div className="relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl border border-white/10 rounded-3xl p-1.5 overflow-hidden">
+                                {/* Widget Header */}
+                                <div className="px-5 py-4 border-b border-white/5 flex items-center justify-between">
+                                    <div className="flex items-center gap-3">
+                                        <div className="flex gap-1.5">
+                                            <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                                            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                                            <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                                        </div>
+                                        <span className="text-sm text-white/40">Schedule a Meeting</span>
                                     </div>
-                                    <div>
-                                        <label className="block text-sm text-white/60 mb-2">
-                                            Email Address *
-                                        </label>
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            required
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-[#ff4d31]/50 transition-colors"
-                                            placeholder="youremail@gmail.com"
-                                        />
-                                    </div>
+                                    <span className="text-xs text-white/30 flex items-center gap-1">
+                                        <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
+                                        Secure Booking
+                                    </span>
                                 </div>
 
-                                <div className="grid md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label className="block text-sm text-white/60 mb-2">
-                                            Phone Number
-                                        </label>
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            value={formData.phone}
-                                            onChange={handleChange}
-                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-[#ff4d31]/50 transition-colors"
-                                            placeholder="Your phone number"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm text-white/60 mb-2">
-                                            Service Needed *
-                                        </label>
-                                        <select
-                                            name="service"
-                                            required
-                                            value={formData.service}
-                                            onChange={handleChange}
-                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#ff4d31]/50 transition-colors appearance-none cursor-pointer"
-                                        >
-                                            <option value="" className="bg-black">
-                                                Select a service
-                                            </option>
-                                            {services.map((service) => (
-                                                <option key={service} value={service} className="bg-black">
-                                                    {service}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm text-white/60 mb-2">
-                                        Budget Range
-                                    </label>
-                                    <select
-                                        name="budget"
-                                        value={formData.budget}
-                                        onChange={handleChange}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#ff4d31]/50 transition-colors appearance-none cursor-pointer"
-                                    >
-                                        <option value="" className="bg-black">
-                                            Select budget range
-                                        </option>
-                                        {budgetRanges.map((range) => (
-                                            <option key={range} value={range} className="bg-black">
-                                                {range}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm text-white/60 mb-2">
-                                        Project Details *
-                                    </label>
-                                    <textarea
-                                        name="message"
-                                        required
-                                        rows={4}
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-[#ff4d31]/50 transition-colors resize-none"
-                                        placeholder="Tell us about your project, goals, and timeline..."
+                                {/* Calendly Embed */}
+                                <div className="bg-black rounded-b-2xl overflow-hidden">
+                                    <div
+                                        className="calendly-inline-widget"
+                                        data-url="https://calendly.com/h-kansara106/new-meeting?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=ffffff&primary_color=ff4d31"
+                                        style={{ minWidth: "320px", height: "650px", backgroundColor: "black" }}
                                     />
                                 </div>
-
-                                {error && (
-                                    <p className="text-red-500 text-sm">{error}</p>
-                                )}
-
-                                <motion.button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className="w-full bg-[#ff4d31] hover:bg-[#ff4d31]/90 text-white font-medium py-4 rounded-xl flex items-center justify-center gap-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                                    whileHover={{ scale: 1.01 }}
-                                    whileTap={{ scale: 0.99 }}
-                                >
-                                    {isSubmitting ? (
-                                        <span className="flex items-center gap-2">
-                                            <svg
-                                                className="animate-spin h-5 w-5"
-                                                viewBox="0 0 24 24"
-                                            >
-                                                <circle
-                                                    className="opacity-25"
-                                                    cx="12"
-                                                    cy="12"
-                                                    r="10"
-                                                    stroke="currentColor"
-                                                    strokeWidth="4"
-                                                    fill="none"
-                                                />
-                                                <path
-                                                    className="opacity-75"
-                                                    fill="currentColor"
-                                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                                                />
-                                            </svg>
-                                            Sending...
-                                        </span>
-                                    ) : (
-                                        <>
-                                            Schedule Consultation
-                                            <ArrowRight className="w-5 h-5" />
-                                        </>
-                                    )}
-                                </motion.button>
-
-                                <p className="text-center text-white/40 text-sm">
-                                    By submitting, you agree to our{" "}
-                                    <span className="text-white/60 hover:text-white cursor-pointer">
-                                        Privacy Policy
-                                    </span>
-                                </p>
-                            </form>
-                        )}
+                            </div>
+                        </div>
                     </motion.div>
                 </div>
             </motion.main>

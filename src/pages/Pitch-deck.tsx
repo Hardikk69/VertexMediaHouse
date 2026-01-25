@@ -7,6 +7,7 @@ import FaqSection from "@/components/sections/FaqSection";
 import FooterSection from "@/components/sections/FooterSection";
 import LogoList from "@/components/sections/LogoList";
 import PortfolioDrag from "@/components/sections/PortfolioSection";
+import ServicesPlans from "@/components/sections/ServicesPlans";
 
 // Icons
 import { Presentation, Target, TrendingUp, Layers, Zap, CheckCircle, ArrowRight } from "lucide-react";
@@ -65,7 +66,9 @@ export default function Pitchdeck() {
         .theme-orange [class*="bg-[#fafafa]"],
         .theme-orange [class*="bg-[#efefef]"],
         .theme-orange [class*="bg-[#f3f4f6]"],
-        .theme-orange [class*="bg-[#e9ecef]"] {
+        .theme-orange [class*="bg-[#e9ecef]"],
+        .theme-orange [class*="bg-[#efefed]"],
+        .theme-orange [class*="bg-[#e9e9e9]"] {
           background-color: rgb(255 247 237 / 0.7) !important;
         }
         .theme-orange [class*="bg-[#101010]"],
@@ -89,7 +92,7 @@ export default function Pitchdeck() {
               <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full blur-[150px]" />
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-32 pb-20">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-36 pb-12">
               <div className="grid lg:grid-cols-2 gap-16 items-center">
                 {/* Left Content */}
                 <motion.div
@@ -109,7 +112,7 @@ export default function Pitchdeck() {
                   <p className="text-lg text-gray-400 mb-10 max-w-lg leading-relaxed">
                     We design investor-ready pitch decks that tell your story, showcase your vision, and help you secure the funding you deserve.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex flex-col sm:flex-row gap-4 mt-12">
                     <a
                       href="tel:+919909210605"
                       className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#ff4d31] text-white rounded-full font-semibold hover:bg-[#ff3d21] transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#ff4d31]/25"
@@ -163,8 +166,10 @@ export default function Pitchdeck() {
 
         <PortfolioDrag />
 
+        <ServicesPlans accentColor="bg-[#ff4d31]" accentHoverColor="hover:bg-[#ff3d21]" />
+
         {/* Features Section */}
-        <section className="py-24 bg-gradient-to-b from-orange-100/80 via-orange-50/50 to-white">
+        <section className="py-24 bg-[#fafafa]">
           <div className="max-w-7xl mx-auto px-4 md:px-8">
             <div className="text-center mb-20">
               <span className="text-sm uppercase tracking-[0.2em] text-[#ff4d31] font-semibold">What We Offer</span>

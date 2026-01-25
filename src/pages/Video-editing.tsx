@@ -7,6 +7,7 @@ import FaqSection from "@/components/sections/FaqSection";
 import FooterSection from "@/components/sections/FooterSection";
 import LogoList from "@/components/sections/LogoList";
 import PortfolioDrag from "@/components/sections/PortfolioSection";
+import ServicesPlans from "@/components/sections/ServicesPlans";
 
 // Icons
 import { Video, Sparkles, Scissors, Volume2, Palette, Clock, ArrowRight } from "lucide-react";
@@ -65,7 +66,9 @@ export default function VideoEditing() {
         .theme-purple [class*="bg-[#fafafa]"],
         .theme-purple [class*="bg-[#efefef]"],
         .theme-purple [class*="bg-[#f3f4f6]"],
-        .theme-purple [class*="bg-[#e9ecef]"] {
+        .theme-purple [class*="bg-[#e9ecef]"],
+        .theme-purple [class*="bg-[#efefed]"],
+        .theme-purple [class*="bg-[#e9e9e9]"] {
           background-color: rgb(250 245 255 / 0.7) !important;
         }
         .theme-purple [class*="bg-[#101010]"],
@@ -89,7 +92,7 @@ export default function VideoEditing() {
               <div className="absolute bottom-10 left-20 w-72 h-72 bg-[#ff4d31] rounded-full blur-[130px]" />
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-32 pb-20">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-36 pb-12">
               <div className="grid lg:grid-cols-2 gap-16 items-center">
                 {/* Left Content */}
                 <motion.div
@@ -109,7 +112,7 @@ export default function VideoEditing() {
                   <p className="text-lg text-gray-400 mb-10 max-w-lg leading-relaxed">
                     We create scroll-stopping video content that engages your audience and drives results. From reels to promos, we handle it all.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex flex-col sm:flex-row gap-4 mt-12">
                     <a
                       href="tel:+919909210605"
                       className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-[#ff4d31] text-white rounded-full font-semibold hover:opacity-90 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25"
@@ -165,8 +168,10 @@ export default function VideoEditing() {
 
         <PortfolioDrag />
 
+        <ServicesPlans accentColor="bg-purple-600" accentHoverColor="hover:bg-purple-700" />
+
         {/* Features Section */}
-        <section className="py-24 bg-gradient-to-b from-purple-100/80 via-purple-50/50 to-white">
+        <section className="py-24 bg-[#fafafa]">
           <div className="max-w-7xl mx-auto px-4 md:px-8">
             <div className="text-center mb-20">
               <span className="text-sm uppercase tracking-[0.2em] text-purple-600 font-semibold">What We Offer</span>

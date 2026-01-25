@@ -86,9 +86,10 @@ export default function CalenderCard() {
                   hover:scale-105 hover:shadow-lg
                 "
               >
-                <span className="px-6 md:px-12 py-3 font-medium text-sm md:text-base">
+                <span className="px-6 md:px-12 py-3 font-medium text-sm md:text-base whitespace-nowrap">
                   Schedule a free consultation
                 </span>
+
                 <span className="bg-white text-black m-1 p-2 pl-4 rounded hidden md:block">
                   →
                 </span>

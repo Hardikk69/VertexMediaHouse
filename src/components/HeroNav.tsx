@@ -75,13 +75,24 @@ const HeroNav = () => {
 
     if (target.startsWith("/#")) {
       const hash = target.substring(1);
+      // First check if the section exists on the current page
+      const element = document.querySelector(hash);
+      if (element) {
+        e.preventDefault();
+        element.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+      // If on home page but element not found yet, still try (might be loading)
       if (location.pathname === "/") {
         e.preventDefault();
-        const element = document.querySelector(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
+        setTimeout(() => {
+          const el = document.querySelector(hash);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
       }
+      // Otherwise, let the link navigate to home page with hash
     }
   };
 

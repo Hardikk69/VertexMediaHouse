@@ -7,6 +7,7 @@ import FaqSection from "@/components/sections/FaqSection";
 import FooterSection from "@/components/sections/FooterSection";
 import LogoList from "@/components/sections/LogoList";
 import PortfolioDrag from "@/components/sections/PortfolioSection";
+import ServicesPlans from "@/components/sections/ServicesPlans";
 
 // Icons
 import { Globe, Smartphone, Zap, Shield, Search, PenTool, Code, Rocket, ArrowRight } from "lucide-react";
@@ -67,7 +68,9 @@ export default function WebDesign() {
         .theme-cyan [class*="bg-[#fafafa]"],
         .theme-cyan [class*="bg-[#efefef]"],
         .theme-cyan [class*="bg-[#f3f4f6]"],
-        .theme-cyan [class*="bg-[#e9ecef]"] {
+        .theme-cyan [class*="bg-[#e9ecef]"],
+        .theme-cyan [class*="bg-[#efefed]"],
+        .theme-cyan [class*="bg-[#e9e9e9]"] {
           background-color: rgb(236 254 255 / 0.7) !important;
         }
         .theme-cyan [class*="bg-[#101010]"],
@@ -99,7 +102,7 @@ export default function WebDesign() {
               }} />
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-32 pb-20">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-36 pb-12">
               <div className="grid lg:grid-cols-2 gap-16 items-center">
                 {/* Left Content */}
                 <motion.div
@@ -119,7 +122,7 @@ export default function WebDesign() {
                   <p className="text-lg text-gray-400 mb-10 max-w-lg leading-relaxed">
                     We build stunning, high-performance websites that turn visitors into customers. Modern design, blazing speed, and built to scale.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex flex-col sm:flex-row gap-4 mt-12">
                     <a
                       href="tel:+919909210605"
                       className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold hover:opacity-90 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/25"
@@ -154,7 +157,7 @@ export default function WebDesign() {
                           <div className="w-3 h-3 rounded-full bg-green-500" />
                         </div>
                         <div className="flex-1 mx-4">
-                          <div className="bg-white/10 rounded-full px-4 py-1.5 text-xs text-gray-400">
+                          <div className="bg-white/10 rounded-full px-4 py-1.5 text-xs text-black">
                             yourwebsite.com
                           </div>
                         </div>
@@ -187,8 +190,10 @@ export default function WebDesign() {
 
         <PortfolioDrag />
 
+        <ServicesPlans accentColor="bg-cyan-500" accentHoverColor="hover:bg-cyan-600" />
+
         {/* Features Section */}
-        <section className="py-24 bg-gradient-to-b from-cyan-100/80 via-cyan-50/50 to-white">
+        <section className="py-24 bg-[#fafafa]">
           <div className="max-w-7xl mx-auto px-4 md:px-8">
             <div className="text-center mb-20">
               <span className="text-sm uppercase tracking-[0.2em] text-cyan-600 font-semibold">What We Build</span>

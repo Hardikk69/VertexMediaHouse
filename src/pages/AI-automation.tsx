@@ -7,6 +7,7 @@ import FaqSection from "@/components/sections/FaqSection";
 import FooterSection from "@/components/sections/FooterSection";
 import LogoList from "@/components/sections/LogoList";
 import PortfolioDrag from "@/components/sections/PortfolioSection";
+import ServicesPlans from "@/components/sections/ServicesPlans";
 
 // Icons
 import { Bot, Mail, Phone, MessageSquare, Workflow, Clock, Zap, Brain, Settings, ArrowRight } from "lucide-react";
@@ -65,7 +66,9 @@ export default function AIAutomation() {
         .theme-emerald [class*="bg-[#fafafa]"],
         .theme-emerald [class*="bg-[#efefef]"],
         .theme-emerald [class*="bg-[#f3f4f6]"],
-        .theme-emerald [class*="bg-[#e9ecef]"] {
+        .theme-emerald [class*="bg-[#e9ecef]"],
+        .theme-emerald [class*="bg-[#efefed]"],
+        .theme-emerald [class*="bg-[#e9e9e9]"] {
           background-color: rgb(236 253 245 / 0.7) !important;
         }
         .theme-emerald [class*="bg-[#101010]"],
@@ -112,7 +115,7 @@ export default function AIAutomation() {
               ))}
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-32 pb-20">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-36 pb-12">
               <div className="grid lg:grid-cols-2 gap-16 items-center">
                 {/* Left Content */}
                 <motion.div
@@ -132,7 +135,7 @@ export default function AIAutomation() {
                   <p className="text-lg text-gray-400 mb-10 max-w-lg leading-relaxed">
                     We build AI-powered automation systems that handle repetitive tasks, respond to leads instantly, and free your team to focus on what matters.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex flex-col sm:flex-row gap-4 mt-12">
                     <a
                       href="tel:+919909210605"
                       className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-full font-semibold hover:opacity-90 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-500/25"
@@ -164,8 +167,8 @@ export default function AIAutomation() {
                           <Bot className="w-7 h-7 text-white" />
                         </div>
                         <div>
-                          <div className="text-white font-semibold text-lg">AI Agent Active</div>
-                          <div className="text-emerald-400 text-sm">Processing 23 tasks</div>
+                          <div className="text-black font-semibold text-lg">AI Agent Active</div>
+                          <div className="text-black-400 text-sm">Processing 23 tasks</div>
                         </div>
                       </div>
                       <div className="space-y-3">
@@ -178,7 +181,7 @@ export default function AIAutomation() {
                             transition={{ delay: 0.5 + i * 0.2 }}
                           >
                             <div className="w-2.5 h-2.5 bg-emerald-400 rounded-full" />
-                            <span className="text-gray-300 text-sm flex-1">{task}</span>
+                            <span className="text-black text-sm flex-1">{task}</span>
                             <span className="text-emerald-400 text-sm font-medium">✓</span>
                           </motion.div>
                         ))}
@@ -199,8 +202,10 @@ export default function AIAutomation() {
 
         <PortfolioDrag />
 
+        <ServicesPlans accentColor="bg-emerald-500" accentHoverColor="hover:bg-emerald-600" />
+
         {/* Features Section */}
-        <section className="py-24 bg-gradient-to-b from-emerald-100/80 via-emerald-50/50 to-white">
+        <section className="py-24 bg-[#fafafa]">
           <div className="max-w-7xl mx-auto px-4 md:px-8">
             <div className="text-center mb-20">
               <span className="text-sm uppercase tracking-[0.2em] text-emerald-600 font-semibold">What We Automate</span>
@@ -261,7 +266,7 @@ export default function AIAutomation() {
           </div>
         </section>
 
-        {/* Stats Section */}
+        {/* Stats Section
         <section className="py-20 bg-gradient-to-r from-emerald-500 via-emerald-600 to-green-600">
           <div className="max-w-7xl mx-auto px-4 md:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
@@ -283,7 +288,7 @@ export default function AIAutomation() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <CalenderCard />
         <div className="bg-emerald-50">
