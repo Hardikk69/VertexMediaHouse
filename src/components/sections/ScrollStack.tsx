@@ -5,6 +5,8 @@ export default function ScrollStakeSection() {
   return (
     <section className="scroll-stack-section py-8 md:py-12 rounded-b-lg bg-[#efefef]" id="why-us">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        
+
 
         {/* ===== TWO COLUMN LAYOUT ===== */}
         <div

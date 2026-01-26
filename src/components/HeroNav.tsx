@@ -135,7 +135,7 @@ const HeroNav = () => {
     <>
       {/* Fixed Navigation Container */}
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 py-4 md:py-5"
+        className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-4 md:pt-5"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
