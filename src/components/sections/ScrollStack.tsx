@@ -4,7 +4,7 @@ import ScrollStack from "./ScrollItem";
 export default function ScrollStakeSection() {
   return (
 <section
-  className="scroll-stack-section pt-12 pb-1 md:pt-16 md:pb-2 rounded-b-lg bg-[#efefef]"
+  className="scroll-stack-section pt-10 pb-12 md:pt-12 md:pb-16 rounded-b-lg bg-[#efefef]"
   id="why-us"
 >
 
@@ -14,7 +14,7 @@ export default function ScrollStakeSection() {
 
         {/* ===== TWO COLUMN LAYOUT ===== */}
         <div
-          className="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-10 lg:gap-20 items-start"
+          className="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-8 lg:gap-16 items-start"
         >
 
           {/* =================================================
@@ -25,7 +25,7 @@ export default function ScrollStakeSection() {
               relative
               h-fit
               lg:sticky
-              lg:top-[120px]
+              lg:top-[100px]
               text-center lg:text-left
               mb-6 lg:mb-0
             "
@@ -38,7 +38,7 @@ export default function ScrollStakeSection() {
               What Makes Us Different
             </h2>
 
-            <p className="text-[#18191c] leading-relaxed max-w-sm mx-auto lg:mx-0 h-auto lg:h-72">
+            <p className="text-[#18191c] leading-relaxed max-w-sm mx-auto lg:mx-0 h-auto lg:h-48">
               We combine strategy, creativity, and technology to build solutions
               that don't just look good - they perform.
               Our approach is collaborative, focused, and designed to help
@@ -49,14 +49,14 @@ export default function ScrollStakeSection() {
           {/* =================================================
               RIGHT — SCROLL STACK (UNCHANGED)
           ================================================= */}
-          <div className="scroll-stack-wrapper">
+          <div className="scroll-stack-wrapper pb-0">
             <ScrollStack
               useWindowScroll={true}
               // itemDistance={10}
-              itemStackDistance={20}
+              itemStackDistance={15}
               baseScale={0.9}
               stackPosition="30%"
-              className="gap-y-10 md:gap-y-20"
+              className="gap-y-6 md:gap-y-12"
             >
               <ScrollStackItem itemClassName="bg-[#d8f66f] text-black">
                 <div className="p-2 md:p-0">
