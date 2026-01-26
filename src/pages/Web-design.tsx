@@ -173,13 +173,6 @@ export default function WebDesign() {
                         </div>
                       </div>
                     </div>
-                    {/* Floating Elements */}
-                    <div className="absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-2xl flex items-center justify-center shadow-xl shadow-cyan-500/30">
-                      <Code className="w-8 h-8 text-white" />
-                    </div>
-                    <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-500/30">
-                      <Rocket className="w-8 h-8 text-white" />
-                    </div>
                   </div>
                 </motion.div>
               </div>

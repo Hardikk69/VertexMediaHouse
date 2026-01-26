@@ -151,13 +151,6 @@ export default function VideoEditing() {
                         <div className="h-full w-2/3 bg-gradient-to-r from-purple-600 to-[#ff4d31] rounded-full" />
                       </div>
                     </div>
-                    {/* Floating Elements */}
-                    <div className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-700 rounded-2xl flex items-center justify-center shadow-xl shadow-purple-500/30">
-                      <Video className="w-8 h-8 text-white" />
-                    </div>
-                    <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-gradient-to-br from-[#ff4d31] to-[#ff6b4d] rounded-2xl flex items-center justify-center shadow-xl shadow-[#ff4d31]/30">
-                      <Sparkles className="w-8 h-8 text-white" />
-                    </div>
                   </div>
                 </motion.div>
               </div>

@@ -153,10 +153,6 @@ export default function Pitchdeck() {
                         <div className="h-3 bg-white/10 rounded-full w-1/2" />
                       </div>
                     </div>
-                    {/* Floating Elements */}
-                    <div className="absolute -top-6 -right-6 w-20 h-20 bg-gradient-to-br from-[#ff4d31] to-[#ff6b4d] rounded-2xl flex items-center justify-center shadow-xl shadow-[#ff4d31]/30">
-                      <Presentation className="w-10 h-10 text-white" />
-                    </div>
                   </div>
                 </motion.div>
               </div>
