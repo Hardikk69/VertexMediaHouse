@@ -149,7 +149,10 @@ const HeroNav = () => {
           >
             <Link
               to="/"
-              onClick={() => setActiveLink(null)}
+              onClick={() => {
+                setActiveLink(null);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               className="group flex items-center gap-2.5"
             >
               <motion.div
@@ -315,7 +318,7 @@ const HeroNav = () => {
           {/* Mobile: Hamburger Button */}
           <button
             onClick={toggleMobileMenu}
-            className="flex md:hidden flex-col justify-center items-center w-11 h-11 gap-1.5 z-[60] rounded-full bg-white/10 backdrop-blur-sm"
+            className="flex md:hidden flex-col justify-center items-center w-11 h-11 z-[60] rounded-full bg-white/10 backdrop-blur-md border border-white/20"
             aria-label="Toggle menu"
           >
             <motion.span
@@ -324,7 +327,7 @@ const HeroNav = () => {
                 y: isMobileMenuOpen ? 6 : 0,
               }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className={`block w-5 h-0.5 transition-colors duration-300 ${isMobileMenuOpen ? "bg-gray-800" : "bg-white"}`}
+              className="block w-5 h-0.5 bg-white mb-1.5"
             />
             <motion.span
               animate={{
@@ -332,7 +335,7 @@ const HeroNav = () => {
                 scaleX: isMobileMenuOpen ? 0 : 1,
               }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className={`block w-5 h-0.5 transition-colors duration-300 ${isMobileMenuOpen ? "bg-gray-800" : "bg-white"}`}
+              className="block w-5 h-0.5 bg-white mb-1.5"
             />
             <motion.span
               animate={{
@@ -340,7 +343,7 @@ const HeroNav = () => {
                 y: isMobileMenuOpen ? -6 : 0,
               }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className={`block w-5 h-0.5 transition-colors duration-300 ${isMobileMenuOpen ? "bg-gray-800" : "bg-white"}`}
+              className="block w-5 h-0.5 bg-white"
             />
           </button>
         </div>
@@ -354,117 +357,165 @@ const HeroNav = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+            className="fixed inset-0 bg-black/60 backdrop-blur-md z-40 md:hidden"
             onClick={closeMobileMenu}
           />
         )}
       </AnimatePresence>
 
-      {/* Mobile Slide-In Menu */}
+      {/* Mobile Full-Screen Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed top-0 right-0 h-full w-[85%] max-w-[320px] bg-white shadow-2xl z-50 md:hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-50 md:hidden"
           >
-            <div className="flex flex-col h-full pt-24 px-6 pb-8 overflow-y-auto">
+            {/* Glassmorphism Background */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90 backdrop-blur-xl" />
+            
+            {/* Close Button - Top Right */}
+            <motion.button
+              onClick={closeMobileMenu}
+              className="absolute top-6 right-6 z-[60] w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300"
+              initial={{ opacity: 0, rotate: -90 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              exit={{ opacity: 0, rotate: 90 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label="Close menu"
+            >
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </motion.button>
+
+            {/* Menu Content */}
+            <div className="relative flex flex-col h-full pt-24 px-8 pb-10">
+              {/* Logo at top */}
+              <motion.div
+                className="mb-10"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+              >
+                <Link to="/" onClick={closeMobileMenu} className="flex items-center gap-3">
+                  <svg className="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 32L20 8L32 32H26L20 18L14 32H8Z" className="fill-[#ff4d31]" />
+                    <path d="M20 18L26 32H14L20 18Z" className="fill-[#ff4d31]" opacity="0.6" />
+                  </svg>
+                  <span className="text-2xl font-black tracking-tight text-white">ALPHA</span>
+                </Link>
+              </motion.div>
+
               {/* Navigation Links */}
-              {navLinks.map((link, index) => (
-                <motion.div
-                  key={link.target}
-                  className="border-b border-gray-100 last:border-0"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.3 }}
-                >
-                  {link.dropdown ? (
-                    <>
-                      <button
-                        onClick={() => toggleDropdown(link.target)}
-                        className="w-full flex items-center justify-between py-4 text-lg font-medium text-gray-800"
-                      >
-                        <span>{link.title}</span>
-                        <motion.svg
-                          animate={{ rotate: openDropdown === link.target ? 180 : 0 }}
-                          transition={{ duration: 0.25 }}
-                          className="w-5 h-5 text-gray-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
+              <nav className="flex-1 overflow-y-auto">
+                {navLinks.map((link, index) => (
+                  <motion.div
+                    key={link.target}
+                    className="border-b border-white/10"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.15 + index * 0.05, duration: 0.4 }}
+                  >
+                    {link.dropdown ? (
+                      <>
+                        <button
+                          onClick={() => toggleDropdown(link.target)}
+                          className="w-full flex items-center justify-between py-5 text-xl font-semibold text-white/90 hover:text-white transition-colors"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </motion.svg>
-                      </button>
-
-                      <AnimatePresence>
-                        {openDropdown === link.target && (
+                          <span>{link.title}</span>
                           <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.25 }}
-                            className="overflow-hidden"
+                            animate={{ rotate: openDropdown === link.target ? 180 : 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10"
                           >
-                            <div className="pb-4 pl-2 space-y-1">
-                              {link.dropdown.map((item) => (
-                                <Link
-                                  key={item.href}
-                                  to={item.href}
-                                  className={`flex items-center gap-3 py-2.5 px-2 rounded-lg text-base text-gray-500 transition-all duration-200 ${getDropdownItemStyle(item.color)}`}
-                                  onClick={closeMobileMenu}
-                                >
-                                  <span className={`w-2 h-2 rounded-full ${getIconColor(item.color)}`} />
-                                  {item.title}
-                                </Link>
-                              ))}
-                            </div>
+                            <svg className="w-4 h-4 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
                           </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </>
-                  ) : (
-                    <a
-                      href={link.target}
-                      className={`block py-4 text-lg font-medium transition-colors ${activeLink === link.target ? "text-[#ff4d31]" : "text-gray-800 hover:text-[#ff4d31]"
+                        </button>
+
+                        <AnimatePresence>
+                          {openDropdown === link.target && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pb-4 pl-4 space-y-2">
+                                {link.dropdown.map((item, i) => (
+                                  <motion.div
+                                    key={item.href}
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: i * 0.05 }}
+                                  >
+                                    <Link
+                                      to={item.href}
+                                      className="flex items-center gap-4 py-3 px-4 rounded-xl text-lg text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200"
+                                      onClick={closeMobileMenu}
+                                    >
+                                      <span className={`w-3 h-3 rounded-full ${getIconColor(item.color)}`} />
+                                      {item.title}
+                                    </Link>
+                                  </motion.div>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    ) : (
+                      <a
+                        href={link.target}
+                        className={`block py-5 text-xl font-semibold transition-colors ${
+                          activeLink === link.target 
+                            ? "text-[#ff4d31]" 
+                            : "text-white/90 hover:text-white"
                         }`}
-                      onClick={(e) => {
-                        handleNavClick(e, link.target);
-                        closeMobileMenu();
-                      }}
-                    >
-                      {link.title}
-                    </a>
-                  )}
-                </motion.div>
-              ))}
+                        onClick={(e) => {
+                          handleNavClick(e, link.target);
+                          closeMobileMenu();
+                        }}
+                      >
+                        {link.title}
+                      </a>
+                    )}
+                  </motion.div>
+                ))}
+              </nav>
 
-              {/* CTA Button */}
-              <Link to="/contact" onClick={closeMobileMenu}>
-                <motion.div
-                  className="mt-auto w-full rounded-full p-[2px]
-                  bg-gradient-to-r from-[#ff4d31] via-[#ff7a66] to-[#ffb199]
-                  shadow-[0_0_25px_rgba(255,77,49,0.45)]
-                  hover:shadow-[0_0_40px_rgba(255,77,49,0.75)]
-                  transition-all duration-300
-                  cursor-pointer"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.96 }}
-                >
-                  <span className="block w-full py-4 rounded-full text-center font-semibold text-lg
-                  text-[#ff4d31] bg-white
-                  hover:bg-[#fff5f2]
-                  transition-all duration-300">
-                    ✉️ Contact Us
-                  </span>
-                </motion.div>
-              </Link>
-
+              {/* CTA Button - Fixed at Bottom */}
+              <motion.div
+                className="mt-auto pt-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.4 }}
+              >
+                <Link to="/contact" onClick={closeMobileMenu}>
+                  <motion.div
+                    className="w-full py-4 px-8 rounded-full bg-gradient-to-r from-[#ff4d31] to-[#ff6b4d] text-white text-center text-lg font-semibold shadow-lg shadow-[#ff4d31]/30 flex items-center justify-center gap-3"
+                    whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(255, 77, 49, 0.4)" }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    Contact Us
+                  </motion.div>
+                </Link>
+                
+                {/* Social Links or Additional Info */}
+                <p className="text-center text-white/40 text-sm mt-6">
+                  Premium Creative Solutions
+                </p>
+              </motion.div>
             </div>
           </motion.div>
         )}
