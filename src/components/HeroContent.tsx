@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import RotatingPill from "./RotatingPill";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 type HeroContentProps = {
   isOpen: boolean;
@@ -117,53 +117,52 @@ const HeroContent = ({ isOpen, setOpen }: HeroContentProps) => {
         </motion.div>
       )}
 
-      {/* CTA Buttons */}
       <motion.div
         variants={itemVariants}
-        className="mt-10 flex flex-wrap items-center gap-3"
+        className="mt-10 flex flex-col sm:flex-row gap-4"
       >
-        <motion.a
-          href="tel:+919909210605"
-          variants={buttonVariants}
-          whileHover="hover"
-          whileTap="tap"
-          className="
-            inline-flex items-center gap-2
-            px-6 py-3
-            text-sm font-medium
-            text-black
-            bg-white
-            rounded-[4px]
-            transition-shadow duration-300
-            hover:shadow-lg hover:shadow-white/20
-            cursor-pointer
-          "
-        >
-          Book a Call
-          <motion.span
-            initial={{ x: 0 }}
-            whileHover={{ x: 4 }}
-            transition={{ duration: 0.2 }}
+        {/* ✅ Primary CTA */}
+        <Link to="/contact">
+          <motion.div
+            variants={buttonVariants}
+            whileHover="hover"
+            whileTap="tap"
+            className="
+              inline-flex items-center justify-center gap-2
+              px-8 py-4
+              text-white
+              bg-[#ff4d31]
+              rounded-full
+              font-semibold
+              transition-all duration-300
+              hover:bg-[#ff3d21]
+              hover:scale-105
+              hover:shadow-xl hover:shadow-[#ff4d31]/25
+              cursor-pointer
+            "
           >
+            Contact Us
             <ArrowRight className="w-4 h-4" />
-          </motion.span>
-        </motion.a>
+          </motion.div>
+        </Link>
 
+        {/* ✅ Secondary Glass Button */}
         <motion.button
           onClick={handleExploreServices}
           variants={buttonVariants}
           whileHover="hover"
           whileTap="tap"
           className="
-            inline-flex items-center gap-2
-            px-6 py-3
-            text-sm font-medium
+            inline-flex items-center justify-center
+            px-8 py-4
             text-white
-            border border-white/70
-            rounded-[4px]
+            bg-white/5
+            backdrop-blur-sm
+            border border-white/20
+            rounded-full
+            font-semibold
+            hover:bg-white/10
             transition-all duration-300
-            hover:bg-white hover:text-black
-            hover:shadow-lg hover:shadow-white/10
           "
         >
           Explore Services

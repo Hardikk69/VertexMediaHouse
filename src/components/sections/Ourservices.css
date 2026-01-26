@@ -47,7 +47,7 @@
 .service-card.active {
     flex: 3;
     /* Active item takes more space */
-    background: #fff;
+    /* background: #fff; */
     /* Active Dark Blue */
     color: #18191c;
     border-radius: 16px;

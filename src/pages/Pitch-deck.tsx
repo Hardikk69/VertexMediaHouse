@@ -60,7 +60,7 @@ export default function Pitchdeck() {
 
   return (
     <>
-      {/* Global theme tint */}
+      {/* Global theme tint - lightened orange shade */}
       <style>{`
         .theme-orange,
         .theme-orange [class*="bg-white"],
@@ -70,7 +70,8 @@ export default function Pitchdeck() {
         .theme-orange [class*="bg-[#e9ecef]"],
         .theme-orange [class*="bg-[#efefed]"],
         .theme-orange [class*="bg-[#e9e9e9]"] {
-          background-color: rgb(255 247 237 / 0.7) !important;
+        background-color: rgb(255 244 230 / 0.75) !important;
+
         }
         .theme-orange [class*="bg-[#101010]"],
         .theme-orange [class*="bg-[#18191c]"],
@@ -81,9 +82,9 @@ export default function Pitchdeck() {
           background-color: rgb(255 247 237 / 0.8) !important;
         }
       `}</style>
-      <main className="min-h-screen bg-orange-50 theme-orange">
+      <main className="min-h-screen bg-orange-50/80 theme-orange">
         {/* Hero Section */}
-        <div className="p-4 bg-orange-100/50">
+        <div className="p-4 bg-orange-50/60">
           <section className="relative h-auto min-h-0 md:h-[calc(100dvh-24px)] md:max-h-[calc(100dvh-24px)] 2xl:max-h-[700px] bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f0f23] rounded-xl overflow-hidden">
             <HeroNav />
 
@@ -114,13 +115,13 @@ export default function Pitchdeck() {
                     We design investor-ready pitch decks that tell your story, showcase your vision, and help you secure the funding you deserve.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 mt-12">
-                    <a
-                      href="tel:+919909210605"
+                    <Link
+                      to="/contact"
                       className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#ff4d31] text-white rounded-full font-semibold hover:bg-[#ff3d21] transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#ff4d31]/25"
                     >
-                      Book a Call
+                      Contact Us
                       <ArrowRight className="w-4 h-4" />
-                    </a>
+                    </Link>
                     <Link
                       to="/contact"
                       className="inline-flex items-center justify-center px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold hover:bg-white/10 transition-all duration-300"

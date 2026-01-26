@@ -124,13 +124,13 @@ export default function WebDesign() {
                     We build stunning, high-performance websites that turn visitors into customers. Modern design, blazing speed, and built to scale.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 mt-12">
-                    <a
-                      href="tel:+919909210605"
+                    <Link
+                      to="/contact"
                       className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold hover:opacity-90 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/25"
                     >
-                      Book a Call
+                      Contact Us
                       <ArrowRight className="w-4 h-4" />
-                    </a>
+                    </Link>
                     <Link
                       to="/contact"
                       className="inline-flex items-center justify-center px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold hover:bg-white/10 transition-all duration-300"

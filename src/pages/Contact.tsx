@@ -213,11 +213,11 @@ export default function Contact() {
                                 </div>
 
                                 {/* Calendly Embed */}
-                                <div className="bg-black rounded-b-2xl overflow-hidden">
+                                <div className="bg-white rounded-b-2xl overflow-hidden">
                                     <div
                                         className="calendly-inline-widget"
-                                        data-url="https://calendly.com/h-kansara106/new-meeting?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=ffffff&primary_color=ff4d31"
-                                        style={{ minWidth: "320px", height: "650px", backgroundColor: "black" }}
+                                        data-url="https://calendly.com/h-kansara106/new-meeting?hide_event_type_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=1a1a1a&primary_color=ff4d31"
+                                        style={{ minWidth: "320px", height: "650px", backgroundColor: "#ffffff" }}
                                     />
                                 </div>
                             </div>

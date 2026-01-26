@@ -1,7 +1,6 @@
 import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "@/components/sections/Ourservices.css";
-import MagneticBubble from "./MagneticBubble";
 
 // Your existing icons
 import pitchDeckIcon from '../assets/icons/pitchdeck.png'
@@ -17,6 +16,7 @@ const serviceThemes = {
     textClass: "text-orange-500",
     hoverBg: "hover:bg-orange-500",
     checkIcon: "https://img.icons8.com/ios-filled/50/f97316/ok--v1.png",
+    lightBg: "#fff7ed", // orange-50
   },
   "video-editing": {
     color: "#a855f7", // Purple
@@ -24,6 +24,7 @@ const serviceThemes = {
     textClass: "text-purple-500",
     hoverBg: "hover:bg-purple-500",
     checkIcon: "https://img.icons8.com/ios-filled/50/a855f7/ok--v1.png",
+    lightBg: "#faf5ff", // purple-50
   },
   "web-designing": {
     color: "#3b82f6", // Blue
@@ -31,6 +32,7 @@ const serviceThemes = {
     textClass: "text-blue-500",
     hoverBg: "hover:bg-blue-500",
     checkIcon: "https://img.icons8.com/ios-filled/50/3b82f6/ok--v1.png",
+    lightBg: "#eff6ff", // blue-50
   },
   "ai-automation": {
     color: "#10b981", // Emerald
@@ -38,6 +40,7 @@ const serviceThemes = {
     textClass: "text-emerald-500",
     hoverBg: "hover:bg-emerald-500",
     checkIcon: "https://img.icons8.com/ios-filled/50/10b981/ok--v1.png",
+    lightBg: "#ecfdf5", // emerald-50
   },
 };
 
@@ -127,7 +130,7 @@ export default function ServicesSection() {
             ref={(el) => {
               if (el) cardRefs.current[0] = el;
             }}
-            className={`service-card rounded-[16px] bg-white text-[#18191c]
+            className={`service-card rounded-[16px] text-[#18191c]
               transition-all duration-500 cursor-pointer
               ${activeId === "pitch-deck" ? "active" : ""}
             `}
@@ -135,6 +138,7 @@ export default function ServicesSection() {
               minHeight: isDesktop && maxCardHeight
                 ? `${maxCardHeight}px`
                 : undefined,
+              backgroundColor: activeId === "pitch-deck" ? serviceThemes["pitch-deck"].lightBg : "#ffffff",
             }}
             onClick={() => setActiveId("pitch-deck")}
           >
@@ -147,7 +151,6 @@ export default function ServicesSection() {
                 alt="Pitch Deck"
               />
               <h3 className="text-[1.8rem] md:text-[2.2rem] leading-tight w-full font-bold">Pitch Deck <br /> Designing</h3>
-              <MagneticBubble />
             </div>
             <div className="service-details mt-4">
               <p className="text-xl font-bold uppercase tracking-wider" style={{ color: serviceThemes["pitch-deck"].color }}>What We Offer:</p>
@@ -175,7 +178,7 @@ export default function ServicesSection() {
             ref={(el) => {
               if (el) cardRefs.current[1] = el;
             }}
-            className={`service-card rounded-[16px] bg-white text-[#18191c]
+            className={`service-card rounded-[16px] text-[#18191c]
               transition-all duration-500 cursor-pointer
               ${activeId === "video-editing" ? "active" : ""}
             `}
@@ -183,6 +186,7 @@ export default function ServicesSection() {
               minHeight: isDesktop && maxCardHeight
                 ? `${maxCardHeight}px`
                 : undefined,
+              backgroundColor: activeId === "video-editing" ? serviceThemes["video-editing"].lightBg : "#ffffff",
             }}
             onClick={() => setActiveId("video-editing")}
           >
@@ -195,7 +199,6 @@ export default function ServicesSection() {
                 alt="Video Editing"
               />
               <h3 className="text-[1.8rem] md:text-[2.2rem] leading-tight w-full font-bold">Video <br /> Editing</h3>
-              <MagneticBubble />
             </div>
             <div className="service-details mt-4">
               <p className="text-xl font-bold uppercase tracking-wider" style={{ color: serviceThemes["video-editing"].color }}>What We Offer:</p>
@@ -223,7 +226,7 @@ export default function ServicesSection() {
             ref={(el) => {
               if (el) cardRefs.current[2] = el;
             }}
-            className={`service-card rounded-[16px] bg-white text-[#18191c]
+            className={`service-card rounded-[16px] text-[#18191c]
               transition-all duration-500 cursor-pointer
               ${activeId === "web-designing" ? "active" : ""}
             `}
@@ -231,6 +234,7 @@ export default function ServicesSection() {
               minHeight: isDesktop && maxCardHeight
                 ? `${maxCardHeight}px`
                 : undefined,
+              backgroundColor: activeId === "web-designing" ? serviceThemes["web-designing"].lightBg : "#ffffff",
             }}
             onClick={() => setActiveId("web-designing")}
           >
@@ -243,7 +247,6 @@ export default function ServicesSection() {
                 alt="Web Design"
               />
               <h3 className="text-[1.8rem] md:text-[2.2rem] leading-tight w-full font-bold">Website <br /> Design</h3>
-              <MagneticBubble />
             </div>
             <div className="service-details mt-4">
               <p className="text-xl font-bold uppercase tracking-wider" style={{ color: serviceThemes["web-designing"].color }}>What We Offer:</p>
@@ -271,7 +274,7 @@ export default function ServicesSection() {
             ref={(el) => {
               if (el) cardRefs.current[3] = el;
             }}
-            className={`service-card rounded-[16px] bg-white text-[#18191c]
+            className={`service-card rounded-[16px] text-[#18191c]
               transition-all duration-500 cursor-pointer
               ${activeId === "ai-automation" ? "active" : ""}
             `}
@@ -279,6 +282,7 @@ export default function ServicesSection() {
               minHeight: isDesktop && maxCardHeight
                 ? `${maxCardHeight}px`
                 : undefined,
+              backgroundColor: activeId === "ai-automation" ? serviceThemes["ai-automation"].lightBg : "#ffffff",
             }}
             onClick={() => setActiveId("ai-automation")}
           >
@@ -291,7 +295,6 @@ export default function ServicesSection() {
                 alt="AI"
               />
               <h3 className="text-[1.8rem] md:text-[2.2rem] leading-tight w-full font-bold">AI & <br /> Automation</h3>
-              <MagneticBubble />
             </div>
             <div className="service-details mt-4">
               <p className="text-xl font-bold uppercase tracking-wider" style={{ color: serviceThemes["ai-automation"].color }}>What We Offer:</p>

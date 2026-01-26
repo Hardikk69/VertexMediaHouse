@@ -17,52 +17,11 @@ const RotatingText = () => {
 
   return (
     <div className="text-rotate-cell flex items-center flex-wrap mt-10 2xl:mt-0">
-      {/* Red dot */}
-      {/* <motion.svg
-        className="red-dot-icon flex-shrink-0"
-        width="15"
-        height="15"
-        viewBox="0 0 15 15"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        key={currentIndex}
-        initial={{ x: -50, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.1 }}
-      >
-        <circle cx="7.5" cy="7.5" r="7.5" fill="hsl(var(--primary))" />
-      </motion.svg> */}
-
-      {/* Text */}
-      {/* <h1 className="static-text whitespace-nowrap ml-4 text-5xl md:text-6xl md:text-7xl">
-        Creative {screen === "sm" && <br />} <span className="text-[#ff4d31]">Solutions</span>      
-        <span className="static-text whitespace-nowrap ml-1 text-5xl sm:text-7xl text-white">
-          .
-        </span>
-      </h1> */}
       <h1 className="static-text whitespace-nowrap text-5xl md:text-6xl xl:text-7xl">
-      Creative & <br />
-      <span className="text-[#ff4d31]"> Customised </span>  {screen == "sm" && <br/>} 
-      Solutions.
+        Creative & <br />
+        <span className="text-[#ff4d31]"> Customised </span>  {screen == "sm" && <br />}
+        Solutions.
       </h1>
-
-
-      {/* Rotating words container */}
-      {/* <div className="text-rotate-wrap ml-4">
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={currentIndex}
-            className="rotating-text"
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -40, opacity: 0 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-          >
-            {words[currentIndex]}
-            <span className="text-primary text-white">.</span>
-          </motion.span>
-        </AnimatePresence>
-      </div> */}
     </div>
   );
 };

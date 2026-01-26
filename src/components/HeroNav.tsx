@@ -288,26 +288,28 @@ const HeroNav = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <motion.a
-              href="tel:+919909210605"
-              className="
-                group relative inline-flex items-center gap-2 px-5 py-2.5
-                bg-[#ff4d31] text-white text-sm font-semibold rounded-full
-                overflow-hidden
-                shadow-lg shadow-[#ff4d31]/30
-                transition-all duration-300
-              "
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(255, 77, 49, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {/* Shine effect */}
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+            <Link to="/contact">
+              <motion.div
+                className="
+                  group relative inline-flex items-center gap-2 px-5 py-2.5
+                  bg-[#ff4d31] text-white text-sm font-semibold rounded-full
+                  overflow-hidden
+                  shadow-lg shadow-[#ff4d31]/30
+                  transition-all duration-300
+                  cursor-pointer
+                "
+                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(255, 77, 49, 0.4)" }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {/* Shine effect */}
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
 
-              <svg className="w-4 h-4 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              <span className="relative z-10">Book a Call</span>
-            </motion.a>
+                <svg className="w-4 h-4 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span className="relative z-10">Contact Us</span>
+              </motion.div>
+            </Link>
           </motion.div>
 
           {/* Mobile: Hamburger Button */}
@@ -440,27 +442,28 @@ const HeroNav = () => {
               ))}
 
               {/* CTA Button */}
-             <motion.a
-                href="tel:+919909210605"
-                onClick={closeMobileMenu}
-                className="mt-auto w-full rounded-full p-[2px]
-                bg-gradient-to-r from-[#ff4d31] via-[#ff7a66] to-[#ffb199]
-                shadow-[0_0_25px_rgba(255,77,49,0.45)]
-                hover:shadow-[0_0_40px_rgba(255,77,49,0.75)]
-                transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.96 }}
-              >
-                <span className="block w-full py-4 rounded-full text-center font-semibold text-lg
-                text-[#ff4d31] bg-white
-                hover:bg-[#fff5f2]
-                transition-all duration-300">
-                  📞 Book a Call
-                </span>
-              </motion.a>
+              <Link to="/contact" onClick={closeMobileMenu}>
+                <motion.div
+                  className="mt-auto w-full rounded-full p-[2px]
+                  bg-gradient-to-r from-[#ff4d31] via-[#ff7a66] to-[#ffb199]
+                  shadow-[0_0_25px_rgba(255,77,49,0.45)]
+                  hover:shadow-[0_0_40px_rgba(255,77,49,0.75)]
+                  transition-all duration-300
+                  cursor-pointer"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.96 }}
+                >
+                  <span className="block w-full py-4 rounded-full text-center font-semibold text-lg
+                  text-[#ff4d31] bg-white
+                  hover:bg-[#fff5f2]
+                  transition-all duration-300">
+                    ✉️ Contact Us
+                  </span>
+                </motion.div>
+              </Link>
 
             </div>
           </motion.div>
