@@ -4,7 +4,7 @@ import ScrollStack from "./ScrollItem";
 export default function ScrollStakeSection() {
   return (
 <section
-  className="scroll-stack-section pt-10 pb-12 md:pt-12 md:pb-16 rounded-b-lg bg-[#efefef]"
+  className="scroll-stack-section pt-16 pb-12 md:pt-24 md:pb-16 rounded-b-lg bg-[#efefef]"
   id="why-us"
 >
 
