@@ -88,7 +88,7 @@ export default function InfinitePortfolioDrag(): JSX.Element {
 
   return (
     <motion.section
-      className="bg-[#101010] text-white py-10 overflow-hidden"
+      className="bg-[#101010] text-white py-14 overflow-hidden"
       id="our-portfolio"
       variants={sectionVariants}
       initial="hidden"

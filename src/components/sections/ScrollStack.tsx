@@ -3,7 +3,11 @@ import ScrollStack from "./ScrollItem";
 
 export default function ScrollStakeSection() {
   return (
-    <section className="scroll-stack-section py-8 md:py-12 rounded-b-lg bg-[#efefef]" id="why-us">
+<section
+  className="scroll-stack-section pt-12 pb-1 md:pt-16 md:pb-2 rounded-b-lg bg-[#efefef]"
+  id="why-us"
+>
+
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         
 
