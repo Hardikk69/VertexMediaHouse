@@ -307,7 +307,7 @@ export default function AIAutomation() {
 
         <PortfolioDrag />
 
-        <ServicesPlans accentColor="bg-emerald-500" accentHoverColor="hover:bg-emerald-600" />
+        <ServicesPlans accentColor="bg-emerald-500" accentHoverColor="hover:bg-emerald-600" tickBgColor="bg-emerald-100" tickTextColor="text-emerald-600" />
 
         {/* Enhanced Features Section */}
         <section className="py-28 bg-gradient-to-b from-[#fafafa] to-emerald-50/30">

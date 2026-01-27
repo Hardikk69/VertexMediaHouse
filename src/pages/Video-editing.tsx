@@ -274,7 +274,7 @@ export default function VideoEditing() {
 
         <PortfolioDrag />
 
-        <ServicesPlans accentColor="bg-purple-600" accentHoverColor="hover:bg-purple-700" />
+        <ServicesPlans accentColor="bg-purple-600" accentHoverColor="hover:bg-purple-700" tickBgColor="bg-purple-100" tickTextColor="text-purple-600" />
 
         {/* Features Section */}
         <section className="py-24 bg-[#fafafa]">

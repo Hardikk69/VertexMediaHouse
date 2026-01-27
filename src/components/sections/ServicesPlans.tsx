@@ -62,11 +62,15 @@ const plans: Plan[] = [
 interface ServicesPlansProps {
     accentColor?: string;
     accentHoverColor?: string;
+    tickBgColor?: string;
+    tickTextColor?: string;
 }
 
 const ServicesPlans: React.FC<ServicesPlansProps> = ({
     accentColor = "bg-[#ff4d31]",
-    accentHoverColor = "hover:bg-[#ff3d21]"
+    accentHoverColor = "hover:bg-[#ff3d21]",
+    tickBgColor = "bg-green-100",
+    tickTextColor = "text-green-600"
 }) => {
     return (
         <section className="bg-[#fafafa] py-20 px-4">
@@ -93,7 +97,7 @@ const ServicesPlans: React.FC<ServicesPlansProps> = ({
                                 <ul className="mb-8 space-y-3 text-left">
                                     {plan.features.map((feature, idx) => (
                                         <li key={idx} className="flex items-start gap-3 text-gray-700">
-                                            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 text-green-600 text-xs flex-shrink-0 mt-0.5">
+                                            <span className={`inline-flex items-center justify-center w-5 h-5 rounded-full ${tickBgColor} ${tickTextColor} text-xs flex-shrink-0 mt-0.5`}>
                                                 ✓
                                             </span>
                                             <span className="text-sm">{feature.title}</span>

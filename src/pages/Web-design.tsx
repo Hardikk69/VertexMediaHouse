@@ -270,7 +270,7 @@ export default function WebDesign() {
 
         <PortfolioDrag />
 
-        <ServicesPlans accentColor="bg-cyan-500" accentHoverColor="hover:bg-cyan-600" />
+        <ServicesPlans accentColor="bg-cyan-500" accentHoverColor="hover:bg-cyan-600" tickBgColor="bg-cyan-100" tickTextColor="text-cyan-600" />
 
         {/* Features Section */}
         <section className="py-24 bg-[#fafafa]">

@@ -245,7 +245,7 @@ export default function Pitchdeck() {
 
         <PortfolioDrag />
 
-        <ServicesPlans accentColor="bg-[#ff4d31]" accentHoverColor="hover:bg-[#ff3d21]" />
+        <ServicesPlans accentColor="bg-[#ff4d31]" accentHoverColor="hover:bg-[#ff3d21]" tickBgColor="bg-orange-100" tickTextColor="text-orange-600" />
 
         {/* Features Section */}
         <section className="py-24 bg-[#fafafa]">
