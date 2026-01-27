@@ -241,7 +241,7 @@ export default function Pitchdeck() {
           </section>
         </div>
 
-        <LogoList />
+        <LogoList logoFilter="#ff6b4d" />
 
         <PortfolioDrag />
 

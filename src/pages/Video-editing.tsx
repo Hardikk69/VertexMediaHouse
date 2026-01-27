@@ -270,7 +270,7 @@ export default function VideoEditing() {
           </section>
         </div>
 
-        <LogoList />
+        <LogoList logoFilter="#a855f7" />
 
         <PortfolioDrag />
 

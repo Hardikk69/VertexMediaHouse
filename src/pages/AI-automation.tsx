@@ -303,7 +303,7 @@ export default function AIAutomation() {
           </section>
         </div>
 
-        <LogoList />
+        <LogoList logoFilter="#34d399" />
 
         <PortfolioDrag />
 

@@ -79,7 +79,7 @@ const ServicesPlans: React.FC<ServicesPlansProps> = ({
                     Our Process
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold mb-3 mt-3 text-[#18191c]">
-                    What's the <span className="text-[#ff4d31]">process?</span>
+                    What's the <span className="text-black">process?</span>
                 </h2>
                 <p className="text-gray-600 mb-12 max-w-xl mx-auto">
                     We become YOUR remote micro team, at either of the 3 levels.

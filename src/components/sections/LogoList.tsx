@@ -60,7 +60,7 @@ const Stars = ({ count }: { count: number }) => (
 );
 
 const ReviewCard = ({ item }: { item: typeof reviews[0] }) => (
-    <div className="bg-white text-[#18191c] p-6 rounded-2xl mb-6">
+  <div className="bg-white text-[#18191c] p-6 rounded-2xl mb-6">
     <div className="flex gap-4 items-center mb-3">
       <img src={item.image} className="w-12 h-12 rounded-full" />
       <div>
@@ -76,13 +76,18 @@ const ReviewCard = ({ item }: { item: typeof reviews[0] }) => (
 /* =====================================================
    MAIN COMPONENT
 ===================================================== */
-const LogoAndReviews = () => {
+interface LogoListProps {
+  backgroundColor?: string;
+  logoFilter?: string;
+}
+
+const LogoAndReviews: React.FC<LogoListProps> = ({ backgroundColor = "bg-[#efefed]", logoFilter }) => {
   return (
     <div className="text-white overflow-hidden">
       {/* =================================================
          LOGO SECTION (HORIZONTAL ONLY)
       ================================================= */}
-      <section className="pt-10 pb-10 space-y-6 bg-[#efefed]">
+      <section className={`pt-10 pb-10 space-y-6 ${backgroundColor}`}>
         {/* <span className="block text-sm uppercase tracking-wide text-[#18191c] text-center font-thin -mb-10">
           Text span
         </span>
@@ -96,9 +101,26 @@ const LogoAndReviews = () => {
                           animate-move-right
                           group-hover:[animation-play-state:paused]">
             {[...logos, ...logos].map((l, i) => (
-              // <LogoCard key={i} title={l} />
-              <img className="max-h-20" src={l} />
-
+              logoFilter ? (
+                <div
+                  key={i}
+                  className="relative max-h-20 flex items-center"
+                  style={{ backgroundColor: logoFilter }}
+                >
+                  <img
+                    className="max-h-20 mix-blend-multiply"
+                    src={l}
+                    alt="Partner logo"
+                  />
+                </div>
+              ) : (
+                <img
+                  key={i}
+                  className="max-h-20"
+                  src={l}
+                  alt="Partner logo"
+                />
+              )
             ))}
           </div>
         </div>
@@ -120,7 +142,7 @@ const LogoAndReviews = () => {
       ================================================= */}
       <section className="pt-20 bg-[#e9e9e9] px-[16px]" id="client-reviews">
         <span className="block mb-4 text-sm tracking-wide text-[#18191c] text-center ">
-        Testimonials
+          Testimonials
         </span>
         <h2 className="text-4xl font-medium text-center mb-10 text-[#18191c]">
           What Clients Say
