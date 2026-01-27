@@ -242,7 +242,7 @@ export default function AIAutomation() {
                           <div className="space-y-1.5">
                             {[
                               { action: "Email sent", target: "lead@company.com", status: "success" },
-                              { action: "Call scheduled", target: "John Doe", status: "success" },
+                              { action: "Call scheduled", target: "Lead Name", status: "success" },
                               { action: "Form processed", target: "Contact Form", status: "success" }
                             ].map((activity, i) => (
                               <motion.div
