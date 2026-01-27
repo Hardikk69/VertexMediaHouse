@@ -266,7 +266,7 @@ export default function WebDesign() {
           </section>
         </div>
 
-        <LogoList logoFilter="#22d3ee" />
+        <LogoList logoFilter="#3b82f6" />
 
         <PortfolioDrag />
 

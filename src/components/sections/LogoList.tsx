@@ -81,20 +81,23 @@ interface LogoListProps {
   logoFilter?: string;
 }
 
-// Helper function to get hue rotation for theme colors
-const getHueRotation = (color: string): number => {
-  const colorMap: Record<string, number> = {
-    "#ff6b4d": 0,      // Orange - base hue
-    "#f97316": 10,     // Orange variant
-    "#a855f7": 270,    // Purple
-    "#22d3ee": 160,    // Cyan
-    "#34d399": 120,    // Emerald
+// Helper function to get filter style for theme colors
+const getFilterStyle = (color: string): string => {
+  const filterMap: Record<string, string> = {
+    "#ff6b4d": "brightness(0) saturate(100%) invert(50%) sepia(100%) saturate(2000%) hue-rotate(360deg) contrast(1)",      // Brownish orange
+    "#f97316": "brightness(0) saturate(100%) invert(60%) sepia(100%) saturate(2000%) hue-rotate(360deg) contrast(1.1)",     // Orange variant
+    "#ff7700": "brightness(0) saturate(100%) invert(55%) sepia(100%) saturate(3000%) hue-rotate(10deg) contrast(1.1)",      // True Orange
+    "#a855f7": "brightness(0) saturate(100%) invert(35%) sepia(80%) saturate(2000%) hue-rotate(250deg) contrast(1.2)",    // Purple
+    "#22d3ee": "brightness(0) saturate(100%) invert(65%) sepia(80%) saturate(2000%) hue-rotate(160deg) contrast(1.2)",    // Cyan
+    "#3b82f6": "brightness(0) saturate(100%) invert(45%) sepia(100%) saturate(2000%) hue-rotate(200deg) contrast(1.2)",   // Blue
+    "#34d399": "brightness(0) saturate(100%) invert(65%) sepia(80%) saturate(2000%) hue-rotate(100deg) contrast(1.2)",    // Emerald
+    "#059669": "brightness(0) saturate(100%) invert(35%) sepia(90%) saturate(1500%) hue-rotate(120deg) contrast(1.3)",    // Dark Emerald
   };
-  return colorMap[color.toLowerCase()] ?? 0;
+  return filterMap[color.toLowerCase()] ?? "brightness(0) contrast(1.2)";
 };
 
 const LogoAndReviews: React.FC<LogoListProps> = ({ backgroundColor = "bg-[#efefed]", logoFilter }) => {
-  const hueRotation = logoFilter ? getHueRotation(logoFilter) : 0;
+  const filterStyle = logoFilter ? getFilterStyle(logoFilter) : "brightness(0) contrast(1.2)";
   
   return (
     <div className="text-white overflow-hidden">
@@ -120,10 +123,8 @@ const LogoAndReviews: React.FC<LogoListProps> = ({ backgroundColor = "bg-[#efefe
                 className="max-h-20"
                 src={l}
                 alt="Partner logo"
-                style={logoFilter ? {
-                  filter: `brightness(0) saturate(100%) invert(15%) sepia(80%) saturate(2000%) hue-rotate(${hueRotation}deg) contrast(1.2)`,
-                } : {
-                  filter: `brightness(0) contrast(1.2)`,
+                style={{
+                  filter: filterStyle,
                 }}
               />
             ))}
