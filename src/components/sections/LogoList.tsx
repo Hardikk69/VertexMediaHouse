@@ -81,7 +81,21 @@ interface LogoListProps {
   logoFilter?: string;
 }
 
+// Helper function to get hue rotation for theme colors
+const getHueRotation = (color: string): number => {
+  const colorMap: Record<string, number> = {
+    "#ff6b4d": 0,      // Orange - base hue
+    "#f97316": 10,     // Orange variant
+    "#a855f7": 270,    // Purple
+    "#22d3ee": 160,    // Cyan
+    "#34d399": 120,    // Emerald
+  };
+  return colorMap[color.toLowerCase()] ?? 0;
+};
+
 const LogoAndReviews: React.FC<LogoListProps> = ({ backgroundColor = "bg-[#efefed]", logoFilter }) => {
+  const hueRotation = logoFilter ? getHueRotation(logoFilter) : 0;
+  
   return (
     <div className="text-white overflow-hidden">
       {/* =================================================
@@ -101,26 +115,17 @@ const LogoAndReviews: React.FC<LogoListProps> = ({ backgroundColor = "bg-[#efefe
                           animate-move-right
                           group-hover:[animation-play-state:paused]">
             {[...logos, ...logos].map((l, i) => (
-              logoFilter ? (
-                <div
-                  key={i}
-                  className="relative max-h-20 flex items-center"
-                  style={{ backgroundColor: logoFilter }}
-                >
-                  <img
-                    className="max-h-20 mix-blend-multiply"
-                    src={l}
-                    alt="Partner logo"
-                  />
-                </div>
-              ) : (
-                <img
-                  key={i}
-                  className="max-h-20"
-                  src={l}
-                  alt="Partner logo"
-                />
-              )
+              <img
+                key={i}
+                className="max-h-20"
+                src={l}
+                alt="Partner logo"
+                style={logoFilter ? {
+                  filter: `brightness(0) saturate(100%) invert(15%) sepia(80%) saturate(2000%) hue-rotate(${hueRotation}deg) contrast(1.2)`,
+                } : {
+                  filter: `brightness(0) contrast(1.2)`,
+                }}
+              />
             ))}
           </div>
         </div>
