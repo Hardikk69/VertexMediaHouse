@@ -92,7 +92,7 @@ export default function InfinitePortfolioDrag({ twoCardMode = false, accentColor
   }, [contentWidth, x]);
 
   // Card width based on mode
-  const cardWidth = twoCardMode ? "w-[45%] md:w-[calc(50%-12px)]" : "w-[320px]";
+  const cardWidth = twoCardMode ? "w-[48%] md:w-[calc(50%-16px)]" : "w-[320px]";
 
   return (
     <motion.section
