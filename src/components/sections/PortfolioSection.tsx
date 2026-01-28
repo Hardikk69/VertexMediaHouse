@@ -63,6 +63,29 @@ export default function InfinitePortfolioDrag({ twoCardMode = false, accentColor
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   /* -----------------------------------------
+     Centralized centering function
+  ------------------------------------------ */
+  const centerFirstCard = () => {
+    if (!containerRef.current) return;
+
+    const viewportWidth = window.innerWidth;
+    const cardWidthPx = containerRef.current.scrollWidth / (cards.length * 2);
+    const gapSize = twoCardMode ? 40 : 16;
+    const padding = 40; // px-10 = 2.5rem = 40px
+
+    // Calculate offset to center the first card
+    const centerOffset = (viewportWidth - cardWidthPx) / 2;
+
+    if (twoCardMode) {
+      // For two-card mode, center the card perfectly
+      x.set(centerOffset - cardWidthPx);
+    } else {
+      // For regular mode, center first card accounting for padding
+      x.set(centerOffset - cardWidthPx - gapSize / 2 + padding);
+    }
+  };
+
+  /* -----------------------------------------
      Measure content width
   ------------------------------------------ */
   useEffect(() => {
@@ -71,21 +94,27 @@ export default function InfinitePortfolioDrag({ twoCardMode = false, accentColor
   }, []);
 
   /* -----------------------------------------
-     Start from middle - adjusted for centering
+     Initial centering on mount and content width change
   ------------------------------------------ */
   useEffect(() => {
-    if (contentWidth) {
-      if (twoCardMode && containerRef.current) {
-        // For centered cards, offset to show first card in center
-        const viewportWidth = window.innerWidth;
-        const cardWidthPx = containerRef.current.scrollWidth / (cards.length * 2);
-        const centerOffset = (viewportWidth - cardWidthPx) / 2;
-        x.set(-cardWidthPx + centerOffset);
-      } else {
-        x.set(-contentWidth / 2);
-      }
+    if (contentWidth && containerRef.current) {
+      centerFirstCard();
     }
-  }, [contentWidth, twoCardMode, x]);
+  }, [contentWidth, twoCardMode]);
+
+  /* -----------------------------------------
+     Handle window resize for responsive centering
+  ------------------------------------------ */
+  useEffect(() => {
+    const handleResize = () => {
+      if (containerRef.current && contentWidth) {
+        centerFirstCard();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [contentWidth, twoCardMode]);
 
   /* -----------------------------------------
      Infinite wrap logic
@@ -116,8 +145,9 @@ export default function InfinitePortfolioDrag({ twoCardMode = false, accentColor
     return () => clearInterval(interval);
   }, [twoCardMode, isDragging, x]);
 
-  // Card width based on mode - larger for centered effect
-  const cardWidth = twoCardMode ? "w-[70%] md:w-[65%]" : "w-[320px]";
+  // Card dimensions - landscape orientation (width > height) for all devices
+  const cardWidth = twoCardMode ? "w-[85%] md:w-[45%]" : "w-[350px]";
+  const cardHeight = twoCardMode ? "h-[280px] md:h-[320px]" : "h-[240px]";
 
   return (
     <motion.section
@@ -166,7 +196,7 @@ export default function InfinitePortfolioDrag({ twoCardMode = false, accentColor
               key={i}
               className={`
                 relative
-                ${cardWidth} h-[440px]
+                ${cardWidth} ${cardHeight}
                 rounded-xl
                 overflow-hidden
                 flex-shrink-0
