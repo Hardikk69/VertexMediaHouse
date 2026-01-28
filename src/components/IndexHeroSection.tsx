@@ -48,21 +48,21 @@ const HeroSection = () => {
                             </span>
                         </h1>
                         <p className="text-lg text-gray-400 mb-10 max-w-lg leading-relaxed">
-                            We craft stunning pitch decks, videos, websites, and AI solutions that elevate your brand and drive real results.
+                            Our aim is simple - get straight to results.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 mt-12">
                             <Link
                                 to="/contact"
                                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#ff4d31] text-white rounded-full font-semibold hover:bg-[#ff3d21] transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#ff4d31]/25"
                             >
-                                Contact Us
+                                Get Started
                                 <ArrowRight className="w-4 h-4" />
                             </Link>
                             <Link
-                                to="/#our-services"
+                                to="/#our-portfolio"
                                 className="inline-flex items-center justify-center px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
                             >
-                                Explore Services
+                                View Our Work
                             </Link>
                         </div>
                     </motion.div>

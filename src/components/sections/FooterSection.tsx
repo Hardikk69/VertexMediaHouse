@@ -43,15 +43,10 @@ export default function FooterSection(): JSX.Element {
 
   const companyLinks = [
     { title: "About", href: "/about" },
-    { title: "Careers", href: "/careers" },
     { title: "Contact", href: "/contact" },
   ];
 
-  const resourceLinks = [
-    { title: "Blog", href: "/blog" },
-    { title: "Case Studies", href: "/case-studies" },
-    { title: "Docs", href: "/docs" },
-  ];
+
 
   const handleServiceClick = (href: string) => {
     navigate(href);
@@ -66,7 +61,7 @@ export default function FooterSection(): JSX.Element {
       viewport={{ once: true, amount: 0.1 }}
     >
       {/* ================= TOP ================= */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-6">
         {/* Company */}
         <motion.div variants={itemVariants} className="col-span-2 md:col-span-1">
           <h3 className="text-lg font-semibold mb-3">
@@ -111,22 +106,7 @@ export default function FooterSection(): JSX.Element {
           </ul>
         </motion.div>
 
-        {/* Resources */}
-        <motion.div variants={itemVariants}>
-          <h4 className="font-medium mb-3 text-sm uppercase tracking-wider">Resources</h4>
-          <ul className="space-y-2 text-white/60 text-sm">
-            {resourceLinks.map((link) => (
-              <li key={link.title}>
-                <Link
-                  to={link.href}
-                  className="hover:text-white hover:translate-x-1 transition-all duration-200 inline-block"
-                >
-                  {link.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
+
 
         {/* Call to Action Block */}
         <motion.div

@@ -31,7 +31,7 @@ export default function ScrollStakeSection() {
             "
           >
             <span className="block mb-2 md:mb-4 text-sm uppercase tracking-widest text-[#18191c] font-bold opacity-70">
-              Why Us?
+              Why Choose Us?
             </span>
 
             <h2 className="text-3xl md:text-5xl lg:text-6xl mb-4 md:mb-6 text-[#18191c] font-medium">
@@ -39,10 +39,10 @@ export default function ScrollStakeSection() {
             </h2>
 
             <p className="text-[#18191c] leading-relaxed max-w-sm mx-auto lg:mx-0 h-auto lg:h-48">
-              We combine strategy, creativity, and technology to build solutions
-              that don't just look good - they perform.
-              Our approach is collaborative, focused, and designed to help
-              businesses grow, scale, and communicate better.
+              We combine strategy, creativity, and technology to build solutions that
+              don't just look good - they perform. Our approach is collaborative,
+              focused, and designed to help businesses grow, scale, and
+              communicate better.
             </p>
           </div>
 
@@ -58,56 +58,57 @@ export default function ScrollStakeSection() {
               stackPosition="30%"
               className="gap-y-6 md:gap-y-12"
             >
-              <ScrollStackItem itemClassName="bg-[#d8f66f] text-black">
+              <ScrollStackItem itemClassName="bg-[#34d399] text-white">
                 <div className="p-2 md:p-0">
                   <h2 className="text-xl md:text-3xl font-medium mb-2 md:mb-4">
                     Ultra-Fast Delivery
                   </h2>
-                  <p className="text-sm md:text-base">We move fast without cutting corners. Tight deadlines, quick turnarounds, and on-time delivery - always.</p>
+                  <p className="text-sm md:text-base text-white/90">We move fast without cutting corners. Tight deadlines, quick turnarounds, and on-time delivery - always.</p>
                 </div>
               </ScrollStackItem>
 
-              <ScrollStackItem itemClassName="bg-[#8d96fd]">
+              <ScrollStackItem itemClassName="bg-[#c084fc] text-white">
                 <div className="p-2 md:p-0">
                   <h2 className="text-xl md:text-3xl font-medium mb-2 md:mb-4">
                     Unlimited Revisions
                   </h2>
-                  <p className="text-sm md:text-base">
+                  <p className="text-sm md:text-base text-white/90">
                     We don't stop at "good enough." Revisions are unlimited until you're
                     100% satisfied.
                   </p>
                 </div>
               </ScrollStackItem>
 
-              <ScrollStackItem itemClassName="bg-[#ff7d84]">
+              <ScrollStackItem itemClassName="bg-[#22d3ee] text-white">
                 <div className="p-2 md:p-0">
                   <h2 className="text-xl md:text-3xl font-medium mb-2 md:mb-4">
                     Strategy-First Approach
                   </h2>
-                  <p className="text-sm md:text-base">
+                  <p className="text-sm md:text-base text-white/90">
                     Every design, video, website, or automation starts with a clear
                     strategy - not guesswork.
                   </p>
                 </div>
               </ScrollStackItem>
 
-              <ScrollStackItem itemClassName="bg-[#ffe176]">
+              <ScrollStackItem itemClassName="bg-[#ff6b5b] text-white">
                 <div className="p-2 md:p-0">
                   <h2 className="text-xl md:text-3xl font-medium mb-2 md:mb-4">
                     Transparent & Collaborative
                   </h2>
-                  <p className="text-sm md:text-base">
+                  <p className="text-sm md:text-base text-white/90">
                     Clear communication, regular updates, and no surprises. You're
                     involved at every step.
                   </p>
                 </div>
               </ScrollStackItem>
-              <ScrollStackItem itemClassName="bg-[#d8f66f]">
+
+              <ScrollStackItem itemClassName="bg-[#a3e635] text-black">
                 <div className="p-2 md:p-0">
                   <h2 className="text-xl md:text-3xl font-medium mb-2 md:mb-4">
                     Built to Scale
                   </h2>
-                  <p className="text-sm md:text-base">
+                  <p className="text-sm md:text-base text-black/80">
                     Our solutions are designed to grow with your business — from
                     startups to scaling brands.
                   </p>

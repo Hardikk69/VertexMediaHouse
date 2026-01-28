@@ -14,10 +14,6 @@ import WebDesign from "./pages/Web-design";
 import AIAutomation from "./pages/AI-automation";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
-import Careers from "./pages/Careers";
-import Blog from "./pages/Blog";
-import CaseStudies from "./pages/CaseStudies";
-import Docs from "./pages/Docs";
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -42,10 +38,6 @@ const App = () => {
             <Route path="/calender" element={<Calender />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/case-studies" element={<CaseStudies />} />
-            <Route path="/docs" element={<Docs />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

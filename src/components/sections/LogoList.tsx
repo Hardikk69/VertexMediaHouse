@@ -24,27 +24,39 @@ const logos = [
 const reviews = [
   {
     name: "Rao Movva",
-    location: "Gujarat, India",
-    image: "https://i.pravatar.cc/150?img=11",
+    location: "Founder - RetireHow.com",
     rating: 5,
-    review: `Dhrumil immediately grasped what we are trying to achieve as a company and delivered the 
-pitch decks for both end users and as well investors. Very professional and responsive ! 
-looking forward to collaborate on other projects. Keep up the great work!`,
+    review: `Dhrumil immediately grasped what we are trying to achieve as a company and delivered the pitch decks for both end users and as well investors. Very professional and responsive. Looking forward to collaborate on other projects. Keep up the great work!`,
   },
   {
-    name: "Sharad Vij ",
-    location: "California, USA",
-    image: "https://i.pravatar.cc/150?img=32",
+    name: "Sharad Vij",
+    location: "Co-founder - Hire Bound",
     rating: 5,
-    review: `Excellent working with Dhrumil, first time we collaborated and he went over and beyond. 
-Would like to continue our engagement for the foreseeable future.`,
+    review: `Excellent working with Dhrumil, first time we collaborated and he went over and beyond. Would like to continue our engagement for the foreseeable future.`,
   },
   {
     name: "Raj Kumani",
-    location: "Berlin, Germany",
-    image: "https://i.pravatar.cc/150?img=45",
-    rating: 4,
-    review: "Exceptional attention to detail and support.",
+    location: "Founder - Deal to Close",
+    rating: 5,
+    review: "Great work by Dhrumil, very good quality work and speedy delivery. Highly recommended.",
+  },
+  {
+    name: "Abood",
+    location: "Founder - LYFE",
+    rating: 5,
+    review: "Professional, very good work on times submit.",
+  },
+  {
+    name: "Yorrelle",
+    location: "Founder – Rise & Pay",
+    rating: 5,
+    review: `They did a great job and had a great attitude in completing this project. He knew exactly what to do to make the portfolio shine. Looking forward to working with him in the future. Great work that just looks good.`,
+  },
+  {
+    name: "Vodus Rich",
+    location: "Founder – Obsidian Development Group",
+    rating: 5,
+    review: "Exceeded my expectations in every way!",
   },
 ];
 
@@ -59,19 +71,26 @@ const Stars = ({ count }: { count: number }) => (
   </div>
 );
 
-const ReviewCard = ({ item }: { item: typeof reviews[0] }) => (
-  <div className="bg-white text-[#18191c] p-6 rounded-2xl mb-6">
-    <div className="flex gap-4 items-center mb-3">
-      <img src={item.image} className="w-12 h-12 rounded-full" />
-      <div>
-        <p className="font-semibold">{item.name}</p>
-        <p className="text-xs">{item.location}</p>
+const ReviewCard = ({ item }: { item: typeof reviews[0] }) => {
+  // Get initials from name
+  const initials = item.name.split(' ').map(n => n[0]).join('').toUpperCase();
+
+  return (
+    <div className="bg-white text-[#18191c] p-6 rounded-2xl mb-6">
+      <div className="flex gap-4 items-center mb-3">
+        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#ff4d31] to-orange-500 flex items-center justify-center text-white font-bold text-lg">
+          {initials}
+        </div>
+        <div>
+          <p className="font-semibold">{item.name}</p>
+          <p className="text-xs text-gray-500">{item.location}</p>
+        </div>
       </div>
+      <Stars count={item.rating} />
+      <p className="mt-3 text-sm">{item.review}</p>
     </div>
-    <Stars count={item.rating} />
-    <p className="mt-3 text-sm">{item.review}</p>
-  </div>
-);
+  );
+};
 
 /* =====================================================
    MAIN COMPONENT
@@ -98,7 +117,7 @@ const getFilterStyle = (color: string): string => {
 
 const LogoAndReviews: React.FC<LogoListProps> = ({ backgroundColor = "bg-[#efefed]", logoFilter }) => {
   const filterStyle = logoFilter ? getFilterStyle(logoFilter) : "brightness(0) contrast(1.2)";
-  
+
   return (
     <div className="text-white overflow-hidden">
       {/* =================================================
@@ -150,13 +169,12 @@ const LogoAndReviews: React.FC<LogoListProps> = ({ backgroundColor = "bg-[#efefe
         <div className="relative max-w-[1400px] mx-auto rounded-[24px] bg-gradient-to-b from-white/80 to-white/40 backdrop-blur-sm p-4 md:p-6 shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-white/60 overflow-hidden">
           {/* Subtle gradient overlay for premium feel */}
           <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent pointer-events-none rounded-[32px]" />
-          
+
           <span className="relative block mb-4 text-sm tracking-widest uppercase text-[#18191c]/70 text-center font-medium">
             Testimonials
           </span>
           <h2 className="relative text-4xl md:text-5xl font-medium text-center mb-12 text-[#18191c]">
-            What Clients Say
-          </h2>
+            Don’t Just Take Our Word for It          </h2>
 
           <div className="relative grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1200px] mx-auto">
 

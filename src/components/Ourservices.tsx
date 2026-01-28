@@ -117,10 +117,10 @@ export default function ServicesSection({ excludeService }: { excludeService?: s
           Our Core Services
         </span>
         <h2 className="text-4xl md:text-5xl text-center mb-6 text-[#18191c] font-bold">
-          What We Specialize In
+          What We Do Best
         </h2>
         <p className="text-center text-gray-500 max-w-2xl mx-auto mb-16">
-          Premium creative solutions tailored for ambitious brands and creators
+          Everything you need to build, create launch, and scale your brand.
         </p>
 
         <div className="services-container flex flex-col md:flex-row gap-6">
@@ -151,18 +151,18 @@ export default function ServicesSection({ excludeService }: { excludeService?: s
                   src={pitchDeckIcon}
                   alt="Pitch Deck"
                 />
-                <h3 className="text-[1.8rem] md:text-[2.2rem] leading-tight w-full font-bold">Pitch Deck <br /> Designing</h3>
+                <h3 className="text-[1.8rem] md:text-[2.2rem] leading-tight w-full font-bold">Pitch Deck <br /> Creation</h3>
               </div>
               <div className="service-details mt-4">
                 <p className="text-xl font-bold uppercase tracking-wider" style={{ color: serviceThemes["pitch-deck"].color }}>What We Offer:</p>
                 <ServiceList
                   themeId="pitch-deck"
                   items={[
-                    "Investor-ready pitch decks",
-                    "Startup & business presentations",
-                    "High-converting sales decks",
-                    "Clear storytelling & flow",
-                    "Data-driven visual design"
+                    "Investor ready pitch deck (Real Estate, Tech Startups, VCs & More…)",
+                    "Company profile or business presentation",
+                    "Content writing and structuring for your deck",
+                    "Redesign the existing deck",
+                    "On-brand layout and formatting"
                   ]}
                 />
                 <button onClick={() => navigate("/pitch-deck")}
@@ -171,7 +171,7 @@ export default function ServicesSection({ excludeService }: { excludeService?: s
                   Learn More
                 </button>
               </div>
-              <div className="vertical-label">Pitch Deck Designing</div>
+              <div className="vertical-label">Pitch Deck Creation</div>
             </div>
           )}
 
@@ -208,11 +208,11 @@ export default function ServicesSection({ excludeService }: { excludeService?: s
                 <ServiceList
                   themeId="video-editing"
                   items={[
-                    "High-impact social media reels",
-                    "Promotional & brand videos",
-                    "Short-form content editing",
-                    "Motion graphics & transitions",
-                    "Platform-optimized content"
+                    "Short Form or long form video editing",
+                    "Youtube, Instagram, TikTok Reels editing",
+                    "Podcast Editing",
+                    "Thumbnail Designing",
+                    "YouTube Channel Management"
                   ]}
                 />
                 <button onClick={() => navigate("/video-editing")}
@@ -251,18 +251,18 @@ export default function ServicesSection({ excludeService }: { excludeService?: s
                   src={webIcon}
                   alt="Web Design"
                 />
-                <h3 className="text-[1.8rem] md:text-[2.2rem] leading-tight w-full font-bold">Website <br /> Design</h3>
+                <h3 className="text-[1.8rem] md:text-[2.2rem] leading-tight w-full font-bold">Website <br /> Designing</h3>
               </div>
               <div className="service-details mt-4">
                 <p className="text-xl font-bold uppercase tracking-wider" style={{ color: serviceThemes["web-designing"].color }}>What We Offer:</p>
                 <ServiceList
                   themeId="web-designing"
                   items={[
-                    "Custom website development",
-                    "Modern, responsive UI/UX",
-                    "Landing pages for conversion",
-                    "Fast, secure, and scalable",
-                    "Mobile-first SEO structure"
+                    "Custom Website Designing & Development",
+                    "Landing Page Design",
+                    "Full Responsive Websites (Any Devices)",
+                    "Fast & optimized performance",
+                    "Conversion-focused design"
                   ]}
                 />
                 <button onClick={() => navigate("/web-design")}
@@ -271,7 +271,7 @@ export default function ServicesSection({ excludeService }: { excludeService?: s
                   Learn More
                 </button>
               </div>
-              <div className="vertical-label">Website Design</div>
+              <div className="vertical-label">Website Designing</div>
             </div>
           )}
 
@@ -301,18 +301,18 @@ export default function ServicesSection({ excludeService }: { excludeService?: s
                   src={aiIcon}
                   alt="AI"
                 />
-                <h3 className="text-[1.8rem] md:text-[2.2rem] leading-tight w-full font-bold">AI & <br /> Automation</h3>
+                <h3 className="text-[1.8rem] md:text-[2.2rem] leading-tight w-full font-bold">AI Automation <br /> (Voice & Email)</h3>
               </div>
               <div className="service-details mt-4">
                 <p className="text-xl font-bold uppercase tracking-wider" style={{ color: serviceThemes["ai-automation"].color }}>What We Offer:</p>
                 <ServiceList
                   themeId="ai-automation"
                   items={[
-                    "Workflow automation systems",
-                    "Email Automation Agents",
-                    "Voice AI for calls & follow-ups",
-                    "Smart lead response tools",
-                    "Manual task reduction"
+                    "Specialized in Voice and Email AI Agent",
+                    "AI voice agents for calls & follow-ups",
+                    "Email AI agents for automated replies",
+                    "Reduced manual work & faster responses",
+                    "24/7 lead engagement & support"
                   ]}
                 />
                 <button onClick={() => navigate("/ai-automation")}
@@ -321,7 +321,7 @@ export default function ServicesSection({ excludeService }: { excludeService?: s
                   Learn More
                 </button>
               </div>
-              <div className="vertical-label">AI & Automation</div>
+              <div className="vertical-label">AI Automation</div>
             </div>
           )}
 
