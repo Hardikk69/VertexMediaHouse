@@ -150,7 +150,7 @@ export default function VideoEditing() {
                     </Link>
                     <Link
                       to="/contact"
-                      className="inline-flex items-center justify-center px-8 py-4 bg-white/5 backdrop-blur-md border border-white/20 text-black rounded-full font-semibold hover:bg-white/10 hover:border-white/30 transition-all duration-300 hover:shadow-lg"
+                      className="inline-flex items-center justify-center px-8 py-4 bg-white/50 backdrop-blur-md border-2 border-white/60 text-black rounded-full font-semibold hover:bg-white/60 hover:border-white/80 transition-all duration-300 hover:shadow-lg"
                     >
                       See Pricing
                     </Link>
