@@ -7,6 +7,7 @@ import FaqSection from "@/components/sections/FaqSection";
 import FooterSection from "@/components/sections/FooterSection";
 import LogoList from "@/components/sections/LogoList";
 import PortfolioDrag from "@/components/sections/PortfolioSection";
+import ServicesSection from "@/components/Ourservices";
 import ServicesPlans from "@/components/sections/ServicesPlans";
 import ScrollStakeSection from "@/components/sections/ScrollStack";
 
@@ -46,12 +47,7 @@ const features = [
   }
 ];
 
-const processSteps = [
-  { step: "01", title: "Discovery Call", desc: "We understand your business, goals, and audience." },
-  { step: "02", title: "Content Strategy", desc: "We structure your story for maximum impact." },
-  { step: "03", title: "Design & Build", desc: "Our designers create stunning, conversion-focused slides." },
-  { step: "04", title: "Review & Refine", desc: "Unlimited revisions until it's perfect." },
-];
+
 
 export default function Pitchdeck() {
   useEffect(() => {
@@ -66,11 +62,14 @@ export default function Pitchdeck() {
         .theme-orange [class*="bg-white"],
         .theme-orange [class*="bg-[#fafafa]"],
         .theme-orange [class*="bg-[#efefef]"],
+        .theme-orange [class*="bg-[#f8f8f8]"],
         .theme-orange [class*="bg-[#f3f4f6]"],
         .theme-orange [class*="bg-[#e9ecef]"],
         .theme-orange [class*="bg-[#efefed]"],
         .theme-orange [class*="bg-[#e9e9e9]"] {
-        background-color: rgb(255 244 230 / 0.75) !important;
+        background-color: rgba(255 245 235 / 0.85);
+  /* light orange, NOT peach */
+ !important;
 
         }
         .theme-orange [class*="bg-[#101010]"],
@@ -243,6 +242,8 @@ export default function Pitchdeck() {
 
         <LogoList logoFilter="#ff7700" />
 
+        <ServicesSection excludeService="pitch-deck" />
+
         <PortfolioDrag />
 
         <ServicesPlans accentColor="bg-[#ff4d31]" accentHoverColor="hover:bg-[#ff3d21]" tickBgColor="bg-orange-100" tickTextColor="text-orange-600" />
@@ -278,36 +279,45 @@ export default function Pitchdeck() {
           </div>
         </section>
 
-        {/* Process Section */}
+
+
+
+        {/* Deck Types Section */}
         <section className="py-24 bg-[#18191c]">
           <div className="max-w-7xl mx-auto px-4 md:px-8">
             <div className="text-center mb-20">
-              <span className="text-sm uppercase tracking-[0.2em] text-[#ff4d31] font-semibold">Our Process</span>
+              <span className="text-sm uppercase tracking-[0.2em] text-[#ff4d31] font-semibold">What We Create</span>
               <h2 className="text-3xl md:text-5xl font-bold text-white mt-4">
-                How We Work
+                Decks That Win
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {processSteps.map((item, index) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { title: "Investor Decks", desc: "Secure funding with compelling narratives" },
+                { title: "Sales Decks", desc: "Close deals with powerful presentations" },
+                { title: "Startup Pitches", desc: "Launch your vision to the world" },
+                { title: "Corporate Decks", desc: "Impress stakeholders professionally" },
+              ].map((item, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.15, duration: 0.5 }}
-                  className="text-center p-6"
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  className="p-8 bg-white rounded-3xl border border-black/10 hover:border-[#ff4d31]/50 transition-all duration-500 text-center group hover:shadow-xl hover:shadow-[#ff4d31]/10"
                 >
-                  <div className="text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#ff4d31]/50 to-transparent mb-6">{item.step}</div>
-                  <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                  <p className="text-gray-400">{item.desc}</p>
+                  <h3 className="text-xl font-bold text-black mb-3 group-hover:text-[#ff4d31] transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-700">
+                    {item.desc}
+                  </p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
-
-
 
         <ScrollStakeSection />
         <CalenderCard />

@@ -8,6 +8,7 @@ import FooterSection from "@/components/sections/FooterSection";
 import LogoList from "@/components/sections/LogoList";
 import PortfolioDrag from "@/components/sections/PortfolioSection";
 import ServicesPlans from "@/components/sections/ServicesPlans";
+import ServicesSection from "@/components/Ourservices";
 import ScrollStakeSection from "@/components/sections/ScrollStack";
 
 // Icons
@@ -66,6 +67,7 @@ export default function AIAutomation() {
         .theme-emerald [class*="bg-white"],
         .theme-emerald [class*="bg-[#fafafa]"],
         .theme-emerald [class*="bg-[#efefef]"],
+        .theme-emerald [class*="bg-[#f8f8f8]"],
         .theme-emerald [class*="bg-[#f3f4f6]"],
         .theme-emerald [class*="bg-[#e9ecef]"],
         .theme-emerald [class*="bg-[#efefed]"],
@@ -304,6 +306,8 @@ export default function AIAutomation() {
         </div>
 
         <LogoList logoFilter="#059669" />
+
+        <ServicesSection excludeService="ai-automation" />
 
         <PortfolioDrag />
 

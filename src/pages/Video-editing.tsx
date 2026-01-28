@@ -8,6 +8,7 @@ import FooterSection from "@/components/sections/FooterSection";
 import LogoList from "@/components/sections/LogoList";
 import PortfolioDrag from "@/components/sections/PortfolioSection";
 import ServicesPlans from "@/components/sections/ServicesPlans";
+import ServicesSection from "@/components/Ourservices";
 import ScrollStakeSection from "@/components/sections/ScrollStack";
 
 // Icons
@@ -66,6 +67,7 @@ export default function VideoEditing() {
         .theme-purple [class*="bg-white"],
         .theme-purple [class*="bg-[#fafafa]"],
         .theme-purple [class*="bg-[#efefef]"],
+        .theme-purple [class*="bg-[#f8f8f8]"],
         .theme-purple [class*="bg-[#f3f4f6]"],
         .theme-purple [class*="bg-[#e9ecef]"],
         .theme-purple [class*="bg-[#efefed]"],
@@ -271,6 +273,8 @@ export default function VideoEditing() {
         </div>
 
         <LogoList logoFilter="#a855f7" />
+
+        <ServicesSection excludeService="video-editing" />
 
         <PortfolioDrag />
 

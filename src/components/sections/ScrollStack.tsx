@@ -3,13 +3,13 @@ import ScrollStack from "./ScrollItem";
 
 export default function ScrollStakeSection() {
   return (
-<section
-  className="scroll-stack-section pt-16 pb-12 md:pt-24 md:pb-16 rounded-b-lg bg-[#efefef]"
-  id="why-us"
->
+    <section
+      className="scroll-stack-section py-12 md:py-16 rounded-b-lg bg-[#efefef]"
+      id="why-us"
+    >
 
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        
+
 
 
         {/* ===== TWO COLUMN LAYOUT ===== */}

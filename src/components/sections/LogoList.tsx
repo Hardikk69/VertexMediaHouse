@@ -146,41 +146,46 @@ const LogoAndReviews: React.FC<LogoListProps> = ({ backgroundColor = "bg-[#efefe
       {/* =================================================
          REVIEWS SECTION (VERTICAL ONLY)
       ================================================= */}
-      <section className="pt-20 bg-[#e9e9e9] px-[16px]" id="client-reviews">
-        <span className="block mb-4 text-sm tracking-wide text-[#18191c] text-center ">
-          Testimonials
-        </span>
-        <h2 className="text-4xl font-medium text-center mb-10 text-[#18191c]">
-          What Clients Say
-        </h2>
+      <section className="py-10 bg-[#e9e9e9] px-[8px] md:px-[16px]" id="client-reviews">
+        <div className="relative max-w-[1400px] mx-auto rounded-[24px] bg-gradient-to-b from-white/80 to-white/40 backdrop-blur-sm p-4 md:p-6 shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-white/60 overflow-hidden">
+          {/* Subtle gradient overlay for premium feel */}
+          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent pointer-events-none rounded-[32px]" />
+          
+          <span className="relative block mb-4 text-sm tracking-widest uppercase text-[#18191c]/70 text-center font-medium">
+            Testimonials
+          </span>
+          <h2 className="relative text-4xl md:text-5xl font-medium text-center mb-12 text-[#18191c]">
+            What Clients Say
+          </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1350px] mx-auto">
+          <div className="relative grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1200px] mx-auto">
 
-          {/* LEFT – Bottom → Top */}
-          {/* LEFT – visible on all screens */}
-          <div className="h-[520px] overflow-hidden group">
-            <div className="animate-move-up group-hover:[animation-play-state:paused]">
-              {[...reviews, ...reviews].map((r, i) => (
-                <ReviewCard key={i} item={r} />
-              ))}
+            {/* LEFT – Bottom → Top */}
+            {/* LEFT – visible on all screens */}
+            <div className="h-[520px] overflow-hidden group rounded-2xl">
+              <div className="animate-move-up group-hover:[animation-play-state:paused]">
+                {[...reviews, ...reviews].map((r, i) => (
+                  <ReviewCard key={i} item={r} />
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* MIDDLE – desktop only */}
-          <div className="hidden md:block h-[520px] overflow-hidden group">
-            <div className="animate-move-down group-hover:[animation-play-state:paused]">
-              {[...reviews, ...reviews].map((r, i) => (
-                <ReviewCard key={i} item={r} />
-              ))}
+            {/* MIDDLE – desktop only */}
+            <div className="hidden md:block h-[520px] overflow-hidden group rounded-2xl">
+              <div className="animate-move-down group-hover:[animation-play-state:paused]">
+                {[...reviews, ...reviews].map((r, i) => (
+                  <ReviewCard key={i} item={r} />
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* RIGHT – desktop only */}
-          <div className="hidden md:block h-[520px] overflow-hidden group">
-            <div className="animate-move-up group-hover:[animation-play-state:paused]">
-              {[...reviews, ...reviews].map((r, i) => (
-                <ReviewCard key={i} item={r} />
-              ))}
+            {/* RIGHT – desktop only */}
+            <div className="hidden md:block h-[520px] overflow-hidden group rounded-2xl">
+              <div className="animate-move-up group-hover:[animation-play-state:paused]">
+                {[...reviews, ...reviews].map((r, i) => (
+                  <ReviewCard key={i} item={r} />
+                ))}
+              </div>
             </div>
           </div>
         </div>

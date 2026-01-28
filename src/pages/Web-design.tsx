@@ -8,6 +8,7 @@ import FooterSection from "@/components/sections/FooterSection";
 import LogoList from "@/components/sections/LogoList";
 import PortfolioDrag from "@/components/sections/PortfolioSection";
 import ServicesPlans from "@/components/sections/ServicesPlans";
+import ServicesSection from "@/components/Ourservices";
 import ScrollStakeSection from "@/components/sections/ScrollStack";
 
 // Icons
@@ -68,6 +69,7 @@ export default function WebDesign() {
         .theme-cyan [class*="bg-white"],
         .theme-cyan [class*="bg-[#fafafa]"],
         .theme-cyan [class*="bg-[#efefef]"],
+        .theme-cyan [class*="bg-[#f8f8f8]"],
         .theme-cyan [class*="bg-[#f3f4f6]"],
         .theme-cyan [class*="bg-[#e9ecef]"],
         .theme-cyan [class*="bg-[#efefed]"],
@@ -267,6 +269,8 @@ export default function WebDesign() {
         </div>
 
         <LogoList logoFilter="#3b82f6" />
+
+        <ServicesSection excludeService="web-designing" />
 
         <PortfolioDrag />
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 
@@ -8,6 +8,22 @@ const HeroNav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState<string | null>(null);
   const location = useLocation();
+
+  // Theme glow colors based on current route
+  const themeGlowColors = useMemo(() => {
+    const path = location.pathname.toLowerCase();
+    if (path.includes('video-editing')) {
+      return { primary: '#a855f7' }; // purple-500
+    } else if (path.includes('web-design')) {
+      return { primary: '#06b6d4' }; // cyan-500
+    } else if (path.includes('ai-automation')) {
+      return { primary: '#10b981' }; // emerald-500
+    } else if (path.includes('pitch-deck')) {
+      return { primary: '#f97316' }; // orange-500
+    }
+    // Default: brand orange/red
+    return { primary: '#ff4d31' };
+  }, [location.pathname]);
 
   // Service theme colors
   const serviceThemes: Record<string, { bg: string; text: string; hover: string }> = {
@@ -154,30 +170,41 @@ const HeroNav = () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className="group flex items-center gap-2.5"
+              style={{
+                '--theme-primary': themeGlowColors.primary,
+              } as React.CSSProperties}
             >
-              <motion.div
-                className="relative"
-                whileHover={{ scale: 1.05, rotate: 5 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <div className="relative">
                 <svg
-                  className="w-9 h-9 md:w-10 md:h-10 transition-transform duration-300"
+                  className="w-9 h-9 md:w-10 md:h-10"
                   viewBox="0 0 40 40"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     d="M8 32L20 8L32 32H26L20 18L14 32H8Z"
-                    className="fill-[#ff4d31] group-hover:fill-[#ff6347] transition-colors duration-300"
+                    style={{ 
+                      fill: 'var(--theme-primary)',
+                      transition: 'fill 1s ease'
+                    }}
                   />
                   <path
                     d="M20 18L26 32H14L20 18Z"
-                    className="fill-[#ff4d31] group-hover:fill-[#ff6347] transition-colors duration-300"
+                    style={{ 
+                      fill: 'var(--theme-primary)',
+                      transition: 'fill 1s ease'
+                    }}
                     opacity="0.6"
                   />
                 </svg>
-              </motion.div>
-              <span className="text-xl md:text-2xl font-black tracking-tight text-white group-hover:text-gray-200 transition-colors duration-300">
+              </div>
+              <span 
+                className="relative text-xl md:text-2xl font-black tracking-tight bg-clip-text text-transparent bg-[length:300%_300%] animate-[shimmer_5s_linear_infinite]"
+                style={{ 
+                  backgroundImage: `linear-gradient(135deg, #ffffff 0%, #ffffff 40%, var(--theme-primary) 50%, #ffffff 60%, #ffffff 100%)`,
+                  transition: 'all 1s ease'
+                }}
+              >
                 ALPHA
               </span>
             </Link>
@@ -402,12 +429,40 @@ const HeroNav = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
               >
-                <Link to="/" onClick={closeMobileMenu} className="flex items-center gap-3">
-                  <svg className="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 32L20 8L32 32H26L20 18L14 32H8Z" className="fill-[#ff4d31]" />
-                    <path d="M20 18L26 32H14L20 18Z" className="fill-[#ff4d31]" opacity="0.6" />
+                <Link 
+                  to="/" 
+                  onClick={closeMobileMenu} 
+                  className="flex items-center gap-3 relative group"
+                  style={{
+                    '--theme-primary': themeGlowColors.primary,
+                    '--theme-secondary': themeGlowColors.primary,
+                  } as React.CSSProperties}
+                >
+                  <svg 
+                    className="relative w-10 h-10" 
+                    viewBox="0 0 40 40" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path 
+                      d="M8 32L20 8L32 32H26L20 18L14 32H8Z" 
+                      style={{ fill: 'var(--theme-primary)', transition: 'fill 1s ease' }} 
+                    />
+                    <path 
+                      d="M20 18L26 32H14L20 18Z" 
+                      style={{ fill: 'var(--theme-primary)', transition: 'fill 1s ease' }} 
+                      opacity="0.6" 
+                    />
                   </svg>
-                  <span className="text-2xl font-black tracking-tight text-white">ALPHA</span>
+                  <span 
+                    className="relative text-2xl font-black tracking-tight bg-clip-text text-transparent bg-[length:300%_300%] animate-[shimmer_5s_linear_infinite]"
+                    style={{ 
+                      backgroundImage: `linear-gradient(135deg, #ffffff 0%, #ffffff 40%, var(--theme-primary) 50%, #ffffff 60%, #ffffff 100%)`,
+                      transition: 'all 1s ease'
+                    }}
+                  >
+                    ALPHA
+                  </span>
                 </Link>
               </motion.div>
 

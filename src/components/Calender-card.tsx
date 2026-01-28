@@ -1,6 +1,6 @@
 export default function CalenderCard() {
   return (
-    <section className="relative w-full bg-[#f3f4f6] overflow-hidden pt-16 md:pt-32">
+    <section className="relative w-full bg-[#f3f4f6] overflow-hidden py-12 md:py-12">
 
       {/* background diagonal strip */}
       <div
@@ -15,19 +15,19 @@ export default function CalenderCard() {
       />
 
       {/* main content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-24 flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12 flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-16">
 
         {/* LEFT CONTENT */}
         <div className="max-w-xl text-center lg:text-left">
-          <h1 className="text-2xl md:text-[40px] leading-tight md:leading-[42px] font-semibold text-[#202020]">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[40px] leading-tight md:leading-[42px] font-semibold text-[#202020]">
             Your business, our expertise –
           </h1>
 
-          <h2 className="text-2xl md:text-[40px] leading-tight md:leading-[42px] italic font-medium playfair text-[#202020] mt-1">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[40px] leading-tight md:leading-[42px] italic font-medium playfair text-[#202020] mt-1">
             let's talk!
           </h2>
 
-          <p className="mt-4 font-semibold text-[#202020]">
+          <p className="mt-3 md:mt-4 font-semibold text-sm md:text-base text-[#202020]">
             Schedule a free consultation
           </p>
         </div>
@@ -41,7 +41,7 @@ export default function CalenderCard() {
               group relative
               bg-white rounded-2xl shadow-xl
               w-full max-w-[360px] p-6 md:p-8
-              mt-0 md:-mt-32
+              mt-8 md:-mt-12
               transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]
               md:hover:rotate-6 md:hover:-translate-y-6 md:hover:translate-x-6 md:hover:scale-[1.03]
             "

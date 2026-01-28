@@ -82,7 +82,7 @@ export default function FAQSection(): JSX.Element {
   };
 
   return (
-    <section className="text-[#18191e] py-16 md:py-28">
+    <section className="text-[#18191e] py-12 md:py-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_1.2fr] gap-8 md:gap-16 items-start">
           {/* ================= LEFT TEXT ================= */}

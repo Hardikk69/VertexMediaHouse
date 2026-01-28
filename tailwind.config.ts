@@ -88,6 +88,16 @@ export default {
 
       /* ================= KEYFRAMES ================= */
       keyframes: {
+        /* Shimmer wave animation for logo text */
+        shimmer: {
+          "0%": { backgroundPosition: "200% -100%" },
+          "100%": { backgroundPosition: "-200% 100%" },
+        },
+        /* Slow pulse for logo glow */
+        "pulse-slow": {
+          "0%, 100%": { opacity: "0.4", transform: "scale(1)" },
+          "50%": { opacity: "0.7", transform: "scale(1.05)" },
+        },
         /* existing animations */
         "accordion-down": {
           from: { height: "0" },
@@ -158,6 +168,7 @@ export default {
 
       /* ================= ANIMATIONS ================= */
       animation: {
+        "pulse-slow": "pulse-slow 3s ease-in-out infinite",
         "scroll-up": "scroll-up 6s linear infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
