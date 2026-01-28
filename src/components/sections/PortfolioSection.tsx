@@ -71,11 +71,21 @@ export default function InfinitePortfolioDrag({ twoCardMode = false, accentColor
   }, []);
 
   /* -----------------------------------------
-     Start from middle
+     Start from middle - adjusted for centering
   ------------------------------------------ */
   useEffect(() => {
-    if (contentWidth) x.set(-contentWidth / 2);
-  }, [contentWidth, x]);
+    if (contentWidth) {
+      if (twoCardMode && containerRef.current) {
+        // For centered cards, offset to show first card in center
+        const viewportWidth = window.innerWidth;
+        const cardWidthPx = containerRef.current.scrollWidth / (cards.length * 2);
+        const centerOffset = (viewportWidth - cardWidthPx) / 2;
+        x.set(-cardWidthPx + centerOffset);
+      } else {
+        x.set(-contentWidth / 2);
+      }
+    }
+  }, [contentWidth, twoCardMode, x]);
 
   /* -----------------------------------------
      Infinite wrap logic
@@ -91,8 +101,23 @@ export default function InfinitePortfolioDrag({ twoCardMode = false, accentColor
     });
   }, [contentWidth, x]);
 
-  // Card width based on mode
-  const cardWidth = twoCardMode ? "w-[48%] md:w-[calc(50%-16px)]" : "w-[320px]";
+  /* -----------------------------------------
+     Auto-play rotation for two-card mode
+  ------------------------------------------ */
+  useEffect(() => {
+    if (!twoCardMode || isDragging) return;
+
+    const interval = setInterval(() => {
+      const current = x.get();
+      const cardWidthPx = containerRef.current ? containerRef.current.scrollWidth / (cards.length * 2) : 400;
+      x.set(current - cardWidthPx);
+    }, 3000); // Rotate every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [twoCardMode, isDragging, x]);
+
+  // Card width based on mode - larger for centered effect
+  const cardWidth = twoCardMode ? "w-[70%] md:w-[65%]" : "w-[320px]";
 
   return (
     <motion.section
@@ -132,7 +157,7 @@ export default function InfinitePortfolioDrag({ twoCardMode = false, accentColor
           className="flex px-10"
           animate={{
             scale: isDragging ? 0.96 : 1,
-            gap: twoCardMode ? (isDragging ? "24px" : "16px") : (isDragging ? "32px" : "16px"),
+            gap: twoCardMode ? (isDragging ? "48px" : "40px") : (isDragging ? "32px" : "16px"),
           }}
           transition={{ type: "spring" as const, stiffness: 300, damping: 30 }}
         >
