@@ -61,7 +61,7 @@ export default function VideoEditing() {
 
   return (
     <>
-      {/* Global theme tint */}
+      {/* Global theme tint - subtle purple */}
       <style>{`
         .theme-purple,
         .theme-purple [class*="bg-white"],
@@ -72,18 +72,18 @@ export default function VideoEditing() {
         .theme-purple [class*="bg-[#e9ecef]"],
         .theme-purple [class*="bg-[#efefed]"],
         .theme-purple [class*="bg-[#e9e9e9]"] {
-          background-color: rgb(250 245 255 / 0.7) !important;
+          background-color: rgb(251 248 254 / 0.92) !important;
         }
         .theme-purple [class*="bg-[#101010]"],
         .theme-purple [class*="bg-[#18191c]"],
         .theme-purple [class*="bg-[#0a0a0a]"] {
-          background: linear-gradient(to bottom right, #0d0d0d, #1a1a2a) !important;
+          background: linear-gradient(to bottom right, #0f0f12, #1a1a24) !important;
         }
         .theme-purple .bg-white {
-          background-color: rgb(250 245 255 / 0.8) !important;
+          background-color: rgb(252 250 255 / 0.94) !important;
         }
       `}</style>
-      <main className="min-h-screen bg-purple-50 theme-purple">
+      <main className="min-h-screen bg-purple-50/25 theme-purple">
         {/* Hero Section */}
         <div className="p-4 bg-purple-100/50">
           <section className="relative h-auto min-h-0 md:h-[calc(100dvh-24px)] md:max-h-[calc(100dvh-24px)] 2xl:max-h-[700px] bg-gradient-to-br from-[#0a0a0f] via-[#1a1428] to-[#2d1f3d] rounded-xl overflow-hidden">
@@ -150,7 +150,7 @@ export default function VideoEditing() {
                     </Link>
                     <Link
                       to="/contact"
-                      className="inline-flex items-center justify-center px-8 py-4 bg-white/5 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold hover:bg-white/10 hover:border-white/30 transition-all duration-300 hover:shadow-lg"
+                      className="inline-flex items-center justify-center px-8 py-4 bg-white/5 backdrop-blur-md border border-white/20 text-black rounded-full font-semibold hover:bg-white/10 hover:border-white/30 transition-all duration-300 hover:shadow-lg"
                     >
                       See Pricing
                     </Link>
@@ -272,11 +272,11 @@ export default function VideoEditing() {
           </section>
         </div>
 
-        <LogoList logoFilter="#a855f7" />
+        <LogoList logoFilter="#a855f7" accentColor="#9333ea" />
 
-        <ServicesSection excludeService="video-editing" />
+        <ServicesSection excludeService="video-editing" accentColor="#9333ea" />
 
-        <PortfolioDrag />
+        <PortfolioDrag twoCardMode={true} accentColor="#9333ea" />
 
         <ServicesPlans accentColor="bg-purple-600" accentHoverColor="hover:bg-purple-700" tickBgColor="bg-purple-100" tickTextColor="text-purple-600" />
 
@@ -348,10 +348,10 @@ export default function VideoEditing() {
         </section>
 
 
-        <ScrollStakeSection />
-        <CalenderCard />
-        <div className="bg-purple-50">
-          <FaqSection />
+        <ScrollStakeSection accentColor="#9333ea" />
+        <CalenderCard bgColor="#faf5ff" stripColor="#e9d5ff" />
+        <div className="bg-purple-50/80">
+          <FaqSection accentColor="#9333ea" />
         </div>
       </main>
       <FooterSection />

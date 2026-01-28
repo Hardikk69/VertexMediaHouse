@@ -49,7 +49,12 @@ const titleVariants = {
   },
 };
 
-export default function InfinitePortfolioDrag(): JSX.Element {
+interface PortfolioProps {
+  twoCardMode?: boolean;
+  accentColor?: string;
+}
+
+export default function InfinitePortfolioDrag({ twoCardMode = false, accentColor = "#ffffff" }: PortfolioProps): JSX.Element {
   const x = useMotionValue(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -86,6 +91,9 @@ export default function InfinitePortfolioDrag(): JSX.Element {
     });
   }, [contentWidth, x]);
 
+  // Card width based on mode
+  const cardWidth = twoCardMode ? "w-[45%] md:w-[calc(50%-12px)]" : "w-[320px]";
+
   return (
     <motion.section
       className="bg-[#101010] text-white py-14 overflow-hidden"
@@ -97,7 +105,8 @@ export default function InfinitePortfolioDrag(): JSX.Element {
     >
       <motion.span
         variants={titleVariants}
-        className="block mb-4 text-sm tracking-wide text-white/60 text-center"
+        className="block mb-4 text-sm tracking-wide text-center"
+        style={{ color: `${accentColor}99` }} // 60% opacity
       >
         Our Portfolio
       </motion.span>
@@ -123,21 +132,21 @@ export default function InfinitePortfolioDrag(): JSX.Element {
           className="flex px-10"
           animate={{
             scale: isDragging ? 0.96 : 1,
-            gap: isDragging ? "32px" : "16px",
+            gap: twoCardMode ? (isDragging ? "24px" : "16px") : (isDragging ? "32px" : "16px"),
           }}
           transition={{ type: "spring" as const, stiffness: 300, damping: 30 }}
         >
           {[...cards, ...cards].map((item, i) => (
             <motion.div
               key={i}
-              className="
+              className={`
                 relative
-                w-[320px] h-[440px]
+                ${cardWidth} h-[440px]
                 rounded-xl
                 overflow-hidden
                 flex-shrink-0
                 select-none
-              "
+              `}
               onHoverStart={() => setHoveredIndex(i)}
               onHoverEnd={() => setHoveredIndex(null)}
               whileHover={{

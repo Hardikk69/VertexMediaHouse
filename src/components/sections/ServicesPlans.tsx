@@ -75,11 +75,14 @@ const ServicesPlans: React.FC<ServicesPlansProps> = ({
     return (
         <section className="bg-[#fafafa] py-20 px-4">
             <div className="max-w-6xl mx-auto text-center">
-                <span className="text-sm uppercase tracking-[0.2em] font-semibold text-gray-500">
+                <span
+                    className="text-sm uppercase tracking-[0.2em] font-semibold"
+                    style={{ color: accentColor.replace('bg-[', '').replace(']', '') }}
+                >
                     Our Process
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold mb-3 mt-3 text-[#18191c]">
-                    What's the <span className="text-black">process?</span>
+                    What's the <span style={{ color: accentColor.replace('bg-[', '').replace(']', '') }}>process?</span>
                 </h2>
                 <p className="text-gray-600 mb-12 max-w-xl mx-auto">
                     We become YOUR remote micro team, at either of the 3 levels.

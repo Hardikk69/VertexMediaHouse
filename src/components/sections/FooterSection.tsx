@@ -42,8 +42,8 @@ export default function FooterSection(): JSX.Element {
   ];
 
   const companyLinks = [
-    { title: "About", href: "/about" },
-    { title: "Contact", href: "/contact" },
+    { title: "Reviews", href: "#client-reviews" },
+    { title: "Portfolio", href: "#our-portfolio" },
   ];
 
 

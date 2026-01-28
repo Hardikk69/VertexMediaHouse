@@ -44,7 +44,7 @@ const serviceThemes = {
   },
 };
 
-export default function ServicesSection({ excludeService }: { excludeService?: string } = {}) {
+export default function ServicesSection({ excludeService, accentColor = "#f97316" }: { excludeService?: string; accentColor?: string } = {}) {
   const navigate = useNavigate();
   const location = useLocation();
   // Using React state to manage active cards (Pitch Deck is active by default)
@@ -113,7 +113,7 @@ export default function ServicesSection({ excludeService }: { excludeService?: s
   return (
     <section ref={sectionRef} className="services font-bricolage select-none py-24 bg-[#f8f8f8]" id="our-services">
       <div className="container mx-auto px-4">
-        <span className="block mb-4 text-sm uppercase tracking-widest text-[#ff4d31] text-center font-bold">
+        <span className="block mb-4 text-sm uppercase tracking-widest text-center font-bold" style={{ color: accentColor }}>
           Our Core Services
         </span>
         <h2 className="text-4xl md:text-5xl text-center mb-6 text-[#18191c] font-bold">

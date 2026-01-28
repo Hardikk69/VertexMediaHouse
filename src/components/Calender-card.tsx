@@ -1,17 +1,21 @@
-export default function CalenderCard() {
+interface CalenderCardProps {
+  bgColor?: string;
+  stripColor?: string;
+}
+
+export default function CalenderCard({ bgColor = "#f3f4f6", stripColor = "#e0e2e5" }: CalenderCardProps = {}) {
   return (
-    <section className="relative w-full bg-[#f3f4f6] overflow-hidden py-12 md:py-12">
+    <section className="relative w-full overflow-hidden py-12 md:py-12" style={{ backgroundColor: bgColor }}>
 
       {/* background diagonal strip */}
       <div
         className="
           absolute inset-x-0 top-1/2 -translate-y-1/2
           h-[260px]
-          bg-[#e9ecef]
           -skew-y-2
           z-0
-          hidden md:block
         "
+        style={{ backgroundColor: stripColor }}
       />
 
       {/* main content */}

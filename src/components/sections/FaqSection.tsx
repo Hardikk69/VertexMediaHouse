@@ -41,7 +41,11 @@ const rightFAQs: FAQItem[] = [
   },
 ];
 
-export default function FAQSection(): JSX.Element {
+interface FAQSectionProps {
+  accentColor?: string;
+}
+
+export default function FAQSection({ accentColor = "#ff4d31" }: FAQSectionProps): JSX.Element {
   const [activeKey, setActiveKey] = useState<string | null>(null);
 
   function toggle(key: string) {
@@ -52,16 +56,33 @@ export default function FAQSection(): JSX.Element {
     const isOpen = activeKey === keyId;
 
     return (
-      <div className="border border-black/15 rounded-[8px] overflow-hidden transition-colors duration-200 hover:border-[#ff4d31]/30">
+      <div
+        className="border border-black/15 rounded-[8px] overflow-hidden transition-colors duration-200"
+        style={{
+          borderColor: isOpen ? `${accentColor}30` : undefined
+        }}
+        onMouseEnter={(e) => {
+          if (!isOpen) e.currentTarget.style.borderColor = `${accentColor}30`;
+        }}
+        onMouseLeave={(e) => {
+          if (!isOpen) e.currentTarget.style.borderColor = '';
+        }}
+      >
         <button
           onClick={() => toggle(keyId)}
           className={`w-full flex items-center justify-between px-4 md:px-6 py-4 md:py-5 text-left font-medium text-sm md:text-base transition-colors duration-200
-            ${isOpen ? "text-[#ff4d31] font-bold bg-black/[0.02]" : "text-[#18191e] hover:bg-black/[0.02]"}
+            ${isOpen ? "font-bold bg-black/[0.02]" : "text-[#18191e] hover:bg-black/[0.02]"}
           `}
+          style={{
+            color: isOpen ? accentColor : undefined
+          }}
         >
           <span className="pr-4">{item.question}</span>
           <span
-            className={`transition-transform duration-300 flex-shrink-0 ${isOpen ? "rotate-180 text-[#ff4d31]" : "text-[#18191e]"}`}
+            className={`transition-transform duration-300 flex-shrink-0 ${isOpen ? "rotate-180" : "text-[#18191e]"}`}
+            style={{
+              color: isOpen ? accentColor : undefined
+            }}
           >
             ▼
           </span>

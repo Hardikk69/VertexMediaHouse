@@ -61,7 +61,7 @@ export default function AIAutomation() {
 
   return (
     <>
-      {/* Global theme tint */}
+      {/* Global theme tint - subtle emerald */}
       <style>{`
         .theme-emerald,
         .theme-emerald [class*="bg-white"],
@@ -72,7 +72,7 @@ export default function AIAutomation() {
         .theme-emerald [class*="bg-[#e9ecef]"],
         .theme-emerald [class*="bg-[#efefed]"],
         .theme-emerald [class*="bg-[#e9e9e9]"] {
-          background-color: rgb(236 253 245 / 0.7) !important;
+          background-color: rgb(245 254 250 / 0.92) !important;
         }
         .theme-emerald [class*="bg-[#101010]"],
         .theme-emerald [class*="bg-[#18191c]"],
@@ -80,10 +80,10 @@ export default function AIAutomation() {
           background: linear-gradient(to bottom right, #0a0a0a, #0d1a0d) !important;
         }
         .theme-emerald .bg-white {
-          background-color: rgb(236 253 245 / 0.8) !important;
+          background-color: rgb(248 254 251 / 0.94) !important;
         }
       `}</style>
-      <main className="min-h-screen bg-emerald-50 theme-emerald">
+      <main className="min-h-screen bg-emerald-50/25 theme-emerald">
         {/* Hero Section */}
         <div className="p-4 bg-emerald-100/50">
           <section className="relative h-auto min-h-0 md:h-[calc(100dvh-24px)] md:max-h-[calc(100dvh-24px)] 2xl:max-h-[700px] bg-gradient-to-br from-[#0a0a0f] via-[#0d1a0d] to-[#0a0a0a] rounded-xl overflow-hidden">
@@ -305,11 +305,11 @@ export default function AIAutomation() {
           </section>
         </div>
 
-        <LogoList logoFilter="#059669" />
+        <LogoList logoFilter="#059669" accentColor="#10b981" />
 
-        <ServicesSection excludeService="ai-automation" />
+        <ServicesSection excludeService="ai-automation" accentColor="#10b981" />
 
-        <PortfolioDrag />
+        <PortfolioDrag twoCardMode={true} accentColor="#10b981" />
 
         <ServicesPlans accentColor="bg-emerald-500" accentHoverColor="hover:bg-emerald-600" tickBgColor="bg-emerald-100" tickTextColor="text-emerald-600" />
 
@@ -411,65 +411,12 @@ export default function AIAutomation() {
           </div>
         </section>
 
-        {/* Enhanced Stats Section */}
-        <section className="relative py-24 bg-gradient-to-r from-emerald-500 via-emerald-600 to-green-600 overflow-hidden">
-          {/* Decorative elements */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-[150px]" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-900 rounded-full blur-[150px]" />
-          </div>
 
-          <div className="relative max-w-7xl mx-auto px-4 md:px-8">
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                Results That Speak for Themselves
-              </h2>
-              <p className="text-white/90 text-lg">
-                Real impact from AI automation
-              </p>
-            </motion.div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-              {[
-                { number: "90%", label: "Time Saved", delay: 0 },
-                { number: "24/7", label: "Always Active", delay: 0.1 },
-                { number: "5x", label: "Lead Response", delay: 0.2 },
-                { number: "0", label: "Missed Leads", delay: 0.3 }
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  className="text-center group"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: stat.delay, duration: 0.6, type: "spring" }}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <div className="relative inline-block">
-                    {/* Glow effect */}
-                    <div className="absolute inset-0 bg-white/20 rounded-full blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="relative text-5xl md:text-7xl font-bold text-white drop-shadow-lg">
-                      {stat.number}
-                    </div>
-                  </div>
-                  <div className="text-white/90 mt-4 font-medium text-base md:text-lg tracking-wide">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <ScrollStakeSection />
-        <CalenderCard />
-        <div className="bg-emerald-50">
-          <FaqSection />
+        <ScrollStakeSection accentColor="#10b981" />
+        <CalenderCard bgColor="#f0fdf4" stripColor="#d1fae5" />
+        <div className="bg-emerald-50/80">
+          <FaqSection accentColor="#10b981" />
         </div>
       </main>
       <FooterSection />

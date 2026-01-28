@@ -63,7 +63,7 @@ export default function WebDesign() {
 
   return (
     <>
-      {/* Global theme tint */}
+      {/* Global theme tint - subtle cyan */}
       <style>{`
         .theme-cyan,
         .theme-cyan [class*="bg-white"],
@@ -74,20 +74,20 @@ export default function WebDesign() {
         .theme-cyan [class*="bg-[#e9ecef]"],
         .theme-cyan [class*="bg-[#efefed]"],
         .theme-cyan [class*="bg-[#e9e9e9]"] {
-          background-color: rgb(236 254 255 / 0.7) !important;
+          background-color: rgb(245 252 254 / 0.92) !important;
         }
         .theme-cyan [class*="bg-[#101010]"],
         .theme-cyan [class*="bg-[#18191c]"],
         .theme-cyan [class*="bg-[#0a0a0a]"] {
-          background: linear-gradient(to bottom right, #0f172a, #1e293b) !important;
+          background: linear-gradient(to bottom right, #0f172a, #1a2028) !important;
         }
         .theme-cyan .bg-white {
-          background-color: rgb(236 254 255 / 0.8) !important;
+          background-color: rgb(248 253 255 / 0.94) !important;
         }
       `}</style>
-      <main className="min-h-screen bg-cyan-50 theme-cyan">
+      <main className="min-h-screen bg-cyan-50/25 theme-cyan">
         {/* Hero Section */}
-        <div className="p-4 bg-cyan-100/50">
+        <div className="p-4 bg-cyan-50/20">
           <section className="relative h-auto min-h-0 md:h-[calc(100dvh-24px)] md:max-h-[calc(100dvh-24px)] 2xl:max-h-[700px] bg-gradient-to-br from-[#0a0f1a] via-[#1e293b] to-[#0f172a] rounded-xl overflow-hidden">
             <HeroNav />
 
@@ -268,11 +268,11 @@ export default function WebDesign() {
           </section>
         </div>
 
-        <LogoList logoFilter="#3b82f6" />
+        <LogoList logoFilter="#3b82f6" accentColor="#06b6d4" />
 
-        <ServicesSection excludeService="web-designing" />
+        <ServicesSection excludeService="web-designing" accentColor="#06b6d4" />
 
-        <PortfolioDrag />
+        <PortfolioDrag twoCardMode={true} accentColor="#06b6d4" />
 
         <ServicesPlans accentColor="bg-cyan-500" accentHoverColor="hover:bg-cyan-600" tickBgColor="bg-cyan-100" tickTextColor="text-cyan-600" />
 
@@ -334,10 +334,10 @@ export default function WebDesign() {
           </div>
         </section>
 
-        <ScrollStakeSection />
-        <CalenderCard />
-        <div className="bg-cyan-50">
-          <FaqSection />
+        <ScrollStakeSection accentColor="#06b6d4" />
+        <CalenderCard bgColor="#ecfeff" stripColor="#cffafe" />
+        <div className="bg-cyan-50/60">
+          <FaqSection accentColor="#06b6d4" />
         </div>
       </main>
       <FooterSection />

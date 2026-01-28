@@ -63,22 +63,27 @@ const reviews = [
 /* =====================================================
    SMALL COMPONENTS
 ===================================================== */
-const Stars = ({ count }: { count: number }) => (
-  <div className="flex gap-1 text-[#ff4d31]">
+const Stars = ({ count, accentColor = "#ff4d31" }: { count: number; accentColor?: string }) => (
+  <div className="flex gap-1" style={{ color: accentColor }}>
     {Array.from({ length: 5 }).map((_, i) => (
       <span key={i} className={i < count ? "" : "text-gray-600"}>★</span>
     ))}
   </div>
 );
 
-const ReviewCard = ({ item }: { item: typeof reviews[0] }) => {
+const ReviewCard = ({ item, accentColor = "#ff4d31" }: { item: typeof reviews[0]; accentColor?: string }) => {
   // Get initials from name
   const initials = item.name.split(' ').map(n => n[0]).join('').toUpperCase();
 
   return (
     <div className="bg-white text-[#18191c] p-6 rounded-2xl mb-6">
       <div className="flex gap-4 items-center mb-3">
-        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#ff4d31] to-orange-500 flex items-center justify-center text-white font-bold text-lg">
+        <div
+          className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg"
+          style={{
+            background: `linear-gradient(to bottom right, ${accentColor}, ${accentColor}dd)`
+          }}
+        >
           {initials}
         </div>
         <div>
@@ -86,7 +91,7 @@ const ReviewCard = ({ item }: { item: typeof reviews[0] }) => {
           <p className="text-xs text-gray-500">{item.location}</p>
         </div>
       </div>
-      <Stars count={item.rating} />
+      <Stars count={item.rating} accentColor={accentColor} />
       <p className="mt-3 text-sm">{item.review}</p>
     </div>
   );
@@ -98,6 +103,7 @@ const ReviewCard = ({ item }: { item: typeof reviews[0] }) => {
 interface LogoListProps {
   backgroundColor?: string;
   logoFilter?: string;
+  accentColor?: string;
 }
 
 // Helper function to get filter style for theme colors
@@ -115,7 +121,7 @@ const getFilterStyle = (color: string): string => {
   return filterMap[color.toLowerCase()] ?? "brightness(0) contrast(1.2)";
 };
 
-const LogoAndReviews: React.FC<LogoListProps> = ({ backgroundColor = "bg-[#efefed]", logoFilter }) => {
+const LogoAndReviews: React.FC<LogoListProps> = ({ backgroundColor = "bg-[#efefed]", logoFilter, accentColor = "#ff4d31" }) => {
   const filterStyle = logoFilter ? getFilterStyle(logoFilter) : "brightness(0) contrast(1.2)";
 
   return (
@@ -170,7 +176,10 @@ const LogoAndReviews: React.FC<LogoListProps> = ({ backgroundColor = "bg-[#efefe
           {/* Subtle gradient overlay for premium feel */}
           <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent pointer-events-none rounded-[32px]" />
 
-          <span className="relative block mb-4 text-sm tracking-widest uppercase text-[#18191c]/70 text-center font-medium">
+          <span
+            className="relative block mb-4 text-sm tracking-widest uppercase text-center font-medium"
+            style={{ color: accentColor }}
+          >
             Testimonials
           </span>
           <h2 className="relative text-4xl md:text-5xl font-medium text-center mb-12 text-[#18191c]">
@@ -183,7 +192,7 @@ const LogoAndReviews: React.FC<LogoListProps> = ({ backgroundColor = "bg-[#efefe
             <div className="h-[520px] overflow-hidden group rounded-2xl">
               <div className="animate-move-up group-hover:[animation-play-state:paused]">
                 {[...reviews, ...reviews].map((r, i) => (
-                  <ReviewCard key={i} item={r} />
+                  <ReviewCard key={i} item={r} accentColor={accentColor} />
                 ))}
               </div>
             </div>
@@ -192,7 +201,7 @@ const LogoAndReviews: React.FC<LogoListProps> = ({ backgroundColor = "bg-[#efefe
             <div className="hidden md:block h-[520px] overflow-hidden group rounded-2xl">
               <div className="animate-move-down group-hover:[animation-play-state:paused]">
                 {[...reviews, ...reviews].map((r, i) => (
-                  <ReviewCard key={i} item={r} />
+                  <ReviewCard key={i} item={r} accentColor={accentColor} />
                 ))}
               </div>
             </div>
@@ -201,7 +210,7 @@ const LogoAndReviews: React.FC<LogoListProps> = ({ backgroundColor = "bg-[#efefe
             <div className="hidden md:block h-[520px] overflow-hidden group rounded-2xl">
               <div className="animate-move-up group-hover:[animation-play-state:paused]">
                 {[...reviews, ...reviews].map((r, i) => (
-                  <ReviewCard key={i} item={r} />
+                  <ReviewCard key={i} item={r} accentColor={accentColor} />
                 ))}
               </div>
             </div>

@@ -56,7 +56,7 @@ export default function Pitchdeck() {
 
   return (
     <>
-      {/* Global theme tint - lightened orange shade */}
+      {/* Global theme tint - subtle orange */}
       <style>{`
         .theme-orange,
         .theme-orange [class*="bg-white"],
@@ -67,21 +67,18 @@ export default function Pitchdeck() {
         .theme-orange [class*="bg-[#e9ecef]"],
         .theme-orange [class*="bg-[#efefed]"],
         .theme-orange [class*="bg-[#e9e9e9]"] {
-        background-color: rgba(255 245 235 / 0.85);
-  /* light orange, NOT peach */
- !important;
-
+          background-color: rgba(255 250 245 / 0.92) !important;
         }
         .theme-orange [class*="bg-[#101010]"],
         .theme-orange [class*="bg-[#18191c]"],
         .theme-orange [class*="bg-[#0a0a0a]"] {
-          background: linear-gradient(to bottom right, #1a1a2e, #2d1f1f) !important;
+          background: linear-gradient(to bottom right, #1a1a2e, #2a2530) !important;
         }
         .theme-orange .bg-white {
-          background-color: rgb(255 247 237 / 0.8) !important;
+          background-color: rgb(255 252 248 / 0.94) !important;
         }
       `}</style>
-      <main className="min-h-screen bg-orange-50/80 theme-orange">
+      <main className="min-h-screen bg-orange-50/25 theme-orange">
         {/* Hero Section */}
         <div className="p-4 bg-orange-50/60">
           <section className="relative h-auto min-h-0 md:h-[calc(100dvh-24px)] md:max-h-[calc(100dvh-24px)] 2xl:max-h-[700px] bg-gradient-to-br from-[#0f0f23] via-[#16213e] to-[#1a1a2e] rounded-xl overflow-hidden">
@@ -91,8 +88,13 @@ export default function Pitchdeck() {
             <div className="absolute inset-0 opacity-25">
               {/* Gradient Orbs */}
               <div className="absolute top-20 left-10 w-80 h-80 bg-[#ff4d31]/60 rounded-full blur-[140px] animate-pulse" style={{ animationDuration: '4s' }} />
-              <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/50 rounded-full blur-[170px] animate-pulse" style={{ animationDuration: '5s' }} />
-              <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-orange-500/30 rounded-full blur-[130px]" />
+              <div
+                className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500/40 rounded-full blur-[170px] animate-pulse"
+                style={{ animationDuration: '5s' }}
+              />
+
+              <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-orange-400/30 rounded-full blur-[130px]" />
+
             </div>
 
             {/* Subtle Grid Pattern */}
@@ -240,11 +242,11 @@ export default function Pitchdeck() {
           </section>
         </div>
 
-        <LogoList logoFilter="#ff7700" />
+        <LogoList logoFilter="#ff7700" accentColor="#ff4d31" />
 
-        <ServicesSection excludeService="pitch-deck" />
+        <ServicesSection excludeService="pitch-deck" accentColor="#ff4d31" />
 
-        <PortfolioDrag />
+        <PortfolioDrag twoCardMode={true} accentColor="#ff4d31" />
 
         <ServicesPlans accentColor="bg-[#ff4d31]" accentHoverColor="hover:bg-[#ff3d21]" tickBgColor="bg-orange-100" tickTextColor="text-orange-600" />
 
@@ -319,10 +321,10 @@ export default function Pitchdeck() {
           </div>
         </section>
 
-        <ScrollStakeSection />
-        <CalenderCard />
-        <div className="bg-orange-50">
-          <FaqSection />
+        <ScrollStakeSection accentColor="#ff4d31" />
+        <CalenderCard bgColor="#fff7ed" stripColor="#fed7aa" />
+        <div className="bg-orange-50/80">
+          <FaqSection accentColor="#ff4d31" />
         </div>
       </main>
       <FooterSection />
