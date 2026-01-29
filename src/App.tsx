@@ -25,24 +25,24 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        {/* {loading && <Preloader onFinish={() => setLoading(false)} />}
-        {!loading && ( */}
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/pitch-deck" element={<Pitchdeck />} />
-            <Route path="/video-editing" element={<VideoEditing />} />
-            <Route path="/web-design" element={<WebDesign />} />
-            <Route path="/ai-automation" element={<AIAutomation />} />
-            <Route path="/calender" element={<Calender />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about" element={<About />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-        {/* )} */}
+        {loading && <Preloader onFinish={() => setLoading(false)} />}
+        {!loading && (
+          <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/pitch-deck" element={<Pitchdeck />} />
+              <Route path="/video-editing" element={<VideoEditing />} />
+              <Route path="/web-design" element={<WebDesign />} />
+              <Route path="/ai-automation" element={<AIAutomation />} />
+              <Route path="/calender" element={<Calender />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/about" element={<About />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        )}
       </TooltipProvider>
     </QueryClientProvider>
   );

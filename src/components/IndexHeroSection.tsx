@@ -1,14 +1,106 @@
 import HeroNav from "./HeroNav";
 import PlayButton from "./PlayButton";
-import { useState } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Play } from "lucide-react";
 import { Link } from "react-router-dom";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 const HeroSection = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [particlesReady, setParticlesReady] = useState(false);
     const screen = useScreenSize()
+
+    // Particles initialization
+    useEffect(() => {
+        initParticlesEngine(async (engine) => {
+            await loadSlim(engine);
+        }).then(() => {
+            setParticlesReady(true);
+        });
+    }, []);
+
+    // Particles configuration
+    const particlesOptions = useMemo(() => ({
+        fullScreen: {
+            enable: false,
+            zIndex: 0
+        },
+        background: {
+            color: {
+                value: "transparent",
+            },
+        },
+        fpsLimit: 120,
+        interactivity: {
+            events: {
+                onClick: {
+                    enable: true,
+                    mode: "push",
+                },
+                onHover: {
+                    enable: true,
+                    mode: "repulse",
+                },
+                resize: {
+                    enable: true,
+                    delay: 0.5
+                },
+            },
+            modes: {
+                push: {
+                    quantity: 4,
+                },
+                repulse: {
+                    distance: 150,
+                    duration: 0.4,
+                },
+            },
+        },
+        particles: {
+            color: {
+                value: "#ff4d31",
+            },
+            links: {
+                color: "#ff4d31",
+                distance: 150,
+                enable: true,
+                opacity: 0.3,
+                width: 1,
+            },
+            move: {
+                direction: "none" as const,
+                enable: true,
+                outModes: {
+                    default: "bounce" as const,
+                },
+                random: false,
+                speed: 1,
+                straight: false,
+            },
+            number: {
+                density: {
+                    enable: true,
+                    width: 1920,
+                    height: 1080
+                },
+                value: 80,
+            },
+            opacity: {
+                value: 0.5,
+            },
+            shape: {
+                type: "circle",
+            },
+            size: {
+                value: { min: 1, max: 3 },
+            },
+        },
+        detectRetina: true,
+    }), []);
+
     return (
         <section className="relative rounded-xl bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#0a0a0a] overflow-hidden
     /* MOBILE (sm & below) */
@@ -20,14 +112,27 @@ const HeroSection = () => {
     /* LARGE SCREENS */
     2xl:max-h-[700px]">
 
+            {/* Particles Container - Absolutely positioned within section */}
+            <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
+                {/* tsParticles Background */}
+                {particlesReady && (
+                    <Particles
+                        id="tsparticles"
+                        options={particlesOptions}
+                        className="absolute inset-0"
+                        style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
+                    />
+                )}
+
+                {/* Background Pattern - subtle overlay */}
+                <div className="absolute inset-0 opacity-10">
+                    <div className="absolute top-20 left-10 w-72 h-72 bg-[#ff4d31] rounded-full blur-[120px]" />
+                    <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full blur-[150px]" />
+                </div>
+            </div>
+
             {/* Navigation */}
             <HeroNav />
-
-            {/* Background Pattern - subtle overlay */}
-            <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-20 left-10 w-72 h-72 bg-[#ff4d31] rounded-full blur-[120px]" />
-                <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full blur-[150px]" />
-            </div>
 
             {/* Main container - matching service page structure */}
             <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-36 pb-12">
