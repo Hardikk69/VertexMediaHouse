@@ -1,0 +1,335 @@
+/* Hero Grid Background Effect */
+.hero-grid-container {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Grid Pattern */
+.hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, rgba(255, 77, 49, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 77, 49, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    transition: opacity 0.3s ease;
+}
+
+/* Intensified Grid Overlay - Proximity Effect */
+.hero-grid-intense {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, rgba(255, 77, 49, 0.25) 2px, transparent 2px),
+        linear-gradient(to bottom, rgba(255, 77, 49, 0.25) 2px, transparent 2px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(300px circle at var(--mouse-x) var(--mouse-y),
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.4) 40%,
+            transparent 70%);
+    -webkit-mask-image: radial-gradient(300px circle at var(--mouse-x) var(--mouse-y),
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.4) 40%,
+            transparent 70%);
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+/* Beam Container */
+.hero-beams {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+/* Radial Hover Effect */
+.hero-radial-spotlight {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+            rgba(255, 77, 49, 0.15) 0%,
+            rgba(255, 107, 77, 0.1) 20%,
+            rgba(255, 77, 49, 0.05) 40%,
+            transparent 70%);
+    opacity: 0;
+    animation: fadeInSpotlight 0.3s ease-out forwards;
+}
+
+.hero-pulse-ring {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.hero-pulse-ring::before,
+.hero-pulse-ring::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 77, 49, 0.4);
+    animation: rippleExpand 2s ease-out infinite;
+}
+
+.hero-pulse-ring::after {
+    animation-delay: 1s;
+}
+
+.hero-pulse-ring::before {
+    box-shadow:
+        0 0 20px 2px rgba(255, 77, 49, 0.3),
+        inset 0 0 20px 2px rgba(255, 77, 49, 0.2);
+}
+
+/* Crosshair Animations */
+@keyframes pulseVertical {
+
+    0%,
+    100% {
+        opacity: 0.7;
+        box-shadow: 0 0 10px 1px rgba(255, 77, 49, 0.4), 0 0 20px 3px rgba(255, 77, 49, 0.2);
+    }
+
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 15px 2px rgba(255, 77, 49, 0.6), 0 0 30px 5px rgba(255, 77, 49, 0.3);
+    }
+}
+
+@keyframes pulseHorizontal {
+
+    0%,
+    100% {
+        opacity: 0.7;
+        box-shadow: 0 0 10px 1px rgba(255, 77, 49, 0.4), 0 0 20px 3px rgba(255, 77, 49, 0.2);
+    }
+
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 15px 2px rgba(255, 77, 49, 0.6), 0 0 30px 5px rgba(255, 77, 49, 0.3);
+    }
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+}
+
+@keyframes travelDown {
+    0% {
+        top: 0%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes travelRight {
+    0% {
+        left: 0%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+/* Individual Beam Styles */
+.beam {
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(255, 77, 49, 0.6) 20%,
+            rgba(255, 107, 77, 0.9) 50%,
+            rgba(255, 77, 49, 0.6) 80%,
+            transparent 100%);
+    box-shadow:
+        0 0 20px 4px rgba(255, 77, 49, 0.4),
+        0 0 40px 8px rgba(255, 77, 49, 0.2);
+    border-radius: 4px;
+    animation: beamMove linear infinite;
+    opacity: 0;
+}
+
+/* Beam Positions and Timings */
+.beam-1 {
+    left: 10%;
+    height: 120px;
+    animation-duration: 4s;
+    animation-delay: 0s;
+}
+
+.beam-2 {
+    left: 25%;
+    height: 180px;
+    animation-duration: 5s;
+    animation-delay: 1s;
+}
+
+.beam-3 {
+    left: 40%;
+    height: 100px;
+    animation-duration: 3.5s;
+    animation-delay: 2s;
+}
+
+.beam-4 {
+    left: 55%;
+    height: 150px;
+    animation-duration: 4.5s;
+    animation-delay: 0.5s;
+}
+
+.beam-5 {
+    left: 70%;
+    height: 130px;
+    animation-duration: 5.5s;
+    animation-delay: 1.5s;
+}
+
+.beam-6 {
+    left: 85%;
+    height: 90px;
+    animation-duration: 3.8s;
+    animation-delay: 2.5s;
+}
+
+/* Beam Animation - Bottom to Top */
+@keyframes beamMove {
+    0% {
+        bottom: -200px;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        bottom: calc(100% + 200px);
+        opacity: 0;
+    }
+}
+
+/* Corner Glows */
+.hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+}
+
+.hero-glow-top {
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 200px;
+    background: radial-gradient(ellipse at center,
+            rgba(255, 77, 49, 0.15) 0%,
+            transparent 70%);
+}
+
+.hero-glow-bottom {
+    bottom: -50px;
+    right: 10%;
+    width: 400px;
+    height: 300px;
+    background: radial-gradient(ellipse at center,
+            rgba(147, 51, 234, 0.1) 0%,
+            transparent 70%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-grid {
+        background-size: 40px 40px;
+    }
+
+    .beam {
+        width: 1.5px;
+    }
+
+    .beam-1 {
+        left: 15%;
+        height: 80px;
+    }
+
+    .beam-2 {
+        left: 35%;
+        height: 100px;
+    }
+
+    .beam-3 {
+        left: 55%;
+        height: 70px;
+    }
+
+    .beam-4 {
+        left: 75%;
+        height: 90px;
+    }
+
+    .beam-5 {
+        display: none;
+    }
+
+    .beam-6 {
+        display: none;
+    }
+
+    .hero-glow-top {
+        width: 300px;
+        height: 150px;
+    }
+
+    .hero-glow-bottom {
+        width: 250px;
+        height: 200px;
+    }
+}

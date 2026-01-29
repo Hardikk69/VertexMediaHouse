@@ -5,104 +5,24 @@ import { useScreenSize } from "@/hooks/useScreenSize";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Play } from "lucide-react";
 import { Link } from "react-router-dom";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
+import "./HeroGrid.css";
 
 const HeroSection = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [particlesReady, setParticlesReady] = useState(false);
-    const screen = useScreenSize()
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const screen = useScreenSize();
 
-    // Particles initialization
-    useEffect(() => {
-        initParticlesEngine(async (engine) => {
-            await loadSlim(engine);
-        }).then(() => {
-            setParticlesReady(true);
+    const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        setMousePosition({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
         });
     }, []);
 
-    // Particles configuration
-    const particlesOptions = useMemo(() => ({
-        fullScreen: {
-            enable: false,
-            zIndex: 0
-        },
-        background: {
-            color: {
-                value: "transparent",
-            },
-        },
-        fpsLimit: 120,
-        interactivity: {
-            events: {
-                onClick: {
-                    enable: true,
-                    mode: "push",
-                },
-                onHover: {
-                    enable: true,
-                    mode: "repulse",
-                },
-                resize: {
-                    enable: true,
-                    delay: 0.5
-                },
-            },
-            modes: {
-                push: {
-                    quantity: 4,
-                },
-                repulse: {
-                    distance: 150,
-                    duration: 0.4,
-                },
-            },
-        },
-        particles: {
-            color: {
-                value: "#ff4d31",
-            },
-            links: {
-                color: "#ff4d31",
-                distance: 150,
-                enable: true,
-                opacity: 0.3,
-                width: 1,
-            },
-            move: {
-                direction: "none" as const,
-                enable: true,
-                outModes: {
-                    default: "bounce" as const,
-                },
-                random: false,
-                speed: 1,
-                straight: false,
-            },
-            number: {
-                density: {
-                    enable: true,
-                    width: 1920,
-                    height: 1080
-                },
-                value: 80,
-            },
-            opacity: {
-                value: 0.5,
-            },
-            shape: {
-                type: "circle",
-            },
-            size: {
-                value: { min: 1, max: 3 },
-            },
-        },
-        detectRetina: true,
-    }), []);
-
     return (
-        <section className="relative rounded-xl bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#0a0a0a] overflow-hidden
+        <section
+            className="relative rounded-xl bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#0a0a0a] overflow-hidden
     /* MOBILE (sm & below) */
     h-auto min-h-0 max-h-none
 
@@ -110,26 +30,41 @@ const HeroSection = () => {
     md:h-[calc(100dvh-24px)] md:max-h-[calc(100dvh-24px)]
 
     /* LARGE SCREENS */
-    2xl:max-h-[700px]">
+    2xl:max-h-[700px]"
+            onMouseMove={handleMouseMove}
+        >
 
-            {/* Particles Container - Absolutely positioned within section */}
-            <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
-                {/* tsParticles Background */}
-                {particlesReady && (
-                    <Particles
-                        id="tsparticles"
-                        options={particlesOptions}
-                        className="absolute inset-0"
-                        style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
-                    />
-                )}
+            {/* Animated Grid Background */}
+            <div className="hero-grid-container">
+                {/* Grid Pattern */}
+                <div className="hero-grid" />
 
-                {/* Background Pattern - subtle overlay */}
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-20 left-10 w-72 h-72 bg-[#ff4d31] rounded-full blur-[120px]" />
-                    <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full blur-[150px]" />
+                {/* Intensified Grid Overlay */}
+                <div
+                    className="hero-grid-intense"
+                    style={{
+                        '--mouse-x': `${mousePosition.x}px`,
+                        '--mouse-y': `${mousePosition.y}px`
+                    } as React.CSSProperties}
+                />
+
+
+
+                {/* Animated Vertical Light Beams */}
+                <div className="hero-beams">
+                    <div className="beam beam-1" />
+                    <div className="beam beam-2" />
+                    <div className="beam beam-3" />
+                    <div className="beam beam-4" />
+                    <div className="beam beam-5" />
+                    <div className="beam beam-6" />
                 </div>
+
+                {/* Corner Glows */}
+                <div className="hero-glow hero-glow-top" />
+                <div className="hero-glow hero-glow-bottom" />
             </div>
+
 
             {/* Navigation */}
             <HeroNav />

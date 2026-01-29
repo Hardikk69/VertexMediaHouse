@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
 const messages = [
-  "o Hello",       
+  "o Hello",
   "o 你好 (Nǐ hǎo)",
-  "o Hola",        
+  "o Hola",
   "o مرحبا (Marhaban)",
-  "o Bonjour",     
-  "o Hallo",       
-  "o Olá",         
+  "o Bonjour",
+  "o Hallo",
+  "o Olá",
   "o こんにちは (Konnichiwa)",
   "o Привет (Privet)",
   "o नमस्ते (Namaste)"
@@ -31,9 +31,8 @@ export default function Preloader({ onFinish }: { onFinish: () => void }) {
 
   return (
     <div
-      className={`fixed inset-0 bg-black text-white flex items-center justify-center transition-transform duration-700 ${
-        isDone ? "-translate-y-full" : "translate-y-0"
-      }`}
+      className={`fixed inset-0 bg-black text-white flex items-center justify-center transition-transform duration-700 ${isDone ? "-translate-y-full" : "translate-y-0"
+        }`}
     >
       <h1 className="text-6xl font-normal font-power">
         {messages[index - 1] || messages[0]}
