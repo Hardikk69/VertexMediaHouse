@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import HeroNav from "@/components/HeroNav";
@@ -10,6 +10,7 @@ import PortfolioDrag from "@/components/sections/PortfolioSection";
 import ServicesPlans from "@/components/sections/ServicesPlans";
 import ServicesSection from "@/components/Ourservices";
 import ScrollStakeSection from "@/components/sections/ScrollStack";
+import "@/components/HeroGrid.css";
 
 // Icons
 import { Video, Sparkles, Scissors, Volume2, Palette, Clock, ArrowRight } from "lucide-react";
@@ -55,6 +56,16 @@ const videoTypes = [
 ];
 
 export default function VideoEditing() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    });
+  }, []);
+
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, []);
@@ -86,25 +97,99 @@ export default function VideoEditing() {
       <main className="min-h-screen bg-purple-50/25 theme-purple">
         {/* Hero Section */}
         <div className="p-4 bg-purple-100/50">
-          <section className="relative h-auto min-h-0 md:h-[calc(100dvh-24px)] md:max-h-[calc(100dvh-24px)] 2xl:max-h-[700px] bg-gradient-to-br from-[#0a0a0f] via-[#1a1428] to-[#2d1f3d] rounded-xl overflow-hidden">
+          <section
+            className="relative h-auto min-h-0 md:h-[calc(100dvh-24px)] md:max-h-[calc(100dvh-24px)] 2xl:max-h-[700px] bg-gradient-to-br from-[#0a0a0f] via-[#1a1428] to-[#2d1f3d] rounded-xl overflow-hidden"
+            onMouseMove={handleMouseMove}
+          >
             <HeroNav />
 
-            {/* Enhanced Background with Grid Pattern */}
-            <div className="absolute inset-0 opacity-30">
-              {/* Gradient Orbs */}
-              <div className="absolute top-10 right-20 w-96 h-96 bg-purple-600/60 rounded-full blur-[180px] animate-pulse" style={{ animationDuration: '4s' }} />
-              <div className="absolute bottom-10 left-20 w-80 h-80 bg-[#ff4d31]/50 rounded-full blur-[150px] animate-pulse" style={{ animationDuration: '5s' }} />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-500/30 rounded-full blur-[140px]" />
-            </div>
+            {/* Animated Grid Background */}
+            <div className="hero-grid-container">
+              {/* Grid Pattern */}
+              <div className="hero-grid" style={{
+                backgroundImage: `
+                  linear-gradient(to right, rgba(147, 51, 234, 0.05) 1px, transparent 1px),
+                  linear-gradient(to bottom, rgba(147, 51, 234, 0.05) 1px, transparent 1px)
+                `
+              }} />
 
-            {/* Subtle Grid Pattern */}
-            <div className="absolute inset-0 opacity-[0.05]" style={{
-              backgroundImage: `
-                linear-gradient(to right, rgba(147, 51, 234, 0.3) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(147, 51, 234, 0.3) 1px, transparent 1px)
-              `,
-              backgroundSize: '50px 50px'
-            }} />
+              {/* Intensified Grid Overlay */}
+              <div
+                className="hero-grid-intense"
+                style={{
+                  '--mouse-x': `${mousePosition.x}px`,
+                  '--mouse-y': `${mousePosition.y}px`,
+                  backgroundImage: `
+                    linear-gradient(to right, rgba(147, 51, 234, 0.25) 2px, transparent 2px),
+                    linear-gradient(to bottom, rgba(147, 51, 234, 0.25) 2px, transparent 2px)
+                  `
+                } as React.CSSProperties}
+              />
+
+              {/* Animated Vertical Light Beams */}
+              <div className="hero-beams">
+                <div className="beam beam-1" style={{
+                  background: `linear-gradient(to bottom,
+                    transparent 0%,
+                    rgba(147, 51, 234, 0.6) 20%,
+                    rgba(168, 85, 247, 0.9) 50%,
+                    rgba(147, 51, 234, 0.6) 80%,
+                    transparent 100%)`
+                }} />
+                <div className="beam beam-2" style={{
+                  background: `linear-gradient(to bottom,
+                    transparent 0%,
+                    rgba(147, 51, 234, 0.6) 20%,
+                    rgba(168, 85, 247, 0.9) 50%,
+                    rgba(147, 51, 234, 0.6) 80%,
+                    transparent 100%)`
+                }} />
+                <div className="beam beam-3" style={{
+                  background: `linear-gradient(to bottom,
+                    transparent 0%,
+                    rgba(147, 51, 234, 0.6) 20%,
+                    rgba(168, 85, 247, 0.9) 50%,
+                    rgba(147, 51, 234, 0.6) 80%,
+                    transparent 100%)`
+                }} />
+                <div className="beam beam-4" style={{
+                  background: `linear-gradient(to bottom,
+                    transparent 0%,
+                    rgba(147, 51, 234, 0.6) 20%,
+                    rgba(168, 85, 247, 0.9) 50%,
+                    rgba(147, 51, 234, 0.6) 80%,
+                    transparent 100%)`
+                }} />
+                <div className="beam beam-5" style={{
+                  background: `linear-gradient(to bottom,
+                    transparent 0%,
+                    rgba(147, 51, 234, 0.6) 20%,
+                    rgba(168, 85, 247, 0.9) 50%,
+                    rgba(147, 51, 234, 0.6) 80%,
+                    transparent 100%)`
+                }} />
+                <div className="beam beam-6" style={{
+                  background: `linear-gradient(to bottom,
+                    transparent 0%,
+                    rgba(147, 51, 234, 0.6) 20%,
+                    rgba(168, 85, 247, 0.9) 50%,
+                    rgba(147, 51, 234, 0.6) 80%,
+                    transparent 100%)`
+                }} />
+              </div>
+
+              {/* Corner Glows */}
+              <div className="hero-glow hero-glow-top" style={{
+                background: `radial-gradient(ellipse at center,
+                  rgba(147, 51, 234, 0.15) 0%,
+                  transparent 70%)`
+              }} />
+              <div className="hero-glow hero-glow-bottom" style={{
+                background: `radial-gradient(ellipse at center,
+                  rgba(168, 85, 247, 0.1) 0%,
+                  transparent 70%)`
+              }} />
+            </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-36 pb-12">
               <div className="grid lg:grid-cols-2 gap-16 items-center">
