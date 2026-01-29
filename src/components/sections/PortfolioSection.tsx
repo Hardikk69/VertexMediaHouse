@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { useEffect, useState, useCallback } from "react";
+import { motion, useMotionValue } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 const cards = [
   {
@@ -55,40 +55,42 @@ interface PortfolioProps {
 }
 
 export default function InfinitePortfolioDrag({ twoCardMode = false, accentColor = "#ffffff" }: PortfolioProps): JSX.Element {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const x = useMotionValue(0);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // Get card at specific position with infinite wrapping
-  const getCardIndex = useCallback((offset: number) => {
-    const index = (currentIndex + offset) % cards.length;
-    return index < 0 ? index + cards.length : index;
-  }, [currentIndex]);
+  const [isDragging, setIsDragging] = useState(false);
+  const [contentWidth, setContentWidth] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  // Move to next card
-  const handleNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % cards.length);
-  }, []);
-
-  // Move to previous card
-  const handlePrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + cards.length) % cards.length);
-  }, []);
-
-  // Auto-rotation effect - infinite loop
+  /* -----------------------------------------
+     Measure content width - 2 cards at a time
+  ------------------------------------------ */
   useEffect(() => {
-    if (isPaused) return;
+    if (!containerRef.current) return;
+    // Calculate width for 2 cards (showing 2 at a time)
+    setContentWidth(containerRef.current.scrollWidth / 2);
+  }, []);
 
-    const interval = setInterval(() => {
-      handleNext();
-    }, 3000);
+  /* -----------------------------------------
+     Start from middle
+  ------------------------------------------ */
+  useEffect(() => {
+    if (contentWidth) x.set(-contentWidth / 2);
+  }, [contentWidth, x]);
 
-    return () => clearInterval(interval);
-  }, [isPaused, handleNext]);
-
-  // Get all visible cards (left, center, right)
-  const leftCard = cards[getCardIndex(-1)];
-  const centerCard = cards[getCardIndex(0)];
-  const rightCard = cards[getCardIndex(1)];
+  /* -----------------------------------------
+     Infinite wrap logic
+  ------------------------------------------ */
+  useEffect(() => {
+    const BUFFER = 60;
+    return x.on("change", latest => {
+      if (latest < -contentWidth - BUFFER) {
+        x.set(latest + contentWidth);
+      } else if (latest > BUFFER) {
+        x.set(latest - contentWidth);
+      }
+    });
+  }, [contentWidth, x]);
 
   return (
     <motion.section
@@ -113,152 +115,144 @@ export default function InfinitePortfolioDrag({ twoCardMode = false, accentColor
         Real projects. Real impact.
       </motion.h2>
 
-      {/* Carousel Container - Flexbox for perfect centering */}
-      <div
-        className="relative w-full px-4 md:px-8"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+      <motion.div
+        className="cursor-grab active:cursor-grabbing"
+        drag="x"
+        style={{ x }}
+        dragElastic={0.08}
+        dragMomentum
+        dragTransition={{ bounceStiffness: 300, bounceDamping: 30 }}
+        onDragStart={() => setIsDragging(true)}
+        onDragEnd={() => setIsDragging(false)}
       >
-        {/* Cards Container - Always centered */}
-        <div className="flex items-center justify-center gap-4 md:gap-8">
-          {/* Left Side Card */}
-          <motion.div
-            key={`left-${getCardIndex(-1)}`}
-            className="hidden md:block w-[20%] h-[220px] flex-shrink-0 cursor-pointer"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 0.5, scale: 0.9 }}
-            whileHover={{ opacity: 0.7, scale: 0.95 }}
-            transition={{ duration: 0.4 }}
-            onClick={handlePrev}
-          >
-            <div className="relative w-full h-full rounded-xl overflow-hidden">
-              <img
-                src={leftCard.image}
-                alt={leftCard.title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-              <div className="absolute bottom-0 p-3">
-                <h3 className="text-sm font-semibold">{leftCard.title}</h3>
-                <p className="text-xs text-white/70">{leftCard.desc}</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Center Card - Main Focus - Always in middle */}
-          <motion.div
-            key={`center-${currentIndex}`}
-            className="w-[85%] md:w-[45%] h-[280px] md:h-[320px] flex-shrink-0"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          >
+        <motion.div
+          ref={containerRef}
+          className="flex px-10 gap-6"
+          animate={{
+            scale: isDragging ? 0.96 : 1,
+          }}
+          transition={{ type: "spring" as const, stiffness: 300, damping: 30 }}
+        >
+          {/* Render cards twice for infinite loop - but sized to show 2 at a time */}
+          {[...cards, ...cards].map((item, i) => (
             <motion.div
-              className="relative w-full h-full rounded-xl overflow-hidden cursor-pointer shadow-2xl"
-              whileHover={{ scale: 1.02, y: -5 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              key={i}
+              className="
+                relative
+                w-[75vw] sm:w-[60vw] md:w-[45vw] lg:w-[38vw]
+                h-[300px] sm:h-[340px] md:h-[400px] lg:h-[440px]
+                rounded-xl
+                overflow-hidden
+                flex-shrink-0
+                select-none
+              "
+              onHoverStart={() => setHoveredIndex(i)}
+              onHoverEnd={() => setHoveredIndex(null)}
+              whileHover={{
+                y: -10,
+                scale: 1.02,
+                transition: { type: "spring" as const, stiffness: 400, damping: 25 }
+              }}
+              style={{
+                boxShadow: hoveredIndex === i
+                  ? "0 25px 50px -12px rgba(0, 0, 0, 0.5)"
+                  : "0 10px 30px -10px rgba(0, 0, 0, 0.3)",
+              }}
             >
-              {/* Image */}
+              {/* FULL IMAGE BACKGROUND */}
               <motion.img
-                key={`img-${currentIndex}`}
-                src={centerCard.image}
-                alt={centerCard.title}
-                className="absolute inset-0 w-full h-full object-cover"
-                initial={{ scale: 1.1 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.5 }}
+                src={item.image}
+                alt={item.title}
+                draggable={false}
+                className="
+                  absolute inset-0
+                  w-full h-full
+                  object-cover
+                  select-none pointer-events-none
+                "
+                animate={{
+                  scale: hoveredIndex === i ? 1.1 : 1,
+                }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
               />
 
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-
-              {/* Content */}
+              {/* GRADIENT OVERLAY */}
               <motion.div
-                className="absolute bottom-0 p-6 w-full"
-                key={`content-${currentIndex}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-              >
-                <h3 className="text-xl md:text-2xl font-semibold mb-2">
-                  {centerCard.title}
-                </h3>
-                <p className="text-white/80 text-sm md:text-base mb-4">
-                  {centerCard.desc}
-                </p>
+                className="
+                  absolute inset-0
+                  bg-gradient-to-t
+                  from-black/80
+                  via-black/40
+                  to-transparent
+                "
+                animate={{
+                  opacity: hoveredIndex === i ? 1 : 0.85,
+                }}
+                transition={{ duration: 0.3 }}
+              />
 
-                {centerCard.cta && (
-                  <button
-                    className="inline-flex items-center gap-2 text-sm text-black bg-white border border-white/80 px-5 py-2.5 rounded-full hover:bg-white/90 transition-all duration-300 font-medium"
+              {/* CONTENT */}
+              <motion.div
+                className="absolute bottom-0 p-5 w-full"
+                animate={{
+                  y: hoveredIndex === i ? -5 : 0,
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.h3
+                  className="text-lg md:text-xl font-semibold"
+                  animate={{
+                    y: hoveredIndex === i ? -3 : 0,
+                  }}
+                  transition={{ duration: 0.3, delay: 0.05 }}
+                >
+                  {item.title}
+                </motion.h3>
+                <motion.p
+                  className="text-white/70 text-sm mt-1"
+                  animate={{
+                    y: hoveredIndex === i ? -3 : 0,
+                    opacity: hoveredIndex === i ? 1 : 0.7,
+                  }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                >
+                  {item.desc}
+                </motion.p>
+
+                {/* OPTIONAL BUTTON */}
+                {item.cta && (
+                  <motion.button
+                    className="
+                      mt-4
+                      inline-flex items-center gap-2
+                      text-sm
+                      text-black
+                      bg-white
+                      border border-white/80
+                      px-5 py-2.5
+                      rounded-full
+                      transition-colors duration-300
+                      font-medium
+                    "
+                    whileHover={{
+                      backgroundColor: "rgba(255,255,255,0.9)",
+                      scale: 1.05,
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    animate={{
+                      y: hoveredIndex === i ? -3 : 0,
+                      opacity: hoveredIndex === i ? 1 : 0.8,
+                    }}
+                    transition={{ duration: 0.3, delay: 0.15 }}
                   >
-                    {centerCard.cta} →
-                  </button>
+                    {item.cta} →
+                  </motion.button>
                 )}
               </motion.div>
             </motion.div>
-          </motion.div>
-
-          {/* Right Side Card */}
-          <motion.div
-            key={`right-${getCardIndex(1)}`}
-            className="hidden md:block w-[20%] h-[220px] flex-shrink-0 cursor-pointer"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 0.5, scale: 0.9 }}
-            whileHover={{ opacity: 0.7, scale: 0.95 }}
-            transition={{ duration: 0.4 }}
-            onClick={handleNext}
-          >
-            <div className="relative w-full h-full rounded-xl overflow-hidden">
-              <img
-                src={rightCard.image}
-                alt={rightCard.title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-              <div className="absolute bottom-0 p-3">
-                <h3 className="text-sm font-semibold">{rightCard.title}</h3>
-                <p className="text-xs text-white/70">{rightCard.desc}</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Navigation Arrows */}
-        <button
-          onClick={handlePrev}
-          className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white backdrop-blur-sm border border-white/80 flex items-center justify-center hover:bg-white/90 transition-colors duration-300 text-black"
-          aria-label="Previous"
-        >
-          <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-
-        <button
-          onClick={handleNext}
-          className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white backdrop-blur-sm border border-white/80 flex items-center justify-center hover:bg-white/90 transition-colors duration-300 text-black"
-          aria-label="Next"
-        >
-          <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
-
-      {/* Pagination Dots */}
-      <div className="flex justify-center gap-2 mt-8">
-        {cards.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentIndex
-              ? "bg-white w-8"
-              : "bg-white/30 hover:bg-white/50"
-              }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
+          ))}
+        </motion.div>
+      </motion.div>
     </motion.section>
   );
 }
