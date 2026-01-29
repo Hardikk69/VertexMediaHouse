@@ -104,91 +104,35 @@ export default function AIAutomation() {
             <HeroNav />
 
             {/* Animated Grid Background */}
-            <div className="hero-grid-container">
+            <div className="hero-grid-container" style={{
+              '--grid-primary': '16, 185, 129',
+              '--grid-secondary': '16, 185, 129'
+            } as React.CSSProperties}>
               {/* Grid Pattern */}
-              <div className="hero-grid" style={{
-                backgroundImage: `
-                  linear-gradient(to right, rgba(16, 185, 129, 0.05) 1px, transparent 1px),
-                  linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px)
-                `
-              }} />
+              <div className="hero-grid" />
 
               {/* Intensified Grid Overlay */}
               <div
                 className="hero-grid-intense"
                 style={{
                   '--mouse-x': `${mousePosition.x}px`,
-                  '--mouse-y': `${mousePosition.y}px`,
-                  backgroundImage: `
-                    linear-gradient(to right, rgba(16, 185, 129, 0.25) 2px, transparent 2px),
-                    linear-gradient(to bottom, rgba(16, 185, 129, 0.25) 2px, transparent 2px)
-                  `
+                  '--mouse-y': `${mousePosition.y}px`
                 } as React.CSSProperties}
               />
 
               {/* Animated Vertical Light Beams */}
               <div className="hero-beams">
-                <div className="beam beam-1" style={{
-                  background: `linear-gradient(to bottom,
-                    transparent 0%,
-                    rgba(16, 185, 129, 0.6) 20%,
-                    rgba(52, 211, 153, 0.9) 50%,
-                    rgba(16, 185, 129, 0.6) 80%,
-                    transparent 100%)`
-                }} />
-                <div className="beam beam-2" style={{
-                  background: `linear-gradient(to bottom,
-                    transparent 0%,
-                    rgba(16, 185, 129, 0.6) 20%,
-                    rgba(52, 211, 153, 0.9) 50%,
-                    rgba(16, 185, 129, 0.6) 80%,
-                    transparent 100%)`
-                }} />
-                <div className="beam beam-3" style={{
-                  background: `linear-gradient(to bottom,
-                    transparent 0%,
-                    rgba(16, 185, 129, 0.6) 20%,
-                    rgba(52, 211, 153, 0.9) 50%,
-                    rgba(16, 185, 129, 0.6) 80%,
-                    transparent 100%)`
-                }} />
-                <div className="beam beam-4" style={{
-                  background: `linear-gradient(to bottom,
-                    transparent 0%,
-                    rgba(16, 185, 129, 0.6) 20%,
-                    rgba(52, 211, 153, 0.9) 50%,
-                    rgba(16, 185, 129, 0.6) 80%,
-                    transparent 100%)`
-                }} />
-                <div className="beam beam-5" style={{
-                  background: `linear-gradient(to bottom,
-                    transparent 0%,
-                    rgba(16, 185, 129, 0.6) 20%,
-                    rgba(52, 211, 153, 0.9) 50%,
-                    rgba(16, 185, 129, 0.6) 80%,
-                    transparent 100%)`
-                }} />
-                <div className="beam beam-6" style={{
-                  background: `linear-gradient(to bottom,
-                    transparent 0%,
-                    rgba(16, 185, 129, 0.6) 20%,
-                    rgba(52, 211, 153, 0.9) 50%,
-                    rgba(16, 185, 129, 0.6) 80%,
-                    transparent 100%)`
-                }} />
+                <div className="beam beam-1" />
+                <div className="beam beam-2" />
+                <div className="beam beam-3" />
+                <div className="beam beam-4" />
+                <div className="beam beam-5" />
+                <div className="beam beam-6" />
               </div>
 
               {/* Corner Glows */}
-              <div className="hero-glow hero-glow-top" style={{
-                background: `radial-gradient(ellipse at center,
-                  rgba(16, 185, 129, 0.15) 0%,
-                  transparent 70%)`
-              }} />
-              <div className="hero-glow hero-glow-bottom" style={{
-                background: `radial-gradient(ellipse at center,
-                  rgba(52, 211, 153, 0.1) 0%,
-                  transparent 70%)`
-              }} />
+              <div className="hero-glow hero-glow-top" />
+              <div className="hero-glow hero-glow-bottom" />
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-36 pb-12">
