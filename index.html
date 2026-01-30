@@ -45,15 +45,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
     rel="stylesheet">
 </head>
+<style>
+  .convai-desktop { display: block; }
+  .convai-mobile { display: none; }
+  @media (max-width: 767px) {
+    .convai-desktop { display: none !important; }
+    .convai-mobile { display: block !important; position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999; background: transparent; }
+  }
+</style>
 
 
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 
-  <!-- ElevenLabs ConvAI Widget -->
-  <elevenlabs-convai agent-id="agent_4601kg1g4w1mf0vs3e1wpc82kq51"></elevenlabs-convai>
-  <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+  <!-- ElevenLabs ConvAI Widget: Desktop Only -->
+  <div class="convai-desktop">
+    <elevenlabs-convai agent-id="agent_4601kg1g4w1mf0vs3e1wpc82kq51"></elevenlabs-convai>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+  </div>
+
+  <!-- ElevenLabs ConvAI Widget: Mobile Only (bottom) -->
+  <div class="convai-mobile">
+    <elevenlabs-convai agent-id="agent_5701kg76s6t9fakbv4jp97e26jew"></elevenlabs-convai>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+  </div>
 </body>
 
 </html>
