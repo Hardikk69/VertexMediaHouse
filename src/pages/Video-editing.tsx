@@ -15,6 +15,58 @@ import "@/components/HeroGrid.css";
 // Icons
 import { Video, Sparkles, Scissors, Volume2, Palette, Clock, ArrowRight } from "lucide-react";
 
+const videoPlans = [
+  {
+    name: "ESSENTIAL EDITS (BASIC)",
+    subtitle: "Monthly short-form editing",
+    features: [
+      { title: "Up to 10 short-form videos / month" },
+      { title: "Unlimited Revisions" },
+      { title: "Basic professional editing (cuts, trims, pacing)" },
+      { title: "Smooth transitions" },
+      { title: "Basic color correction" },
+      { title: "Background music sync" },
+      { title: "Simple captions (auto style)" },
+      { title: "Format for Reels / Shorts / TikTok / LinkedIn" },
+    ],
+  },
+  {
+    name: "STRATEGIC EDITS (STANDARD)",
+    subtitle: "Growth-focused editing",
+    features: [
+      { title: "Up to 20 short-form videos / month" },
+      { title: "Unlimited Revisions" },
+      { title: "Advanced editing & pacing" },
+      { title: "Scroll-stopping hooks" },
+      { title: "Motion graphics & dynamic transitions" },
+      { title: "Clean branded captions (manual style)" },
+      { title: "Color grading (professional look)" },
+      { title: "Sound design & audio enhancement" },
+      { title: "Emojis / visual highlights / zooms" },
+      { title: "Content optimization for retention" },
+    ],
+  },
+  {
+    name: "PERFORMANCE EDITS (PREMIUM)",
+    subtitle: "High-performance viral content",
+    features: [
+      { title: "Up to 40 short-form videos / month" },
+      { title: "Unlimited Revisions" },
+      { title: "Premium storytelling edits" },
+      { title: "Viral-style pacing & retention optimization" },
+      { title: "Advanced motion graphics" },
+      { title: "Custom branded caption design" },
+      { title: "Advanced color grading (cinematic look)" },
+      { title: "Sound design + audio polish" },
+      { title: "Visual effects / overlays / graphics" },
+      { title: "Hook optimization (first 3 seconds strategy)" },
+      { title: "Content style consistency" },
+      { title: "Dedicated editor support" },
+    ],
+  },
+];
+
+
 const features = [
   {
     icon: Video,
@@ -307,7 +359,15 @@ export default function VideoEditing() {
 
         <PortfolioDrag twoCardMode={true} accentColor="#9333ea" />
 
-        <ServicesPlans accentColor="bg-purple-600" accentHoverColor="hover:bg-purple-700" tickBgColor="bg-purple-100" tickTextColor="text-purple-600" />
+        <ServicesPlans
+          badge="Video Editing Packages"
+          title="Video Editing Services"
+          subtitle="Strategic short-form content built for reach and retention."
+          plans={videoPlans}
+          accentColor="bg-purple-600" 
+          accentHoverColor="hover:bg-purple-700" 
+          tickBgColor="bg-purple-100" 
+          tickTextColor="text-purple-600" />
 
         {/* Features Section */}
         <section className="py-24 bg-[#fafafa]">

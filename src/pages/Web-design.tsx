@@ -15,6 +15,63 @@ import "@/components/HeroGrid.css";
 // Icons
 import { Globe, Smartphone, Zap, Shield, Search, PenTool, Code, Rocket, ArrowRight } from "lucide-react";
 
+const webPlans = [
+  {
+    name: "ESSENTIAL SITE (BASIC)",
+    subtitle: "Clean & modern website",
+    features: [
+      { title: "Up to 5 pages (Home, About, Services, Contact, Basic Landing)" },
+      { title: "Unlimited revisions" },
+      { title: "Delivery: 7–10 days" },
+      { title: "Clean modern UI design" },
+      { title: "Mobile-responsive layout" },
+      { title: "Basic SEO setup" },
+      { title: "Fast loading optimization" },
+      { title: "Contact form integration" },
+      { title: "SSL + security basics" },
+      { title: "Basic CMS (easy content updates)" },
+    ],
+  },
+  {
+    name: "STRATEGIC SITE (STANDARD)",
+    subtitle: "Conversion-focused website",
+    features: [
+      { title: "Up to 10 pages" },
+      { title: "Unlimited revisions" },
+      { title: "Delivery: 14–18 days" },
+      { title: "Custom UI/UX design" },
+      { title: "Conversion-focused layout" },
+      { title: "Mobile-first responsive design" },
+      { title: "Speed optimization (performance tuned)" },
+      { title: "Advanced SEO setup" },
+      { title: "Lead capture forms / CTA optimization" },
+      { title: "CMS integration (easy updates)" },
+      { title: "Basic animations & interactions" },
+      { title: "Security + performance setup" },
+    ],
+  },
+  {
+    name: "PERFORMANCE SITE (PREMIUM)",
+    subtitle: "Scalable premium website",
+    features: [
+      { title: "Up to 20 pages" },
+      { title: "Unlimited revisions" },
+      { title: "Priority delivery: 21–28 days" },
+      { title: "Fully custom premium UI/UX" },
+      { title: "Advanced conversion optimization" },
+      { title: "Lightning-fast performance build" },
+      { title: "Advanced SEO structure" },
+      { title: "Advanced animations & interactions" },
+      { title: "Blog / CMS / dynamic content setup" },
+      { title: "Lead funnel integration" },
+      { title: "Security hardening + performance tuning" },
+      { title: "Scalability-ready architecture" },
+      { title: "Analytics & tracking setup" },
+      { title: "Dedicated support" },
+    ],
+  },
+];
+
 const features = [
   {
     icon: Globe,
@@ -303,7 +360,15 @@ export default function WebDesign() {
 
         <PortfolioDrag twoCardMode={true} accentColor="#06b6d4" />
 
-        <ServicesPlans accentColor="bg-cyan-500" accentHoverColor="hover:bg-cyan-600" tickBgColor="bg-cyan-100" tickTextColor="text-cyan-600" />
+        <ServicesPlans
+          badge="Web Design Packages"
+          title="Web Design Services"
+          subtitle="High-performance websites built for scale."
+          plans={webPlans}
+          accentColor="bg-cyan-500" 
+          accentHoverColor="hover:bg-cyan-600" 
+          tickBgColor="bg-cyan-100" 
+          tickTextColor="text-cyan-600" />
 
         {/* Features Section */}
         <section className="py-24 bg-[#fafafa]">

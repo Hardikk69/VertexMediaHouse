@@ -15,6 +15,57 @@ import "@/components/HeroGrid.css";
 // Icons
 import { Presentation, Target, TrendingUp, Layers, Zap, CheckCircle, ArrowRight } from "lucide-react";
 
+const pitchDeckPlans = [
+  {
+    name: "LAUNCH DECK (BASIC)",
+    subtitle: "Quick & clean startup deck",
+    features: [
+      { title: "Up to 5 slides" },
+      { title: "Delivery in 24 hours" },
+      { title: "Unlimited revisions" },
+      { title: "Clean professional design" },
+      { title: "Basic content structuring" },
+      { title: "Brand color alignment" },
+      { title: "Simple charts / visuals" },
+      { title: "PPT + PDF files" },
+    ],
+  },
+  {
+    name: "INVESTOR DECK (STANDARD)",
+    subtitle: "Strategic storytelling deck",
+    features: [
+      { title: "Up to 15–18 slides" },
+      { title: "Delivery in 24 hours" },
+      { title: "Unlimited revisions" },
+      { title: "1:1 strategy call" },
+      { title: "Strategic slide flow " },
+      { title: "Professional storytelling structure" },
+      { title: "Custom visual design" },
+      { title: "Data visualization & charts" },
+      { title: "Brand consistency" },
+      { title: "Icon + visual enhancement" },
+      { title: "PPT + PDF + Editable source" },
+    ],
+  },
+  {
+    name: "FUNDRAISING DECK (PREMIUM)",
+    subtitle: "High-converting investor deck",
+    features: [
+      { title: "Up to 25-30 slides" },
+      { title: "Delivery in 48-72 hours" },
+      { title: "Unlimited revisions" },
+      { title: "1:1 strategy call" },
+      { title: "Deep strategy & consulting" },
+      { title: "Investor psychology structure" },
+      { title: "Storytelling + messaging refinement" },
+      { title: "Market & competitor slide framing" },
+      { title: "Advanced data visualization" },
+      { title: "Custom graphics & premium layout" },
+      { title: "PPT + PDF + Source" },
+    ],
+  },
+];
+
 const features = [
   {
     icon: Presentation,
@@ -272,7 +323,15 @@ export default function Pitchdeck() {
 
         <PortfolioDrag twoCardMode={true} accentColor="#ff4d31" />
 
-        <ServicesPlans accentColor="bg-[#ff4d31]" accentHoverColor="hover:bg-[#ff3d21]" tickBgColor="bg-orange-100" tickTextColor="text-orange-600" />
+    <ServicesPlans
+      badge="Pitch Deck Packages"
+      title="Pitch Deck Services"
+      subtitle="From basic launch decks to investor-ready fundraising presentations."
+      plans={pitchDeckPlans}
+      accentColor="bg-[#ff4d31]" 
+      accentHoverColor="hover:bg-[#ff3d21]" 
+      tickBgColor="bg-orange-100" 
+      tickTextColor="text-orange-600" />
 
         {/* Features Section */}
         <section className="py-24 bg-[#fafafa]">

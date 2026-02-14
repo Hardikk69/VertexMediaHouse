@@ -15,6 +15,55 @@ import "@/components/HeroGrid.css";
 // Icons
 import { Bot, Mail, Phone, MessageSquare, Workflow, Clock, Zap, Brain, Settings, ArrowRight } from "lucide-react";
 
+const automationPlans = [
+  {
+    name: "ESSENTIAL AUTOMATION (BASIC)",
+    subtitle: "Starter automation setup",
+    features: [
+      { title: "1 automation system setup (Email OR Chatbot OR Scheduling)" },
+      { title: "2 revisions" },
+      { title: "Delivery: 5–7 days" },
+      { title: "Basic workflow automation" },
+      { title: "Lead capture integration" },
+      { title: "Simple CRM sync" },
+      { title: "Basic email sequence / chatbot flow" },
+      { title: "Setup + testing" },
+    ],
+  },
+  {
+    name: "STRATEGIC AUTOMATION (STANDARD)",
+    subtitle: "Multi-system automation",
+    features: [
+      { title: "Up to 3 automation systems (Email + Chatbot + Workflow / Scheduling)" },
+      { title: "5 revisions" },
+      { title: "Delivery: 10–14 days" },
+      { title: "Lead capture + qualification automation" },
+      { title: "CRM integration & syncing" },
+      { title: "Smart email follow-up sequences" },
+      { title: "Chatbot with lead response logic" },
+      { title: "Workflow automation across tools" },
+      { title: "Performance optimization" },
+    ],
+  },
+  {
+    name: "PERFORMANCE AUTOMATION (PREMIUM)",
+    subtitle: "Full AI automation ecosystem",
+    features: [
+      { title: "Full AI automation ecosystem" },
+      { title: "Email + Chatbot + Workflow + Scheduling + Lead scoring" },
+      { title: "Unlimited revisions" },
+      { title: "Priority delivery: 14–21 days" },
+      { title: "Advanced CRM automation & routing" },
+      { title: "AI lead qualification & response logic" },
+      { title: "Multi-platform automation integration" },
+      { title: "AI Voice / call automation setup (optional if needed)" },
+      { title: "Advanced workflow optimization" },
+      { title: "Performance tracking & analytics" },
+      { title: "Dedicated automation support" },
+    ],
+  },
+];
+
 const features = [
   {
     icon: Mail,
@@ -317,7 +366,15 @@ export default function AIAutomation() {
 
         <PortfolioDrag twoCardMode={true} accentColor="#10b981" />
 
-        <ServicesPlans accentColor="bg-emerald-500" accentHoverColor="hover:bg-emerald-600" tickBgColor="bg-emerald-100" tickTextColor="text-emerald-600" />
+        <ServicesPlans
+          badge="AI Automation Packages"
+          title="AI Automation Services"
+          subtitle="Intelligent systems that automate and scale operations."
+          plans={automationPlans}
+          accentColor="bg-emerald-500"
+          accentHoverColor="hover:bg-emerald-600"
+          tickBgColor="bg-emerald-100"
+            tickTextColor="text-emerald-600" />
 
         {/* Enhanced Features Section */}
         <section className="py-28 bg-gradient-to-b from-[#fafafa] to-emerald-50/30">
