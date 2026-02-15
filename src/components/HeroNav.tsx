@@ -1,6 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import vertexLogoWhite from "../assets/images/VERTEX (1).png";
+import vertexLogoBlack from "../assets/images/VERTEX (4).png";
 
 const HeroNav = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -151,7 +153,7 @@ const HeroNav = () => {
     <>
       {/* Fixed Navigation Container */}
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-4 md:pt-5"
+        className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 py-4 md:py-5 transition-all duration-300 ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : ""}`}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -174,39 +176,11 @@ const HeroNav = () => {
                 '--theme-primary': themeGlowColors.primary,
               } as React.CSSProperties}
             >
-              <div className="relative">
-                <svg
-                  className="w-9 h-9 md:w-10 md:h-10"
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M8 32L20 8L32 32H26L20 18L14 32H8Z"
-                    style={{ 
-                      fill: 'var(--theme-primary)',
-                      transition: 'fill 1s ease'
-                    }}
-                  />
-                  <path
-                    d="M20 18L26 32H14L20 18Z"
-                    style={{ 
-                      fill: 'var(--theme-primary)',
-                      transition: 'fill 1s ease'
-                    }}
-                    opacity="0.6"
-                  />
-                </svg>
-              </div>
-              <span 
-                className="relative text-xl md:text-2xl font-black tracking-tight bg-clip-text text-transparent bg-[length:300%_300%] animate-[shimmer_5s_linear_infinite]"
-                style={{ 
-                  backgroundImage: `linear-gradient(135deg, #ffffff 0%, #ffffff 40%, var(--theme-primary) 50%, #ffffff 60%, #ffffff 100%)`,
-                  transition: 'all 1s ease'
-                }}
-              >
-                ALPHA
-              </span>
+              <img
+                src={isScrolled ? vertexLogoBlack : vertexLogoWhite}
+                alt="Vertex Media House"
+                className="h-12 md:h-14 w-auto object-contain rounded-xl mt-1 md:mt-2 transition-all duration-300"
+              />
             </Link>
           </motion.div>
 
@@ -345,16 +319,16 @@ const HeroNav = () => {
           {/* Mobile: Hamburger Button */}
           <button
             onClick={toggleMobileMenu}
-            className="flex md:hidden flex-col justify-center items-center w-11 h-11 z-[60] rounded-full bg-white/10 backdrop-blur-md border border-white/20"
+            className="flex md:hidden flex-col justify-center items-center w-12 h-12 z-[60] rounded-full bg-[#ff4d31]/10 backdrop-blur-md border border-[#ff4d31]/20"
             aria-label="Toggle menu"
           >
             <motion.span
               animate={{
                 rotate: isMobileMenuOpen ? 45 : 0,
-                y: isMobileMenuOpen ? 6 : 0,
+                y: isMobileMenuOpen ? 10 : 0,
               }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="block w-5 h-0.5 bg-white mb-1.5"
+              className="block w-8 h-0.5 bg-[#ff4d31] mb-2 transition-colors duration-300"
             />
             <motion.span
               animate={{
@@ -362,15 +336,15 @@ const HeroNav = () => {
                 scaleX: isMobileMenuOpen ? 0 : 1,
               }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="block w-5 h-0.5 bg-white mb-1.5"
+              className="block w-8 h-0.5 bg-[#ff4d31] mb-2 transition-colors duration-300"
             />
             <motion.span
               animate={{
                 rotate: isMobileMenuOpen ? -45 : 0,
-                y: isMobileMenuOpen ? -6 : 0,
+                y: isMobileMenuOpen ? -10 : 0,
               }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="block w-5 h-0.5 bg-white"
+              className="block w-8 h-0.5 bg-[#ff4d31] transition-colors duration-300"
             />
           </button>
         </div>
@@ -402,7 +376,7 @@ const HeroNav = () => {
           >
             {/* Glassmorphism Background */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90 backdrop-blur-xl" />
-            
+
             {/* Close Button - Top Right */}
             <motion.button
               onClick={closeMobileMenu}
@@ -421,53 +395,32 @@ const HeroNav = () => {
             </motion.button>
 
             {/* Menu Content */}
-            <div className="relative flex flex-col h-full pt-24 px-8 pb-10">
+            <div className="relative flex flex-col h-full pt-28 px-8 pb-10">
               {/* Logo at top */}
-              <motion.div
-                className="mb-10"
+              <motion.div className="mt-6 mb-12 flex justify-start"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
               >
-                <Link 
-                  to="/" 
-                  onClick={closeMobileMenu} 
+                <Link
+                  to="/"
+                  onClick={closeMobileMenu}
                   className="flex items-center gap-3 relative group"
                   style={{
                     '--theme-primary': themeGlowColors.primary,
                     '--theme-secondary': themeGlowColors.primary,
                   } as React.CSSProperties}
                 >
-                  <svg 
-                    className="relative w-10 h-10" 
-                    viewBox="0 0 40 40" 
-                    fill="none" 
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path 
-                      d="M8 32L20 8L32 32H26L20 18L14 32H8Z" 
-                      style={{ fill: 'var(--theme-primary)', transition: 'fill 1s ease' }} 
-                    />
-                    <path 
-                      d="M20 18L26 32H14L20 18Z" 
-                      style={{ fill: 'var(--theme-primary)', transition: 'fill 1s ease' }} 
-                      opacity="0.6" 
-                    />
-                  </svg>
-                  <span 
-                    className="relative text-2xl font-black tracking-tight bg-clip-text text-transparent bg-[length:300%_300%] animate-[shimmer_5s_linear_infinite]"
-                    style={{ 
-                      backgroundImage: `linear-gradient(135deg, #ffffff 0%, #ffffff 40%, var(--theme-primary) 50%, #ffffff 60%, #ffffff 100%)`,
-                      transition: 'all 1s ease'
-                    }}
-                  >
-                    ALPHA
-                  </span>
+                  <img
+                    src={vertexLogoWhite}
+                    alt="Vertex Media House"
+                    className="h-14 w-auto object-contain rounded-xl"
+                  />
                 </Link>
               </motion.div>
 
               {/* Navigation Links */}
-              <nav className="flex-1 overflow-y-auto">
+              <nav className="flex-1 overflow-y-auto pl-8">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.target}
@@ -529,11 +482,10 @@ const HeroNav = () => {
                     ) : (
                       <a
                         href={link.target}
-                        className={`block py-5 text-xl font-semibold transition-colors ${
-                          activeLink === link.target 
-                            ? "text-[#ff4d31]" 
-                            : "text-white/90 hover:text-white"
-                        }`}
+                        className={`block py-5 text-xl font-semibold transition-colors ${activeLink === link.target
+                          ? "text-[#ff4d31]"
+                          : "text-white/90 hover:text-white"
+                          }`}
                         onClick={(e) => {
                           handleNavClick(e, link.target);
                           closeMobileMenu();
@@ -565,7 +517,7 @@ const HeroNav = () => {
                     Book a Call
                   </motion.div>
                 </a>
-                
+
                 {/* Social Links or Additional Info */}
                 <p className="text-center text-white/40 text-sm mt-6">
                   Premium Creative Solutions
