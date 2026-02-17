@@ -174,8 +174,7 @@ const HeroNav = () => {
               className="group flex items-center gap-2.5"
               style={{
                 '--theme-primary': themeGlowColors.primary,
-              } as React.CSSProperties}
-            >
+              } as React.CSSProperties}>
               <img
                 src={isScrolled ? vertexLogoBlack : vertexLogoWhite}
                 alt="Vertex Media House"
