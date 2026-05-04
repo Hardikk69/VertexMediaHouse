@@ -28,10 +28,10 @@ export default function FooterSection(): JSX.Element {
   const currentYear = new Date().getFullYear();
 
   const social_media_links = [
-    { name: "Instagram", url: "https://www.instagram.com/vertexmediahouse/" },
-    { name: "X (Twitter)", url: "https://twitter.com/" },
-    { name: "Email", url: "mailto:dhrumil@vertexmedia.house" },
-    { name: "LinkedIn", url: "https://www.linkedin.com/company/vertex-media-house/" },
+    { name: "Instagram", url: "https://www.instagram.com/vertexmediahouse/"},
+    { name: "X (Twitter)", url: "https://twitter.com/"},
+    { name: "Email", url: "mailto:dhrumil@vertexmedia.house"},
+    { name: "LinkedIn", url: "https://www.linkedin.com/company/vertex-media-house/"},
   ];
 
   const serviceLinks = [
