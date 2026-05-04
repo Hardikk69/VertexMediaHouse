@@ -6,7 +6,7 @@ import CalenderCard from "@/components/Calender-card";
 import FaqSection from "@/components/sections/FaqSection";
 import FooterSection from "@/components/sections/FooterSection";
 import LogoList from "@/components/sections/LogoList";
-import PortfolioDrag from "@/components/sections/PortfolioSection";
+import VideoPortfolioSection from "@/components/sections/VideoPortfolioSection";
 import ServicesPlans from "@/components/sections/ServicesPlans";
 import ServicesSection from "@/components/Ourservices";
 import ScrollStakeSection from "@/components/sections/ScrollStack";
@@ -357,7 +357,7 @@ export default function VideoEditing() {
 
         <ServicesSection excludeService="video-editing" accentColor="#9333ea" />
 
-        <PortfolioDrag twoCardMode={true} accentColor="#9333ea" />
+        <VideoPortfolioSection accentColor="#9333ea" />
 
         <ServicesPlans
           badge="Video Editing Packages"

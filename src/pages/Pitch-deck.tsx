@@ -6,7 +6,7 @@ import CalenderCard from "@/components/Calender-card";
 import FaqSection from "@/components/sections/FaqSection";
 import FooterSection from "@/components/sections/FooterSection";
 import LogoList from "@/components/sections/LogoList";
-import PortfolioDrag from "@/components/sections/PortfolioSection";
+import PortfolioDrag, { PortfolioItem } from "@/components/sections/PortfolioSection";
 import ServicesSection from "@/components/Ourservices";
 import ServicesPlans from "@/components/sections/ServicesPlans";
 import ScrollStakeSection from "@/components/sections/ScrollStack";
@@ -100,6 +100,29 @@ const features = [
 ];
 
 
+
+const pitchDeckPortfolio: PortfolioItem[] = [
+  {
+    title: "The Black Box Talent",
+    desc: "Pitch Deck for Recruitment Process",
+    image: "/images/pitchdeck_portfolio_1.png",
+  },
+  {
+    title: "SeaFood Station",
+    desc: "Pitch Deck For premium Seafood ecosystem",
+    image: "/images/pitchdeck_portfolio_2.png",
+  },
+  {
+    title: "Luxury Green Residence",
+    desc: "Pitch Deck Luxury Green Real Estate",
+    image: "/images/pitchdeck_portfolio_3.png",
+  },
+  {
+    title: "LovoScore",
+    desc: "Pitch Deck for lovoScore",
+    image: "/images/pitchdeck_portfolio_4.png",
+  },
+];
 
 export default function Pitchdeck() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -321,7 +344,11 @@ export default function Pitchdeck() {
 
         <ServicesSection excludeService="pitch-deck" accentColor="#ff4d31" />
 
-        <PortfolioDrag twoCardMode={true} accentColor="#ff4d31" />
+        <PortfolioDrag 
+          items={pitchDeckPortfolio} 
+          twoCardMode={true} 
+          accentColor="#ff4d31" 
+        />
 
     <ServicesPlans
       badge="Pitch Deck Packages"

@@ -1,0 +1,288 @@
+import { motion, useMotionValue } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+
+
+
+export interface PortfolioItem {
+  title: string;
+  desc: string;
+  video: string;
+  cta?: string | null;
+}
+
+const defaultCards: PortfolioItem[] = [
+  {
+    title: "Investment Lesson",
+    desc: "Small money grows with right choices",
+    video: "/videos/Short_Form_Video_1.mp4",
+  },
+  {
+    title: "Women's Health Advice",
+    desc: "Women’s pain often labeled normal",
+    video: "/videos/Short_Form_Video_2.mp4",
+  },
+  {
+    title: "Investor's Clarity",
+    desc: "Clarity beats inflated numbers always",
+    video: "/videos/Short_Form_Video_3.mp4",
+  },
+  {
+    title: "Claude Case Study",
+    desc: "Claude's Rise as a Challenger to OpenAI",
+    video: "/videos/Short_Form_Video_4.mp4",
+  },
+];
+
+// Section entrance animation variants
+const sectionVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const titleVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" as const },
+  },
+};
+
+interface PortfolioProps {
+  items?: PortfolioItem[];
+  twoCardMode?: boolean;
+  accentColor?: string;
+}
+
+export default function InfinitePortfolioDrag({
+  items,
+  twoCardMode = false,
+  accentColor = "#ffffff"
+}: PortfolioProps): JSX.Element {
+  const x = useMotionValue(0);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const [isDragging, setIsDragging] = useState(false);
+  const [contentWidth, setContentWidth] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  const displayCards = items || defaultCards;
+
+  /* -----------------------------------------
+     Measure content width - 2 cards at a time
+  ------------------------------------------ */
+  useEffect(() => {
+    if (!containerRef.current) return;
+    // Calculate width for 2 cards (showing 2 at a time)
+    setContentWidth(containerRef.current.scrollWidth / 2);
+  }, [displayCards]);
+
+  /* -----------------------------------------
+     Start from middle
+  ------------------------------------------ */
+  useEffect(() => {
+    if (contentWidth) x.set(-contentWidth / 2);
+  }, [contentWidth, x]);
+
+  /* -----------------------------------------
+     Infinite wrap logic
+  ------------------------------------------ */
+  useEffect(() => {
+    const BUFFER = 60;
+    return x.on("change", latest => {
+      if (latest < -contentWidth - BUFFER) {
+        x.set(latest + contentWidth);
+      } else if (latest > BUFFER) {
+        x.set(latest - contentWidth);
+      }
+    });
+  }, [contentWidth, x]);
+
+  return (
+    <motion.section
+      className="bg-[#101010] text-white py-14 overflow-hidden"
+      id="our-portfolio"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <motion.span
+        variants={titleVariants}
+        className="block mb-4 text-sm tracking-wide text-center"
+        style={{ color: `${accentColor}99` }}
+      >
+        Our Portfolio
+      </motion.span>
+      <motion.h2
+        variants={titleVariants}
+        className="text-4xl font-bold mb-12 px-10 text-center"
+      >
+        Real projects. Real impact.
+      </motion.h2>
+
+      <motion.div
+        className="cursor-grab active:cursor-grabbing"
+        drag="x"
+        style={{ x }}
+        dragElastic={0.08}
+        dragMomentum
+        dragTransition={{ bounceStiffness: 300, bounceDamping: 30 }}
+        onDragStart={() => setIsDragging(true)}
+        onDragEnd={() => setIsDragging(false)}
+      >
+        <motion.div
+          ref={containerRef}
+          className="flex px-10 gap-6"
+          animate={{
+            scale: isDragging ? 0.96 : 1,
+          }}
+          transition={{ type: "spring" as const, stiffness: 300, damping: 30 }}
+        >
+          {/* Render cards twice for infinite loop - but sized to show 2 at a time */}
+          {[...displayCards, ...displayCards].map((item, i) => (
+            <motion.div
+              key={i}
+              className="
+                relative
+                w-[75vw] sm:w-[60vw] md:w-[45vw] lg:w-[38vw]
+                h-[450px] sm:h-[540px] md:h-[500px] lg:h-[540px]
+                rounded-xl
+                overflow-hidden
+                flex-shrink-0
+                select-none
+              "
+              onHoverStart={() => {
+                setHoveredIndex(i);
+                const video = videoRefs.current[i];
+                if (video) {
+                  video.play().catch(() => {});
+                }
+              }}
+              onHoverEnd={() => {
+                setHoveredIndex(null);
+                const video = videoRefs.current[i];
+                if (video) {
+                  video.pause();
+                  video.currentTime = 0;
+                }
+              }}
+              whileHover={{
+                y: -10,
+                scale: 1.02,
+                transition: { type: "spring" as const, stiffness: 400, damping: 25 }
+              }}
+              style={{
+                boxShadow: hoveredIndex === i
+                  ? "0 25px 50px -12px rgba(0, 0, 0, 0.5)"
+                  : "0 10px 30px -10px rgba(0, 0, 0, 0.3)",
+              }}
+            >
+              {/* FULL IMAGE BACKGROUND */}
+              <motion.video
+                ref={(el) => (videoRefs.current[i] = el)}
+                src={item.video}
+                loop
+                playsInline
+                preload="auto"
+                draggable={false}
+                className="
+    absolute inset-0
+    w-full h-full
+    object-cover
+    select-none
+  "
+                animate={{
+                  scale: hoveredIndex === i ? 1.1 : 1,
+                }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              />
+
+              {/* GRADIENT OVERLAY */}
+              <motion.div
+                className="
+                  absolute inset-0
+                  bg-gradient-to-t
+                  from-black/80
+                  via-black/40
+                  to-transparent
+                "
+                animate={{
+                  opacity: hoveredIndex === i ? 1 : 0.85,
+                }}
+                transition={{ duration: 0.3 }}
+              />
+
+              {/* CONTENT */}
+              <motion.div
+                className="absolute bottom-0 p-5 w-full"
+                animate={{
+                  y: hoveredIndex === i ? -5 : 0,
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.h3
+                  className="text-lg md:text-xl font-semibold"
+                  animate={{
+                    y: hoveredIndex === i ? -3 : 0,
+                  }}
+                  transition={{ duration: 0.3, delay: 0.05 }}
+                >
+                  {item.title}
+                </motion.h3>
+                <motion.p
+                  className="text-white/70 text-sm mt-1"
+                  animate={{
+                    y: hoveredIndex === i ? -3 : 0,
+                    opacity: hoveredIndex === i ? 1 : 0.7,
+                  }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                >
+                  {item.desc}
+                </motion.p>
+
+                {/* OPTIONAL BUTTON */}
+                {item.cta && (
+                  <motion.button
+                    className="
+                      mt-4
+                      inline-flex items-center gap-2
+                      text-sm
+                      text-black
+                      bg-white
+                      border border-white/80
+                      px-5 py-2.5
+                      rounded-full
+                      transition-colors duration-300
+                      font-medium
+                    "
+                    whileHover={{
+                      backgroundColor: "rgba(255,255,255,0.9)",
+                      scale: 1.05,
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    animate={{
+                      y: hoveredIndex === i ? -3 : 0,
+                      opacity: hoveredIndex === i ? 1 : 0.8,
+                    }}
+                    transition={{ duration: 0.3, delay: 0.15 }}
+                  >
+                    {item.cta} →
+                  </motion.button>
+                )}
+              </motion.div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
+    </motion.section>
+  );
+}
+

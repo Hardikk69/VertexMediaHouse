@@ -1,7 +1,14 @@
 import { motion, useMotionValue } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-const cards = [
+export interface PortfolioItem {
+  title: string;
+  desc: string;
+  image: string;
+  cta?: string | null;
+}
+
+const defaultCards: PortfolioItem[] = [
   {
     title: "The Black Box Talent",
     desc: "Pitch Deck for Recruitment Process",
@@ -9,7 +16,7 @@ const cards = [
   },
   {
     title: "SeaFood Station",
-    desc: "Pitch Deck For premiun Seafood ecosystem",
+    desc: "Pitch Deck For premium Seafood ecosystem",
     image: "/images/pitchdeck_portfolio_2.png",
     cta: null,
   },
@@ -47,17 +54,24 @@ const titleVariants = {
 };
 
 interface PortfolioProps {
+  items?: PortfolioItem[];
   twoCardMode?: boolean;
   accentColor?: string;
 }
 
-export default function InfinitePortfolioDrag({ twoCardMode = false, accentColor = "#ffffff" }: PortfolioProps): JSX.Element {
+export default function InfinitePortfolioDrag({ 
+  items, 
+  twoCardMode = false, 
+  accentColor = "#ffffff" 
+}: PortfolioProps): JSX.Element {
   const x = useMotionValue(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const [isDragging, setIsDragging] = useState(false);
   const [contentWidth, setContentWidth] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const displayCards = items || defaultCards;
 
   /* -----------------------------------------
      Measure content width - 2 cards at a time
@@ -66,7 +80,7 @@ export default function InfinitePortfolioDrag({ twoCardMode = false, accentColor
     if (!containerRef.current) return;
     // Calculate width for 2 cards (showing 2 at a time)
     setContentWidth(containerRef.current.scrollWidth / 2);
-  }, []);
+  }, [displayCards]);
 
   /* -----------------------------------------
      Start from middle
@@ -131,7 +145,7 @@ export default function InfinitePortfolioDrag({ twoCardMode = false, accentColor
           transition={{ type: "spring" as const, stiffness: 300, damping: 30 }}
         >
           {/* Render cards twice for infinite loop - but sized to show 2 at a time */}
-          {[...cards, ...cards].map((item, i) => (
+          {[...displayCards, ...displayCards].map((item, i) => (
             <motion.div
               key={i}
               className="
@@ -253,3 +267,4 @@ export default function InfinitePortfolioDrag({ twoCardMode = false, accentColor
     </motion.section>
   );
 }
+
