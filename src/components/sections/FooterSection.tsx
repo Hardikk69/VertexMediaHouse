@@ -30,7 +30,7 @@ export default function FooterSection(): JSX.Element {
   const social_media_links = [
     { name: "Instagram", url: "https://www.instagram.com/vertexmediahouse/"},
     { name: "X (Twitter)", url: "https://twitter.com/"},
-    { name: "Email", url: "mailto:dhrumil@vertexmedia.house"},
+    { name: "Email", url: "mailto:dhrumil@vertexmediahouse.com"},
     { name: "LinkedIn", url: "https://www.linkedin.com/company/vertex-media-house/"},
   ];
 
